@@ -1,0 +1,6 @@
+form\javafxcrud\data\AppQuery.class
+form\javafxcrud\model\Student.class
+form\javafxcrud\App.class
+module-info.class
+form\javafxcrud\controller\StudentController.class
+form\javafxcrud\data\DBConnection.class
