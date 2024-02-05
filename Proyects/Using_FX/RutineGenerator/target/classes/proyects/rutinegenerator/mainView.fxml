@@ -18,7 +18,7 @@
       </Label>
       <TableView fx:id="tableRutine" layoutX="71.0" layoutY="140.0" onMouseClicked="#mouseEvent" prefHeight="200.0" prefWidth="520.0">
         <columns>
-          <TableColumn fx:id="exerciceCol" prefWidth="360.0" text="Ejercicio" />
+          <TableColumn fx:id="excerciceCol" prefWidth="360.0" text="Ejercicio" />
           <TableColumn fx:id="serieCol" prefWidth="74.0" text="Series" />
             <TableColumn fx:id="repCol" prefWidth="85.0" text="Repeticiones" />
         </columns>

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import proyects.rutinegenerator.model.Excercise;
 import proyects.rutinegenerator.model.Rutine;
@@ -32,13 +34,13 @@ public class MainViewController implements Initializable {
     private Button btnGenerate;
 
     @FXML
-    private TableView<Rutine> tableRutine;
+    private TableView<SubRutine> tableRutine;
 
     @FXML
     private ComboBox<String> cboRutineType;
-    
+
     @FXML
-    private TableColumn excerciceCol, serieCol, repCol; 
+    private TableColumn<SubRutine, String> excerciceCol, serieCol, repCol;
 
     @FXML
     public void cboEvent(ActionEvent evt) {
@@ -64,6 +66,18 @@ public class MainViewController implements Initializable {
         types.add("resistencia");
         types.add("hipertrofia");
         cboRutineType.setItems(FXCollections.observableArrayList(types));
+
+    }
+
+    public void loadTable() {
+        repCol.setCellValueFactory(new PropertyValueFactory<>("repetitions"));
+        serieCol.setCellValueFactory(new PropertyValueFactory<>("series"));
+        excerciceCol.setCellValueFactory(cellData -> {
+            Excercise exercise = cellData.getValue().getExcercise();
+            String name = (exercise != null) ? exercise.getName() : "";
+            return new SimpleStringProperty(name);
+        });
+        tableRutine.setItems(FXCollections.observableArrayList(rutine.getSubRutines()));
     }
 
     private void generateExercices() {
@@ -112,17 +126,17 @@ public class MainViewController implements Initializable {
 
         switch (type) {
             case "fuerza":
-                reps = rand.nextInt( 6);
-                series = rand.nextInt( 7);
+                reps = 1 + rand.nextInt(5);
+                series = 1 + rand.nextInt(6);
                 break;
 
             case "resistencia":
-                reps = rand.nextInt( 20);
-                series = rand.nextInt( 5);
+                reps = 12 + rand.nextInt(9);
+                series = 1 + rand.nextInt(4);
                 break;
             case "hipertrofia":
-                reps = rand.nextInt( 13);
-                series = rand.nextInt( 7);
+                reps = 6 + rand.nextInt(7);
+                series = 1 + rand.nextInt(6);
                 break;
         }
 
@@ -165,6 +179,8 @@ public class MainViewController implements Initializable {
         subRutines.add(generateSubRutine(type, "hombro"));
 
         this.rutine = new Rutine("ruina de: " + type, subRutines);
+
+        loadTable();
 
     }
 }

@@ -8,6 +8,7 @@ module proyects.rutinegenerator {
 
     opens proyects.rutinegenerator to javafx.fxml;
     opens proyects.rutinegenerator.controller;
+    opens proyects.rutinegenerator.model;
     
     
     exports proyects.rutinegenerator;
