@@ -1,12 +1,13 @@
-package proyects.rutinegenerator.model;
+package proyects.rutinegenerator.model.entity;
 
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class SubRutine {
-
+public class SubRutine implements Serializable{
+   private static final Long SerialVersionUID = 1L;
     private Excercise excercise;
 
     private int series;

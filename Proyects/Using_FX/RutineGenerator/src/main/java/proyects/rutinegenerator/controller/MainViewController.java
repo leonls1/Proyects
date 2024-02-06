@@ -20,15 +20,18 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import proyects.rutinegenerator.model.Excercise;
-import proyects.rutinegenerator.model.Rutine;
-import proyects.rutinegenerator.model.SubRutine;
+import proyects.rutinegenerator.model.entity.Excercise;
+import proyects.rutinegenerator.model.entity.Rutine;
+import proyects.rutinegenerator.model.entity.SubRutine;
+import proyects.rutinegenerator.model.persistence.FilePersistence.RutinePersistenceInFile;
 
 public class MainViewController implements Initializable {
 
     private List<Excercise> ejerciciosEspalda, ejerciciosPecho, ejerciciosHombro;
 
     private Rutine rutine;
+
+    private final RutinePersistenceInFile filePersistence = new RutinePersistenceInFile();
 
     @FXML
     private Button btnGenerate;
@@ -37,7 +40,7 @@ public class MainViewController implements Initializable {
     private TableView<SubRutine> tableRutine;
 
     @FXML
-    private ComboBox<String> cboRutineType;
+    private ComboBox<String> cboRutineType, cboLevel;
 
     @FXML
     private TableColumn<SubRutine, String> excerciceCol, serieCol, repCol;
@@ -51,6 +54,8 @@ public class MainViewController implements Initializable {
     public void btnEvent(ActionEvent evt) {
         generateRutine(cboRutineType.getSelectionModel().getSelectedItem());
         System.out.println(rutine);
+        
+        filePersistence.saveRutine(rutine);
     }
 
     @FXML
@@ -62,10 +67,12 @@ public class MainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         generateExercices();
         ArrayList<String> types = new ArrayList<>();
-        types.add("fuerza");
-        types.add("resistencia");
-        types.add("hipertrofia");
+        types.add("fuerza"); //2-3 veces por semana 2-3 series por grupo muscular y entre 1 y 6 repeticiones
+        types.add("hipertrofia");//2-3 veces por semana 3-4 series por grupo muscular y entre 6 y 12 repeticiones
+        types.add("resistencia");//3-4 veces por semana 2-3 series por grupo muscular y mas de 12 repeticiones        
         cboRutineType.setItems(FXCollections.observableArrayList(types));
+        
+        filePersistence.getAllRutines();
 
     }
 

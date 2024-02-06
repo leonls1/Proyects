@@ -1,5 +1,6 @@
-package proyects.rutinegenerator.model;
+package proyects.rutinegenerator.model.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
@@ -7,7 +8,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Rutine {
+public class Rutine implements Serializable{
+    
+    private static final Long SerialVersionUID = 1L;
+    
     private String name;   
     
     private List<SubRutine> subRutines = new ArrayList<>(); 

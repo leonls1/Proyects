@@ -1,7 +1,8 @@
 proyects\rutinegenerator\App.class
-proyects\rutinegenerator\model\Rutine.class
 module-info.class
 proyects\rutinegenerator\controller\MainViewController.class
-proyects\rutinegenerator\model\Excercise.class
-proyects\rutinegenerator\model\SubRutine.class
-proyects\rutinegenerator\model\Muscle.class
+proyects\rutinegenerator\model\persistence\FilePersistence\RutinePersistenceInFile.class
+proyects\rutinegenerator\model\entity\SubRutine.class
+proyects\rutinegenerator\model\entity\Muscle.class
+proyects\rutinegenerator\model\entity\Excercise.class
+proyects\rutinegenerator\model\entity\Rutine.class

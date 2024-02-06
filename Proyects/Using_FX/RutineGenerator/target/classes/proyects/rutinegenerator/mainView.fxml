@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="466.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyects.rutinegenerator.controller.MainViewController">
    <children>
-      <Label layoutX="343.0" layoutY="40.0" text="Version 0.1" />
+      <Label layoutX="343.0" layoutY="40.0" text="Version 0.2" />
       <Label layoutX="271.0" text="Rutine Generator">
          <font>
             <Font size="27.0" />
@@ -25,5 +25,6 @@
       </TableView>
       <Button fx:id="btnGenerate" layoutX="591.0" layoutY="371.0" mnemonicParsing="false" onAction="#btnEvent" text="Generar" />
       <ComboBox fx:id="cboRutineType" layoutX="71.0" layoutY="78.0" onAction="#cboEvent" prefWidth="150.0" promptText="Tipo de rutina" />
+      <ComboBox fx:id="cboLevel" layoutX="509.0" layoutY="78.0" prefHeight="25.0" prefWidth="82.0" promptText="Nivel" />
    </children>
 </AnchorPane>
