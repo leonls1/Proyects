@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package proyects.rutinegenerator.controller;
 
 import java.net.URL;
@@ -24,6 +20,7 @@ import proyects.rutinegenerator.model.entity.Excercise;
 import proyects.rutinegenerator.model.entity.Rutine;
 import proyects.rutinegenerator.model.entity.SubRutine;
 import proyects.rutinegenerator.model.persistence.FilePersistence.RutinePersistenceInFile;
+import proyects.rutinegenerator.utilities.BasicLoaders;
 
 public class MainViewController implements Initializable {
 
@@ -43,7 +40,7 @@ public class MainViewController implements Initializable {
     private ComboBox<String> cboRutineType, cboLevel;
 
     @FXML
-    private TableColumn<SubRutine, String> excerciceCol, serieCol, repCol;
+    private TableColumn<SubRutine, String> excerciceCol, serieCol, repCol, dayCol, muscleCol;
 
     @FXML
     public void cboEvent(ActionEvent evt) {
@@ -52,10 +49,13 @@ public class MainViewController implements Initializable {
 
     @FXML
     public void btnEvent(ActionEvent evt) {
-        generateRutine(cboRutineType.getSelectionModel().getSelectedItem());
-        System.out.println(rutine);
-        
-        filePersistence.saveRutine(rutine);
+        Object e = evt.getSource();
+        if (e.equals(btnGenerate)) {
+            generateRutine(cboRutineType.getSelectionModel().getSelectedItem());
+            System.out.println(rutine);
+            filePersistence.saveRutine(rutine);
+        }
+
     }
 
     @FXML
@@ -65,14 +65,10 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        generateExercices();
-        ArrayList<String> types = new ArrayList<>();
-        types.add("fuerza"); //2-3 veces por semana 2-3 series por grupo muscular y entre 1 y 6 repeticiones
-        types.add("hipertrofia");//2-3 veces por semana 3-4 series por grupo muscular y entre 6 y 12 repeticiones
-        types.add("resistencia");//3-4 veces por semana 2-3 series por grupo muscular y mas de 12 repeticiones        
-        cboRutineType.setItems(FXCollections.observableArrayList(types));
-        
+        BasicLoaders.generateExercices(ejerciciosEspalda, ejerciciosPecho, ejerciciosHombro);
+        BasicLoaders.loadCBO(cboRutineType, cboLevel);
         filePersistence.getAllRutines();
+        
 
     }
 
@@ -85,46 +81,7 @@ public class MainViewController implements Initializable {
             return new SimpleStringProperty(name);
         });
         tableRutine.setItems(FXCollections.observableArrayList(rutine.getSubRutines()));
-    }
-
-    private void generateExercices() {
-
-        ejerciciosEspalda = ejerciciosPecho = ejerciciosHombro = new ArrayList<>();
-
-        //generando algunos ejercicos para probar
-        Excercise exePecho1 = new Excercise("Press Banca plano", "pecho");
-        Excercise exePecho2 = new Excercise("Press Banca inclinado", "pecho");
-        Excercise exePecho3 = new Excercise("Press Banca declinado", "pecho");
-        Excercise exePecho4 = new Excercise("Apertuar con mancuernas incliando", "pecho");
-
-        Excercise exeHombro1 = new Excercise("Press militar", "hombro");
-        Excercise exeHombro2 = new Excercise("Vuelo frontal", "hombro");
-        Excercise exeHombro3 = new Excercise("Vuelo lateral", "hombro");
-        Excercise exeHombro4 = new Excercise("Vuelo posterior", "hombro");
-        Excercise exeHombro5 = new Excercise("Jalon a la cara", "hombro");
-
-        Excercise exeEspalda1 = new Excercise("Remo en barra acostado", "espalda");
-        Excercise exeEspalda2 = new Excercise("Jalon al pecho", "espalda");
-        Excercise exeEspalda3 = new Excercise("Dominada prona lastrada", "espalda");
-        Excercise exeEspalda4 = new Excercise("Dominada supina lastrada", "espalda");
-
-        ejerciciosEspalda.add(exeEspalda1);
-        ejerciciosEspalda.add(exeEspalda2);
-        ejerciciosEspalda.add(exeEspalda3);
-        ejerciciosEspalda.add(exeEspalda4);
-
-        ejerciciosPecho.add(exePecho4);
-        ejerciciosPecho.add(exePecho3);
-        ejerciciosPecho.add(exePecho2);
-        ejerciciosPecho.add(exePecho1);
-
-        ejerciciosHombro.add(exeHombro1);
-        ejerciciosHombro.add(exeHombro2);
-        ejerciciosHombro.add(exeHombro3);
-        ejerciciosHombro.add(exeHombro4);
-        ejerciciosHombro.add(exeHombro5);
-
-    }
+    }    
 
     private SubRutine generateSubRutine(String type, String muscle) {
         int reps, series;

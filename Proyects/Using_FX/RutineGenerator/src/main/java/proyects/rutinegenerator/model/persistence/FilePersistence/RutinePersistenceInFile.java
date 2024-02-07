@@ -17,18 +17,16 @@ public class RutinePersistenceInFile {
 
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
-    //private final String RutinePath = "C:\\Users\\leonl\\Documents\\NetBeansProyects\\Proyects\\Using_FX\\RutineGenerator\\src\\main\\resources\\data\\rutines.dat";
-private final String RutinePath = "rutines.dat";
-    /*    private final String RutinePath = "RutineGenerator" + File.separator
-            + "src" + File.separator
+
+        private final String RutinePath = "src" + File.separator
             + "main" + File.separator
             + "resources" + File.separator
             + "data" + File.separator
             + "rutines.dat";
-     */
+     
     private void getOOS() throws FileNotFoundException, IOException {
         if (oos == null) {
-            oos = new ObjectOutputStream(new FileOutputStream(RutinePath));
+            oos = new ObjectOutputStream(new FileOutputStream(RutinePath,true));
         }
     }
 
@@ -54,6 +52,7 @@ private final String RutinePath = "rutines.dat";
     public List<Rutine> getAllRutines() {
         System.out.println(new File(RutinePath).getPath());
         System.out.println(new File(RutinePath).getAbsolutePath());
+        System.out.println(new File(RutinePath).exists());
         List<Rutine> rutines = new ArrayList<>();
 
         try {

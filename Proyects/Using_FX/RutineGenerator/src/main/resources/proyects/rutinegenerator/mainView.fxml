@@ -8,23 +8,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="466.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyects.rutinegenerator.controller.MainViewController">
+<AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="847.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyects.rutinegenerator.controller.MainViewController">
    <children>
-      <Label layoutX="343.0" layoutY="40.0" text="Version 0.2" />
-      <Label layoutX="271.0" text="Rutine Generator">
+      <Label layoutX="394.0" layoutY="40.0" text="Version 0.2" />
+      <Label layoutX="322.0" text="Rutine Generator">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <TableView fx:id="tableRutine" layoutX="71.0" layoutY="140.0" onMouseClicked="#mouseEvent" prefHeight="200.0" prefWidth="520.0">
+      <TableView fx:id="tableRutine" layoutX="76.0" layoutY="137.0" onMouseClicked="#mouseEvent" prefHeight="200.0" prefWidth="697.0">
         <columns>
-          <TableColumn fx:id="excerciceCol" prefWidth="360.0" text="Ejercicio" />
-          <TableColumn fx:id="serieCol" prefWidth="74.0" text="Series" />
-            <TableColumn fx:id="repCol" prefWidth="85.0" text="Repeticiones" />
+          <TableColumn fx:id="excerciceCol" prefWidth="333.0" text="Ejercicio" />
+            <TableColumn fx:id="muscleCol" prefWidth="142.0" text="Musculo" />
+          <TableColumn fx:id="serieCol" prefWidth="83.0" text="Series" />
+            <TableColumn fx:id="repCol" prefWidth="76.0" text="Repeticiones" />
+            <TableColumn fx:id="dayCol" prefWidth="62.0" text="Dia" />
         </columns>
       </TableView>
-      <Button fx:id="btnGenerate" layoutX="591.0" layoutY="371.0" mnemonicParsing="false" onAction="#btnEvent" text="Generar" />
+      <Button fx:id="btnGenerate" layoutX="714.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnEvent" text="Generar" />
       <ComboBox fx:id="cboRutineType" layoutX="71.0" layoutY="78.0" onAction="#cboEvent" prefWidth="150.0" promptText="Tipo de rutina" />
-      <ComboBox fx:id="cboLevel" layoutX="509.0" layoutY="78.0" prefHeight="25.0" prefWidth="82.0" promptText="Nivel" />
+      <ComboBox fx:id="cboLevel" layoutX="240.0" layoutY="78.0" prefHeight="25.0" prefWidth="82.0" promptText="Nivel" />
    </children>
 </AnchorPane>
