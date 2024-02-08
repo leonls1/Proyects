@@ -12,19 +12,18 @@ public class BasicGenerators {
     //generar una rutina de forma aleatoria con valores ya establecidos, rutina basica para pecho, espalda y hombro
     public static void generateRutine(String type, String level, List<Excercise> exercices, Rutine rutine) {
         List<SubRutine> subRutines = new ArrayList<>();
-        /*subRutines.add(generateSubRutine(type, "espalda"));
-        subRutines.add(generateSubRutine(type, "espalda"));
-        subRutines.add(generateSubRutine(type, "espalda"));
 
-        subRutines.add(generateSubRutine(type, "pecho"));
-        subRutines.add(generateSubRutine(type, "pecho"));
-        subRutines.add(generateSubRutine(type, "pecho"));
-
-        subRutines.add(generateSubRutine(type, "hombro"));
-        subRutines.add(generateSubRutine(type, "hombro"));
-        subRutines.add(generateSubRutine(type, "hombro"));*/
+        subRutines.add(generateSubRutine(type, "espalda", level, exercices));
+        subRutines.add(generateSubRutine(type, "espalda", level, exercices));
+        subRutines.add(generateSubRutine(type, "espalda", level, exercices));
         
-        subRutines.add(generateSubRutine(type, level, level, exercices));
+        subRutines.add(generateSubRutine(type, "pecho", level, exercices));
+        subRutines.add(generateSubRutine(type, "pecho", level, exercices));
+        subRutines.add(generateSubRutine(type, "pecho", level, exercices));
+        
+        subRutines.add(generateSubRutine(type, "hombro", level, exercices));
+        subRutines.add(generateSubRutine(type, "hombro", level, exercices));
+        subRutines.add(generateSubRutine(type, "hombro", level, exercices));
         
         
 
