@@ -50,9 +50,6 @@ public class RutinePersistenceInFile {
      
 
     public List<Rutine> getAllRutines() {
-        System.out.println(new File(RutinePath).getPath());
-        System.out.println(new File(RutinePath).getAbsolutePath());
-        System.out.println(new File(RutinePath).exists());
         List<Rutine> rutines = new ArrayList<>();
 
         try {

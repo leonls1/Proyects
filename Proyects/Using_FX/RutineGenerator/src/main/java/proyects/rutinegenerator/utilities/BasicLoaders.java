@@ -6,28 +6,24 @@ import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import proyects.rutinegenerator.model.entity.Excercise;
 
-
 public class BasicLoaders {
 
-    public static void loadCBO(ComboBox cboRutineType, ComboBox  cboLevel) {
+    public static void loadCBO(ComboBox cboRutineType, ComboBox cboLevel) {
         ArrayList<String> types = new ArrayList<>();
         types.add("fuerza"); //2-3 veces por semana 2-3 series por grupo muscular y entre 1 y 6 repeticiones
         types.add("hipertrofia");//2-3 veces por semana 3-4 series por grupo muscular y entre 6 y 12 repeticiones
         types.add("resistencia");//3-4 veces por semana 2-3 series por grupo muscular y mas de 12 repeticiones      
-        
+
         ArrayList<String> levels = new ArrayList<>();
         levels.add("Principiante");
         levels.add("Intermedio");
         levels.add("Avanzado");
-        
+
         cboRutineType.setItems(FXCollections.observableArrayList(types));
-        cboLevel.setItems(FXCollections.observableArrayList(levels));     
-
-    }
+        cboLevel.setItems(FXCollections.observableArrayList(levels));
     
-     public static void generateExercices(List<Excercise> backExcercises, List<Excercise> chestExcercises, List<Excercise> shoulderExcercises) {
 
-        backExcercises = chestExcercises = shoulderExcercises = new ArrayList<>();
+    public static void generateExercices(List<Excercise> backExcercises, List<Excercise> chestExcercises, List<Excercise> shoulderExcercises) {
 
         //generando algunos ejercicos para probar
         Excercise exePecho1 = new Excercise("Press Banca plano", "pecho");

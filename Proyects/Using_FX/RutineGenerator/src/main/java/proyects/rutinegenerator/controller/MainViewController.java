@@ -20,6 +20,7 @@ import proyects.rutinegenerator.model.entity.Excercise;
 import proyects.rutinegenerator.model.entity.Rutine;
 import proyects.rutinegenerator.model.entity.SubRutine;
 import proyects.rutinegenerator.model.persistence.FilePersistence.RutinePersistenceInFile;
+import proyects.rutinegenerator.utilities.BasicGenerators;
 import proyects.rutinegenerator.utilities.BasicLoaders;
 
 public class MainViewController implements Initializable {
@@ -51,7 +52,11 @@ public class MainViewController implements Initializable {
     public void btnEvent(ActionEvent evt) {
         Object e = evt.getSource();
         if (e.equals(btnGenerate)) {
-            generateRutine(cboRutineType.getSelectionModel().getSelectedItem());
+            generateRutine(cboRutineType.getSelectionModel().getSelectedItem(), cboLevel.getSelectionModel().getSelectedItem());
+            /*BasicGenerators.generateRutine(cboRutineType.getSelectionModel().getSelectedItem(),
+                    cboLevel.getSelectionModel().getSelectedItem(), 
+                    ,
+                    rutine);*/
             System.out.println(rutine);
             filePersistence.saveRutine(rutine);
         }
@@ -65,10 +70,12 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        BasicLoaders.generateExercices(ejerciciosEspalda, ejerciciosPecho, ejerciciosHombro);
+        ejerciciosEspalda = new ArrayList<>();
+        ejerciciosHombro = new ArrayList<>();
+        ejerciciosPecho = new ArrayList<>();
         BasicLoaders.loadCBO(cboRutineType, cboLevel);
+        BasicLoaders.generateExercices(ejerciciosPecho, ejerciciosPecho, ejerciciosPecho);
         filePersistence.getAllRutines();
-        
 
     }
 
@@ -81,66 +88,26 @@ public class MainViewController implements Initializable {
             return new SimpleStringProperty(name);
         });
         tableRutine.setItems(FXCollections.observableArrayList(rutine.getSubRutines()));
-    }    
-
-    private SubRutine generateSubRutine(String type, String muscle) {
-        int reps, series;
-        reps = series = 0;
-        Random rand = new Random();
-
-        switch (type) {
-            case "fuerza":
-                reps = 1 + rand.nextInt(5);
-                series = 1 + rand.nextInt(6);
-                break;
-
-            case "resistencia":
-                reps = 12 + rand.nextInt(9);
-                series = 1 + rand.nextInt(4);
-                break;
-            case "hipertrofia":
-                reps = 6 + rand.nextInt(7);
-                series = 1 + rand.nextInt(6);
-                break;
-        }
-
-        return new SubRutine(generateRandomExercice(muscle), series, reps);
     }
 
-    private Excercise generateRandomExercice(String muscle) {
-        Random rand = new Random();
-        Excercise randomExcercise;
-        int randomElement;
-
-        if (muscle.equalsIgnoreCase("espalda")) {
-            randomElement = rand.nextInt(ejerciciosEspalda.size());
-            randomExcercise = ejerciciosEspalda.get(randomElement);
-
-        } else if (muscle.equalsIgnoreCase("pecho")) {
-            randomElement = rand.nextInt(ejerciciosPecho.size());
-            randomExcercise = ejerciciosPecho.get(randomElement);
-
-        } else {
-            randomElement = rand.nextInt(ejerciciosHombro.size());
-            randomExcercise = ejerciciosHombro.get(randomElement);
-        }
-        return randomExcercise;
-
-    }
-
-    private void generateRutine(String type) {
+    private void generateRutine(String type, String level) {
+        
+        System.out.println(ejerciciosEspalda);
+        System.out.println(ejerciciosHombro);
+        System.out.println(ejerciciosPecho);
         List<SubRutine> subRutines = new ArrayList<>();
-        subRutines.add(generateSubRutine(type, "espalda"));
-        subRutines.add(generateSubRutine(type, "espalda"));
-        subRutines.add(generateSubRutine(type, "espalda"));
 
-        subRutines.add(generateSubRutine(type, "pecho"));
-        subRutines.add(generateSubRutine(type, "pecho"));
-        subRutines.add(generateSubRutine(type, "pecho"));
-
-        subRutines.add(generateSubRutine(type, "hombro"));
-        subRutines.add(generateSubRutine(type, "hombro"));
-        subRutines.add(generateSubRutine(type, "hombro"));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda));
+        
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho));
+        
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro));
 
         this.rutine = new Rutine("ruina de: " + type, subRutines);
 

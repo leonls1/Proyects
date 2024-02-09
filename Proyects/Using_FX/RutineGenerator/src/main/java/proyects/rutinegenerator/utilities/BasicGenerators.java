@@ -11,29 +11,30 @@ public class BasicGenerators {
 
     //generar una rutina de forma aleatoria con valores ya establecidos, rutina basica para pecho, espalda y hombro
     public static void generateRutine(String type, String level, List<Excercise> exercices, Rutine rutine) {
+        List<List<String>> listOfList;
         List<SubRutine> subRutines = new ArrayList<>();
+        /*
+        subRutines.add(generateSubRutine(type, "espalda", level, exercices));
+        subRutines.add(generateSubRutine(type, "espalda", level, exercices));
+        subRutines.add(generateSubRutine(type, "espalda", level, exercices));
 
-        subRutines.add(generateSubRutine(type, "espalda", level, exercices));
-        subRutines.add(generateSubRutine(type, "espalda", level, exercices));
-        subRutines.add(generateSubRutine(type, "espalda", level, exercices));
-        
         subRutines.add(generateSubRutine(type, "pecho", level, exercices));
         subRutines.add(generateSubRutine(type, "pecho", level, exercices));
         subRutines.add(generateSubRutine(type, "pecho", level, exercices));
-        
-        subRutines.add(generateSubRutine(type, "hombro", level, exercices));
-        subRutines.add(generateSubRutine(type, "hombro", level, exercices));
-        subRutines.add(generateSubRutine(type, "hombro", level, exercices));
-        
-        
 
+        subRutines.add(generateSubRutine(type, "hombro", level, exercices));
+        subRutines.add(generateSubRutine(type, "hombro", level, exercices));
+        subRutines.add(generateSubRutine(type, "hombro", level, exercices));
+         */
         rutine = new Rutine("ruina de: " + type, subRutines);
 
     }
 //genera un subrutina en base a un tipo de ejercicio, tipo de musculo, nivel del usuario y lo toma de una
     //lista de ejercicios pasados por parametro
+//etnonces la subrutina tendria que generar varias subrutinas de un solo grupo muscular, asi de paso tiene en cuenta
+    //cuantas series en la semana esta haciendo
 
-    private static SubRutine generateSubRutine(String type, String muscle, String level, List<Excercise> exercices) {
+    public static SubRutine generateSubRutine(String type, String level, List<Excercise> exercices) {
         int reps, series;
         reps = series = 0;
         Random rand = new Random();
@@ -95,9 +96,11 @@ public class BasicGenerators {
 
     private static <T> Object pickRamdomFromlist(List<T> list) {
         Random rand = new Random();
-        if (!list.isEmpty()) {
+        if (!(list == null)) {
+            System.out.println("isn't empty");
             return list.get(rand.nextInt(list.size()));
         } else {
+            System.out.println("is empty");
             return null;
         }
 
