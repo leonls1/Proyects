@@ -25,7 +25,10 @@ import proyects.rutinegenerator.utilities.BasicLoaders;
 
 public class MainViewController implements Initializable {
 
-    private List<Excercise> ejerciciosEspalda, ejerciciosPecho, ejerciciosHombro;
+    private List<Excercise> ejerciciosEspalda = new ArrayList<>();
+    private List<Excercise> ejerciciosPecho = new ArrayList<>();
+    private List<Excercise> ejerciciosHombro = new ArrayList<>();
+    ;
 
     private Rutine rutine;
 
@@ -70,11 +73,9 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ejerciciosEspalda = new ArrayList<>();
-        ejerciciosHombro = new ArrayList<>();
-        ejerciciosPecho = new ArrayList<>();
+
         BasicLoaders.loadCBO(cboRutineType, cboLevel);
-        BasicLoaders.generateExercices(ejerciciosPecho, ejerciciosPecho, ejerciciosPecho);
+        BasicLoaders.generateExercices(ejerciciosEspalda, ejerciciosPecho, ejerciciosHombro);
         filePersistence.getAllRutines();
 
     }
@@ -91,20 +92,17 @@ public class MainViewController implements Initializable {
     }
 
     private void generateRutine(String type, String level) {
-        
-        System.out.println(ejerciciosEspalda);
-        System.out.println(ejerciciosHombro);
-        System.out.println(ejerciciosPecho);
+
         List<SubRutine> subRutines = new ArrayList<>();
 
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda));
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda));
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda));
-        
+
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho));
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho));
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho));
-        
+
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro));
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro));
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro));

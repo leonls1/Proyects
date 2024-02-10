@@ -38,7 +38,7 @@ public class BasicGenerators {
         int reps, series;
         reps = series = 0;
         Random rand = new Random();
-
+        System.out.println("nivel " + level);
         switch (type) {
             case "fuerza":
                 reps += 1 + rand.nextInt(6);
@@ -47,11 +47,11 @@ public class BasicGenerators {
                         series += 2 + rand.nextInt(2);
                         break;
 
-                    case "intermedio":
+                    case "Intermedio":
                         series += 3 + rand.nextInt(2);
                         break;
 
-                    case "avanzado":
+                    case "Avanzado":
                         series += 4 + rand.nextInt(3);
                         break;
                 }
@@ -73,7 +73,7 @@ public class BasicGenerators {
                 }
 
             case "hipertrofia":
-                reps += 7 + rand.nextInt(19) / 2;
+                reps += 7 + (rand.nextInt(19)) / 2;
                 switch (level) {
                     case "principiante":
                         series += 3 + rand.nextInt(2);
@@ -97,10 +97,8 @@ public class BasicGenerators {
     private static <T> Object pickRamdomFromlist(List<T> list) {
         Random rand = new Random();
         if (!(list == null)) {
-            System.out.println("isn't empty");
             return list.get(rand.nextInt(list.size()));
         } else {
-            System.out.println("is empty");
             return null;
         }
 

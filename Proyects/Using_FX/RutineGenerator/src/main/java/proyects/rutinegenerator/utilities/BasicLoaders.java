@@ -22,7 +22,7 @@ public class BasicLoaders {
         cboRutineType.setItems(FXCollections.observableArrayList(types));
         cboLevel.setItems(FXCollections.observableArrayList(levels));
     
-
+    }
     public static void generateExercices(List<Excercise> backExcercises, List<Excercise> chestExcercises, List<Excercise> shoulderExcercises) {
 
         //generando algunos ejercicos para probar
