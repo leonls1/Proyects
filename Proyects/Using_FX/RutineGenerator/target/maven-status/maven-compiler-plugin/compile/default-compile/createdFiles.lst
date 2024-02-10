@@ -1,0 +1,11 @@
+proyects\rutinegenerator\controller\MainViewController.class
+proyects\rutinegenerator\utilities\BasicGenerators.class
+proyects\rutinegenerator\model\entity\Excercise.class
+proyects\rutinegenerator\utilities\BasicLoaders.class
+proyects\rutinegenerator\App.class
+proyects\rutinegenerator\controller\RutineCRUDController.class
+module-info.class
+proyects\rutinegenerator\model\persistence\FilePersistence\RutinePersistenceInFile.class
+proyects\rutinegenerator\model\entity\SubRutine.class
+proyects\rutinegenerator\model\entity\Muscle.class
+proyects\rutinegenerator\model\entity\Rutine.class
