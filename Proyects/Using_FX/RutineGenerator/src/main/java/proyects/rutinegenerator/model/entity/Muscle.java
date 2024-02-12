@@ -1,4 +1,4 @@
-package proyects.rutinegenerator.model;
+package proyects.rutinegenerator.model.entity;
 
 import java.util.List;
 
