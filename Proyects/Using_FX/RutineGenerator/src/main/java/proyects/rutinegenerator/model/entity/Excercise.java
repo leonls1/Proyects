@@ -15,13 +15,13 @@ public class Excercise implements Serializable{
     
    private String name;
    
-   private String ubicacion;
+   private String muscle;
    
    //private List<String> muscles;
 
     public Excercise(String name, String ubicacion) {
         this.name = name;
-        this.ubicacion = ubicacion;
+        this.muscle = ubicacion;
     }
    
    
@@ -59,7 +59,7 @@ public class Excercise implements Serializable{
 
     @Override
     public String toString() {
-        return "Excercise{" + "name=" + name + ", ubicacion=" + ubicacion + '}' + "\n";
+        return "Excercise{" + "name=" + name + ", ubicacion=" + muscle + '}' + "\n";
     }
     
     

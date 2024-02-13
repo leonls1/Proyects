@@ -60,7 +60,6 @@ public class MainViewController implements Initializable {
                     cboLevel.getSelectionModel().getSelectedItem(), 
                     ,
                     rutine);*/
-            System.out.println(rutine);
             filePersistence.saveRutine(rutine);
         }
 
@@ -83,11 +82,21 @@ public class MainViewController implements Initializable {
     public void loadTable() {
         repCol.setCellValueFactory(new PropertyValueFactory<>("repetitions"));
         serieCol.setCellValueFactory(new PropertyValueFactory<>("series"));
+        
+        //cargando la columna del nombre del ejercicio en cada subRutina
         excerciceCol.setCellValueFactory(cellData -> {
             Excercise exercise = cellData.getValue().getExcercise();
             String name = (exercise != null) ? exercise.getName() : "";
             return new SimpleStringProperty(name);
         });
+        
+        //cargando la columna de los musculos para cada ejercicio
+        muscleCol.setCellValueFactory(cellData -> {
+            Excercise exe = cellData.getValue().getExcercise();
+            String muscle = (exe != null) ? exe.getMuscle() : "";
+            return new SimpleStringProperty(muscle);
+        });
+        
         tableRutine.setItems(FXCollections.observableArrayList(rutine.getSubRutines()));
     }
 

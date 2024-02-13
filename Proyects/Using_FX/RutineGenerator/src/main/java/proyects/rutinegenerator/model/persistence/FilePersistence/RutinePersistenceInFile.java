@@ -60,7 +60,7 @@ public class RutinePersistenceInFile {
             }
 
         } catch (IOException | ClassNotFoundException ex) {
-
+            System.out.println("the file doesn't exists");
         }
         if (rutines.isEmpty()) {
             System.out.println("There's no rutines recorded");

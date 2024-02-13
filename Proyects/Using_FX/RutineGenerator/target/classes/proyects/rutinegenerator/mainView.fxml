@@ -12,6 +12,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="847.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyects.rutinegenerator.controller.MainViewController">
    <children>
+      <MenuButton layoutX="393.0" layoutY="78.0" mnemonicParsing="false" text="Dias por semana">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
       <Label layoutX="394.0" layoutY="40.0" text="Version 0.2" />
       <Label layoutX="322.0" text="Rutine Generator">
          <font>
@@ -29,13 +35,6 @@
       </TableView>
       <Button fx:id="btnGenerate" layoutX="714.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnEvent" text="Generar" />
       <ComboBox fx:id="cboRutineType" layoutX="71.0" layoutY="78.0" onAction="#cboEvent" prefWidth="150.0" promptText="Tipo de rutina" />
-      <ComboBox fx:id="cboLevel" layoutX="240.0" layoutY="78.0" prefHeight="25.0" prefWidth="122.0" promptText="Nivel" />
-      <MenuButton layoutX="374.0" layoutY="78.0" mnemonicParsing="false" text="MenuButton">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </MenuButton>
-      <ComboBox layoutX="486.0" layoutY="78.0" prefWidth="150.0" />
+      <ComboBox fx:id="cboLevel" layoutX="241.0" layoutY="78.0" prefHeight="25.0" prefWidth="122.0" promptText="Nivel" />
    </children>
 </AnchorPane>

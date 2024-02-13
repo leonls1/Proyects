@@ -38,12 +38,11 @@ public class BasicGenerators {
         int reps, series;
         reps = series = 0;
         Random rand = new Random();
-        System.out.println("nivel " + level);
         switch (type) {
             case "fuerza":
                 reps += 1 + rand.nextInt(6);
                 switch (level) {
-                    case "principiante":
+                    case "Principiante":
                         series += 2 + rand.nextInt(2);
                         break;
 
@@ -55,38 +54,41 @@ public class BasicGenerators {
                         series += 4 + rand.nextInt(3);
                         break;
                 }
+                break;
 
             case "resistencia":
                 reps += 15 + rand.nextInt(76) / 5;
                 switch (level) {
-                    case "principiante":
+                    case "Principiante":
                         series += 2 + rand.nextInt(2);
                         break;
 
-                    case "intermedio":
+                    case "Intermedio":
                         series += 3 + rand.nextInt(2);
                         break;
 
-                    case "avanzado":
+                    case "Avanzado":
                         series += 4 + rand.nextInt(3);
                         break;
-                }
+                }   
+                break;
 
             case "hipertrofia":
                 reps += 7 + (rand.nextInt(19)) / 2;
                 switch (level) {
-                    case "principiante":
+                    case "Principiante":
                         series += 3 + rand.nextInt(2);
                         break;
 
-                    case "intermedio":
+                    case "Intermedio":
                         series += 4 + rand.nextInt(2);
                         break;
 
-                    case "avanzado":
+                    case "Avanzado":
                         series += 5 + rand.nextInt(7);
                         break;
                 }
+                break;
 
         }
 
