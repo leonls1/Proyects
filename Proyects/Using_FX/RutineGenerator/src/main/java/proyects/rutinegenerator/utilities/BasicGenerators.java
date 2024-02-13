@@ -34,7 +34,7 @@ public class BasicGenerators {
 //etnonces la subrutina tendria que generar varias subrutinas de un solo grupo muscular, asi de paso tiene en cuenta
     //cuantas series en la semana esta haciendo
 
-    public static SubRutine generateSubRutine(String type, String level, List<Excercise> exercices) {
+    public static SubRutine generateSubRutine(String type, String level, List<Excercise> exercices, int day) {
         int reps, series;
         reps = series = 0;
         Random rand = new Random();
@@ -85,14 +85,14 @@ public class BasicGenerators {
                         break;
 
                     case "Avanzado":
-                        series += 5 + rand.nextInt(7);
+                        series += 5 + rand.nextInt(3);
                         break;
                 }
                 break;
 
         }
 
-        return new SubRutine((Excercise) pickRamdomFromlist(exercices), series, reps);
+        return new SubRutine((Excercise) pickRamdomFromlist(exercices), series, reps, day);
     }
 //en base a una lista de ejercicios pasados por parametro de devuelve un valor aleatorio del mismo
 

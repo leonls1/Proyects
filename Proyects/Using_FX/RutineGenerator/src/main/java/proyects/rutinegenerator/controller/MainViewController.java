@@ -82,21 +82,22 @@ public class MainViewController implements Initializable {
     public void loadTable() {
         repCol.setCellValueFactory(new PropertyValueFactory<>("repetitions"));
         serieCol.setCellValueFactory(new PropertyValueFactory<>("series"));
-        
+        dayCol.setCellValueFactory(new PropertyValueFactory<>("day"));
+
         //cargando la columna del nombre del ejercicio en cada subRutina
         excerciceCol.setCellValueFactory(cellData -> {
             Excercise exercise = cellData.getValue().getExcercise();
             String name = (exercise != null) ? exercise.getName() : "";
             return new SimpleStringProperty(name);
         });
-        
+
         //cargando la columna de los musculos para cada ejercicio
         muscleCol.setCellValueFactory(cellData -> {
             Excercise exe = cellData.getValue().getExcercise();
             String muscle = (exe != null) ? exe.getMuscle() : "";
             return new SimpleStringProperty(muscle);
         });
-        
+
         tableRutine.setItems(FXCollections.observableArrayList(rutine.getSubRutines()));
     }
 
@@ -104,17 +105,17 @@ public class MainViewController implements Initializable {
 
         List<SubRutine> subRutines = new ArrayList<>();
 
-        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda));
-        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda));
-        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda, 1));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda, 1));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosEspalda, 1));
 
-        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho));
-        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho));
-        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho, 2));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho, 2));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosPecho, 2));
 
-        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro));
-        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro));
-        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro, 3));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro, 3));
+        subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro, 3));
 
         this.rutine = new Rutine("ruina de: " + type, subRutines);
 

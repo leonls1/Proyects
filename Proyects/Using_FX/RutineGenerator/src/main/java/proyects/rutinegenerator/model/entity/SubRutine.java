@@ -13,14 +13,17 @@ public class SubRutine implements Serializable{
     private int series;
 
     private int repetitions;
+    
+    private int day;
 
     public SubRutine() {
     }
 
-    public SubRutine(Excercise excercise, int series, int repetitions) {
+    public SubRutine(Excercise excercise, int series, int repetitions,int day) {
         this.excercise = excercise;
         this.series = series;
         this.repetitions = repetitions;
+        this.day = day;
     }
 
     @Override
