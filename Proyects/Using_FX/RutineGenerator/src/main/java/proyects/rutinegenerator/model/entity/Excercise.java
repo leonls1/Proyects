@@ -2,7 +2,7 @@ package proyects.rutinegenerator.model.entity;
 
 
 import java.io.Serializable;
-import java.util.List;
+
 import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,21 +17,12 @@ public class Excercise implements Serializable{
    
    private String muscle;
    
-   //private List<String> muscles;
 
     public Excercise(String name, String ubicacion) {
         this.name = name;
         this.muscle = ubicacion;
     }
-   
-   
-   //private excerciseType type;
-   
-   //@ManyToMany
-   //private List<Muscle> muscles;
-   
-   //private List<Muscle> sucundaryMuscles;
-
+ 
     public Excercise() {
     }
 
@@ -59,7 +50,7 @@ public class Excercise implements Serializable{
 
     @Override
     public String toString() {
-        return "Excercise{" + "name=" + name + ", ubicacion=" + muscle + '}' + "\n";
+        return "Excercise{" + "name = " + name + ", Muscle = " + muscle + '}' + "\n";
     }
     
     
