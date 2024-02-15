@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyects.rutinegenerator.controller.RutineCRUDController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="895.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="proyects.rutinegenerator.controller.RutineCRUDController">
+   <children>
+      <TableView fx:id="tableRutineDetail" layoutX="99.0" layoutY="229.0" onMouseClicked="#mouseEvent" prefHeight="299.0" prefWidth="697.0">
+         <columns>
+            <TableColumn fx:id="colExcercice" prefWidth="333.0" text="Ejercicio" />
+            <TableColumn fx:id="colMuscle" prefWidth="142.0" text="Musculo" />
+            <TableColumn fx:id="colSeries" prefWidth="83.0" text="Series" />
+            <TableColumn fx:id="colReps" prefWidth="76.0" text="Repeticiones" />
+            <TableColumn fx:id="colDay" prefWidth="62.0" text="Dia" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tableRutines" layoutX="99.0" layoutY="89.0" prefHeight="107.0" prefWidth="697.0">
+        <columns>
+          <TableColumn fx:id="colName" prefWidth="165.0" text="Nombre" />
+            <TableColumn fx:id="colType" minWidth="0.0" prefWidth="139.0" text="Tipo de rutna" />
+            <TableColumn fx:id="colLevel" minWidth="0.0" prefWidth="178.0" text="Nivel" />
+            <TableColumn fx:id="colDays" prefWidth="50.0" text="Dias " />
+          <TableColumn fx:id="colDistribution" prefWidth="164.0" text="Distribucion" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnDelete" layoutX="191.0" layoutY="542.0" mnemonicParsing="false" text="Eliminar" />
+      <Button fx:id="btnPrint" layoutX="99.0" layoutY="542.0" mnemonicParsing="false" text="Imprimir" />
+      <Button fx:id="btnReturn" layoutX="663.0" layoutY="542.0" mnemonicParsing="false" text="Regresar al generador" />
+      <Label layoutX="99.0" layoutY="59.0" text="Rutinas ya creadas" />
+      <Label layoutX="99.0" layoutY="205.0" text="Detalle de la rutina" />
+      <Label layoutX="365.0" layoutY="14.0" text="Rutine Generator">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

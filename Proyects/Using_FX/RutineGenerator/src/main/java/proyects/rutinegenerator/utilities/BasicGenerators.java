@@ -26,7 +26,7 @@ public class BasicGenerators {
         subRutines.add(generateSubRutine(type, "hombro", level, exercices));
         subRutines.add(generateSubRutine(type, "hombro", level, exercices));
          */
-        rutine = new Rutine("ruina de: " + type, subRutines);
+//        rutine = new Rutine("ruina de: " + type, subRutines);
 
     }
 //genera un subrutina en base a un tipo de ejercicio, tipo de musculo, nivel del usuario y lo toma de una

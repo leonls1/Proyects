@@ -8,28 +8,36 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Rutine implements Serializable{
-    
-    private static final Long SerialVersionUID = 1L;
-    
-    private String name;   
-    
-    private List<SubRutine> subRutines = new ArrayList<>(); 
+public class Rutine implements Serializable {
 
-    public Rutine() {
+    private static final Long SerialVersionUID = 1L;
+
+    private String name;
+
+    private List<SubRutine> subRutines = new ArrayList<>();
+
+    private String level;
+
+    private String type;
+
+    private int days;
+
+    private String Distribution;
+
+    public Rutine(String name, String level, String type, int days, String Distribution) {
+        this.name = name;
+        this.level = level;
+        this.type = type;
+        this.days = days;
+        this.Distribution = Distribution;
     }
 
-    public Rutine(String name, List<SubRutine> subRutines) {
-        this.name = name;
-        this.subRutines = subRutines;
+    public Rutine() {
     }
 
     @Override
     public String toString() {
         return "Rutine{" + "name=" + name + ", subRutines=" + subRutines + '}';
     }
-    
-    
-    
-    
+
 }

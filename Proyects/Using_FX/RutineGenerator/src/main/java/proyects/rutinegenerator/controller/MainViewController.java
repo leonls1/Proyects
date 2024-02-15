@@ -119,6 +119,7 @@ public class MainViewController implements Initializable {
 
         this.rutine = new Rutine("ruina de: " + type, subRutines);
 
+        
         loadTable();
 
     }
