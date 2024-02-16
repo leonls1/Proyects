@@ -24,13 +24,15 @@ public class Rutine implements Serializable {
 
     private String Distribution;
 
-    public Rutine(String name, String level, String type, int days, String Distribution) {
+    public Rutine(String name, String level, String type, int days, String Distribution,List<SubRutine> subrutines) {
         this.name = name;
         this.level = level;
         this.type = type;
         this.days = days;
         this.Distribution = Distribution;
     }
+    
+    
 
     public Rutine() {
     }

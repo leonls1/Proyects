@@ -3,7 +3,6 @@ package proyects.rutinegenerator.controller;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -12,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,23 +29,27 @@ public class MainViewController implements Initializable {
     private List<Excercise> ejerciciosEspalda = new ArrayList<>();
     private List<Excercise> ejerciciosPecho = new ArrayList<>();
     private List<Excercise> ejerciciosHombro = new ArrayList<>();
-    ;
 
     private Rutine rutine;
 
     private final RutinePersistenceInFile filePersistence = new RutinePersistenceInFile();
+    
+ 
 
     @FXML
-    private Button btnGenerate;
+    private Button btnGenerate, btnAllRutines;
 
     @FXML
     private TableView<SubRutine> tableRutine;
 
     @FXML
-    private ComboBox<String> cboRutineType, cboLevel;
+    private ComboBox<String> cboRutineType, cboLevel, cboDistribution;
 
     @FXML
     private TableColumn<SubRutine, String> excerciceCol, serieCol, repCol, dayCol, muscleCol;
+    
+    @FXML
+    private Spinner<Integer> spinnerDays;
 
     @FXML
     public void cboEvent(ActionEvent evt) {
@@ -56,12 +61,12 @@ public class MainViewController implements Initializable {
         Object e = evt.getSource();
         if (e.equals(btnGenerate)) {
             generateRutine(cboRutineType.getSelectionModel().getSelectedItem(), cboLevel.getSelectionModel().getSelectedItem());
-            /*BasicGenerators.generateRutine(cboRutineType.getSelectionModel().getSelectedItem(),
-                    cboLevel.getSelectionModel().getSelectedItem(), 
-                    ,
-                    rutine);*/
+
             filePersistence.saveRutine(rutine);
+        }else if(e.equals(btnAllRutines)){
+            
         }
+        
 
     }
 
@@ -72,7 +77,12 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
+        //loading the spinner 
+        SpinnerValueFactory.IntegerSpinnerValueFactory spinnerValueFactory =   
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 6, 3);
+        spinnerDays.setValueFactory(spinnerValueFactory);
+        
         BasicLoaders.loadCBO(cboRutineType, cboLevel);
         BasicLoaders.generateExercices(ejerciciosEspalda, ejerciciosPecho, ejerciciosHombro);
         filePersistence.getAllRutines();
@@ -117,7 +127,10 @@ public class MainViewController implements Initializable {
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro, 3));
         subRutines.add(BasicGenerators.generateSubRutine(type, level, ejerciciosHombro, 3));
 
-        this.rutine = new Rutine("ruina de: " + type, subRutines);
+        //Rutine(String name, String level, String type, int days, String Distribution)
+        this.rutine = new Rutine("ruina de: " + type, level, type, 
+                spinnerDays.getValue(), cboDistribution.getSelectionModel().getSelectedItem(),
+                subRutines);
 
         
         loadTable();
