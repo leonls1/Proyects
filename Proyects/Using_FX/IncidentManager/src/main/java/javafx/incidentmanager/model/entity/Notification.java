@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import javafx.incidentmanager.model.satellite.ContactType;
+import javafx.incidentmanager.model.enums.ContactType;
 import lombok.Data;
 
 @Entity
@@ -29,5 +29,19 @@ public class Notification {
     private ContactType contactType;
     
     private String contact;
+
+    public Notification() {
+    }
+
+    public Notification(Incident incident, String description, ContactType contactType, String contact) {
+        this.incident = incident;
+        this.description = description;
+        this.contactType = contactType;
+        this.contact = contact;
+    }
+
+
+    
+    
     
 }

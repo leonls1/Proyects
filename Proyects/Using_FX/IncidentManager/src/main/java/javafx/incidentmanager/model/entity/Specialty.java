@@ -28,4 +28,12 @@ public class Specialty {
     @ManyToMany
     private Set<Problem> problems;
 
+    public Specialty() {
+    }
+
+    public Specialty(String name) {
+        this.name = name;
+    }
+
+    
 }

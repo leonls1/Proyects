@@ -28,7 +28,7 @@
         </columns>
       </TableView>
       <Button fx:id="btnGenerate" layoutX="694.0" layoutY="509.0" mnemonicParsing="false" onAction="#btnEvent" text="Generar" />
-      <Button layoutX="56.0" layoutY="509.0" mnemonicParsing="false" text="Ver rutinas" />
+      <Button fx:id="btnAllRutines" layoutX="56.0" layoutY="509.0" mnemonicParsing="false" text="Ver rutinas" />
       <HBox alignment="CENTER" layoutX="56.0" layoutY="70.0" prefHeight="56.0" prefWidth="697.0" spacing="15.0">
          <children>
             <ComboBox fx:id="cboRutineType" onAction="#cboEvent" prefWidth="150.0" promptText="Tipo de rutina" />

@@ -22,4 +22,14 @@ public class Service {
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "service")
     private List<Incident> incidents;
+
+    public Service() {
+    }
+
+    public Service(String description) {
+        this.description = description;
+    }
+    
+    
+    
 }

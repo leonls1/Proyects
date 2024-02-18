@@ -10,7 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import javafx.incidentmanager.model.satellite.CorporateName;
+import javafx.incidentmanager.model.enums.CorporateName;
 import lombok.Data;
 import java.util.List;
 
@@ -33,6 +33,18 @@ public class Client {
     @Enumerated(value = EnumType.STRING)
     private CorporateName corporateName;
     
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "clients", cascade = CascadeType.ALL)
     private List<Incident> incidents;
+
+    public Client() {
+    }
+
+    public Client(String Cuil_Cuit, Long phoneNumber, String email, CorporateName corporateName) {
+        this.Cuil_Cuit = Cuil_Cuit;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.corporateName = corporateName;
+    }
+    
+    
 }

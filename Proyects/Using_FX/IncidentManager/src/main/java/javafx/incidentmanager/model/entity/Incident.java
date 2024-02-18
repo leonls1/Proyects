@@ -47,6 +47,20 @@ public class Incident {
     private List<Problem> problems;
     
     //private State state;
+
+    public Incident() {
+    }
+
+    public Incident(Service service, Client clients, LocalDate stimatedDate, LocalDate entryDate, LocalDate realFinishDate, String description) {
+        this.service = service;
+        this.clients = clients;
+        this.stimatedDate = stimatedDate;
+        this.entryDate = entryDate;
+        this.realFinishDate = realFinishDate;
+        this.description = description;
+    }
+
+    
     
     
     

@@ -12,7 +12,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
-import javafx.incidentmanager.model.satellite.EmployeeType;
+import javafx.incidentmanager.model.enums.EmployeeType;
 import java.util.Set;
 import lombok.Data;
 
@@ -45,5 +45,20 @@ public class Employee {
 
     @Enumerated(value = EnumType.STRING)
     private EmployeeType employeeType;
+
+    public Employee() {
+    }
+
+    public Employee(String name, String surname, LocalDate birthDate, LocalDate entryDate, Long phoneNumber, String email, EmployeeType employeeType) {
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.entryDate = entryDate;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.employeeType = employeeType;
+    }
+    
+    
 
 }
