@@ -32,7 +32,7 @@ especialidad en los últimos N días
 ○ Quién fue el técnico que más rápido resolvió los incidentes
 */
     public Employee getTechMoreIncidentsSolvcedInNDays(int days){
-        Employee tech; 
+        Employee tech = new Employee(); 
         
         //getAllTechs().
         
@@ -40,7 +40,7 @@ especialidad en los últimos N días
     }
     
     public Employee getTechMoreIncidentsSolvcedInNDaysAndSpecialty(int days, Specialty specialty){
-        Employee tech; 
+        Employee tech = tech = new Employee(); 
         
         //getAllTechs().
         
@@ -48,7 +48,7 @@ especialidad en los últimos N días
     }
     
     public Employee getFasterSolvingTech(){
-        Employee tech; 
+        Employee tech = tech = new Employee(); 
         
         //getAllTechs().
         
