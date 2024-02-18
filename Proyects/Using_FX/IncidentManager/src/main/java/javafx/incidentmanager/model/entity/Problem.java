@@ -13,10 +13,12 @@ import jakarta.persistence.Table;
 import javafx.incidentmanager.model.enums.ProblemType;
 import lombok.Data;
 import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table
-@Data
+@Getter@Setter
 public class Problem {
     
     @Id
@@ -45,6 +47,11 @@ public class Problem {
         this.type = type;
         this.description = description;
         this.stimatedTime = stimatedTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Problem{" + "id=" + id + ", incident=" + incident + ", type=" + type + ", description=" + description + ", stimatedTime=" + stimatedTime + '}';
     }
 
 

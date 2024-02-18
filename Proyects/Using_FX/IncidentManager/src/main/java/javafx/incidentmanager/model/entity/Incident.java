@@ -12,11 +12,13 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
 @Table
-@Data
+@Getter@Setter
 public class Incident {
     
     @Id
@@ -58,6 +60,11 @@ public class Incident {
         this.entryDate = entryDate;
         this.realFinishDate = realFinishDate;
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Incident{" + "id=" + id + ", service=" + service + ", clients=" + clients + ", stimatedDate=" + stimatedDate + ", entryDate=" + entryDate + ", realFinishDate=" + realFinishDate + ", description=" + description + '}';
     }
 
     

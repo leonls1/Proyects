@@ -9,12 +9,13 @@ javafx\incidentmanager\model\entity\Notification.class
 javafx\incidentmanager\model\entity\Employee.class
 javafx\incidentmanager\model\enums\EmployeeType.class
 module-info.class
-javafx\incidentmanager\MainController.class
+javafx\incidentmanager\controller\CRUDIncidentsController.class
 javafx\incidentmanager\model\dao\EmployeeDao.class
 javafx\incidentmanager\model\dao\ServiceImp.class
 javafx\incidentmanager\model\dao\EmployeeImp.class
 javafx\incidentmanager\model\dao\ServiceDao.class
 javafx\incidentmanager\model\entity\Service.class
+javafx\incidentmanager\controller\MainController.class
 javafx\incidentmanager\model\enums\ContactType.class
 javafx\incidentmanager\model\entity\Client.class
 javafx\incidentmanager\App.class

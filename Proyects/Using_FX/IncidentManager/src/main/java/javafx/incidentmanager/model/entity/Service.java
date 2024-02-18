@@ -9,10 +9,12 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table
-@Data
+@Getter@Setter
 public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +30,11 @@ public class Service {
 
     public Service(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Service{" + "id=" + id + ", description=" + description + '}';
     }
     
     

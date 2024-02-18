@@ -10,8 +10,11 @@ module javafx.incidentmanager {
 
     opens javafx.incidentmanager to javafx.fxml;
     opens javafx.incidentmanager.model.entity;
+    opens javafx.incidentmanager.controller;
     
     exports javafx.incidentmanager;
     exports javafx.incidentmanager.model.entity;
     exports javafx.incidentmanager.model.enums;
+    exports javafx.incidentmanager.controller;
+    exports javafx.incidentmanager.service;
 }

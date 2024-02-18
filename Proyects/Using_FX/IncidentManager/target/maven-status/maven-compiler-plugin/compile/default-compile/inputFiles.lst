@@ -5,6 +5,7 @@ C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\dao\IncidentImp.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\entity\Notification.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\enums\ProblemType.java
+C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\controller\CRUDIncidentsController.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\dao\ProblemDao.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\entity\Specialty.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\dao\EmployeeDao.java
@@ -13,13 +14,13 @@ C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\dao\SpecialtyDao.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\module-info.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\App.java
+C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\controller\MainController.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\dao\ClientImp.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\dao\NotificationDao.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\dao\ServiceImp.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\enums\EmployeeType.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\enums\CorporateName.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\dao\ClientDao.java
-C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\MainController.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\dao\IncidentDao.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\entity\Client.java
 C:\Users\leonl\Documents\NetBeansProyects\Proyects\Using_FX\IncidentManager\src\main\java\javafx\incidentmanager\model\dao\NotificationImp.java

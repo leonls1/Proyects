@@ -15,10 +15,13 @@ import java.time.LocalDate;
 import javafx.incidentmanager.model.enums.EmployeeType;
 import java.util.Set;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table
-@Data
+@Getter
+@Setter
 public class Employee {
 
     @Id
@@ -58,7 +61,10 @@ public class Employee {
         this.email = email;
         this.employeeType = employeeType;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Employee{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", birthDate=" + birthDate + ", entryDate=" + entryDate + ", phoneNumber=" + phoneNumber + ", email=" + email + ", employeeType=" + employeeType + '}';
+    }
 
 }

@@ -10,10 +10,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import javafx.incidentmanager.model.enums.ContactType;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table
-@Data
+@Getter@Setter
 public class Notification {
     
     @Id
@@ -38,6 +40,11 @@ public class Notification {
         this.description = description;
         this.contactType = contactType;
         this.contact = contact;
+    }
+
+    @Override
+    public String toString() {
+        return "Notification{" + "id=" + id + ", incident=" + incident + ", description=" + description + ", contactType=" + contactType + ", contact=" + contact + '}';
     }
 
 

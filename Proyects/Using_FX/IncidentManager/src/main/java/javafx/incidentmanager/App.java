@@ -39,7 +39,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
-
+/*
         //testing
         ClientDao clientService = new ClientImp();
         EmployeeDao employeeService = new EmployeeImp();
@@ -120,13 +120,7 @@ public class App extends Application {
         
         specialtyService.create(specialty1);
         
-        
-        
-        
-        
-        
-        
-        
+*/ 
         
     }
 

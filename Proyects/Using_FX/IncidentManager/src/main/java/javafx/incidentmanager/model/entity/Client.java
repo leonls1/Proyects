@@ -11,12 +11,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import javafx.incidentmanager.model.enums.CorporateName;
-import lombok.Data;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table
-@Data
+@Getter@Setter
 public class Client {
     
     @Id
@@ -45,6 +46,14 @@ public class Client {
         this.email = email;
         this.corporateName = corporateName;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" + "id=" + id + ", Cuil_Cuit=" + Cuil_Cuit + ", phoneNumber=" + phoneNumber + ", email=" + email + ", corporateName=" + corporateName + '}';
+    }
+
+ 
+    
     
     
 }

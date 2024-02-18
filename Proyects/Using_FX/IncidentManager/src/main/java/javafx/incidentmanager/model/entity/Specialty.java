@@ -9,8 +9,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter@Setter
 @Entity
 @Table(name = "specialty")
 public class Specialty {
@@ -35,5 +37,11 @@ public class Specialty {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Specialty{" + "Id=" + Id + ", name=" + name + '}';
+    }
+
+    
     
 }
