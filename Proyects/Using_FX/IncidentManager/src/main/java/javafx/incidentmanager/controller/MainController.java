@@ -26,12 +26,28 @@ public class MainController implements Initializable{
     
     @FXML 
     private void  btnAction(ActionEvent event){
+        Object evt = event.getSource();
         
+        if(evt.equals(btnLogInCustomer)){
+            
+        }else if(evt.equals(btnSaveIncident)){
+            
+        }else if(evt.equals(btnSearchTech)){
+            
+        }
     }
     
     @FXML
     private void cboAction(ActionEvent event){
+        Object evt = event.getSource();
         
+        if(evt.equals(cboAvaliablesTechnicians)){
+            
+        }else if(evt.equals(cboProblemType)){
+            
+        }else if(evt.equals(cboServices)){
+            
+        }
     }
     
     
