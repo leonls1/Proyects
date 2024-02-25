@@ -6,7 +6,10 @@ package project.trainerview.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -18,7 +21,16 @@ public class MenuController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
+    
+    @FXML 
+    private Button btnCreateUser, btnCreateRutine, btnAllUsers, btnPayments;
+    
+    @FXML
+    private void  btnEvent(ActionEvent event){
+            
+    }
+            
+    @Override 
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    

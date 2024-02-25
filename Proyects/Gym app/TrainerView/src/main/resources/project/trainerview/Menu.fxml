@@ -4,15 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="project.trainerview.controller.MenuController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.trainerview.controller.MenuController">
    <children>
       <VBox alignment="CENTER" layoutX="25.0" layoutY="-5.0" prefHeight="261.0" prefWidth="250.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="130.0" text="Crear usuario Nuevo" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Crear Rutina" />
-            <Button mnemonicParsing="false" prefWidth="130.0" text="Ver todos los usarios" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Cargar pago" />
+            <Button fx:id="btnCreateUser" mnemonicParsing="false" onAction="#btnEvent" prefWidth="130.0" text="Crear usuario Nuevo" />
+            <Button fx:id="btnCreateRutine" mnemonicParsing="false" onAction="#btnEvent" prefHeight="25.0" prefWidth="130.0" text="Crear Rutina" />
+            <Button fx:id="btnAllUsers" mnemonicParsing="false" onAction="#btnEvent" prefWidth="130.0" text="Ver todos los usarios" />
+            <Button fx:id="btnPayments" mnemonicParsing="false" onAction="#btnEvent" prefHeight="25.0" prefWidth="130.0" text="Cargar pago" />
          </children>
       </VBox>
    </children>

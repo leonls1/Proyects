@@ -11,43 +11,42 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="499.0" prefWidth="729.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="project.trainerview.controller.RutineCreateController">
+<AnchorPane id="AnchorPane" prefHeight="499.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.trainerview.controller.RutineCreateController">
    <children>
       <HBox layoutX="18.0" layoutY="40.0" prefHeight="115.0" prefWidth="367.0">
          <children>
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                <children>
                   <Label text="Ejercicio" />
+                  <Label text="Repeticiones" />
                   <Label text="Series" />
-                  <Label text="Cantidad" />
                   <Label text="Dia de la semana" />
                </children>
             </VBox>
             <VBox layoutX="110.0" layoutY="10.0" prefHeight="115.0" prefWidth="219.0" spacing="5.0">
                <children>
-                  <TextField />
-                  <Spinner prefHeight="25.0" prefWidth="275.0" />
-                  <Spinner prefHeight="25.0" prefWidth="282.0" />
-                  <Spinner prefHeight="25.0" prefWidth="314.0" />
+                  <TextField fx:id="txtExercice" />
+                  <Spinner fx:id="spnRepetitions" prefHeight="25.0" prefWidth="282.0" />
+                  <Spinner fx:id="spnSeries" prefHeight="25.0" prefWidth="275.0" />
+                  <Spinner fx:id="spnDay" prefHeight="25.0" prefWidth="314.0" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <Button layoutX="18.0" layoutY="459.0" mnemonicParsing="false" text="Menu" />
-      <Button layoutX="653.0" layoutY="130.0" mnemonicParsing="false" text="Agregar" />
-      <TableView layoutX="14.0" layoutY="219.0" prefHeight="227.0" prefWidth="699.0">
+      <Button fx:id="btnMenu" layoutX="18.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Menu" />
+      <Button fx:id="bntAddExercice" layoutX="653.0" layoutY="130.0" mnemonicParsing="false" onAction="#btnEvent" text="Agregar" />
+      <TableView fx:id="tableRutine" layoutX="14.0" layoutY="219.0" onMouseClicked="#mouseEvent" prefHeight="227.0" prefWidth="699.0">
         <columns>
-          <TableColumn prefWidth="467.0" text="Ejercicio" />
-          <TableColumn prefWidth="89.0" text="Repeticiones" />
-            <TableColumn prefWidth="88.0" text="Series" />
-            <TableColumn prefWidth="54.0" text="Dia" />
+          <TableColumn fx:id="colExercice" prefWidth="467.0" text="Ejercicio" />
+          <TableColumn fx:id="colRepetitions" prefWidth="89.0" text="Repeticiones" />
+            <TableColumn fx:id="colSeries" prefWidth="88.0" text="Series" />
+            <TableColumn fx:id="colDay" prefWidth="54.0" text="Dia" />
         </columns>
       </TableView>
       <Label layoutX="332.0" layoutY="6.0" text="Crear Rutina" />
-      <Button layoutX="306.0" layoutY="459.0" mnemonicParsing="false" text="Borrar ejercicio" />
-      <Button layoutX="619.0" layoutY="459.0" mnemonicParsing="false" text="Guardar Rutina" />
-      <ComboBox layoutX="493.0" layoutY="40.0" prefHeight="25.0" prefWidth="219.0" />
+      <Button fx:id="btnDeleteRutine" layoutX="306.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Borrar ejercicio" />
+      <Button fx:id="btnSaveRutine" layoutX="619.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Guardar Rutina" />
+      <ComboBox fx:id="cboUser" editable="true" layoutX="493.0" layoutY="40.0" onAction="#cboEvent" prefHeight="25.0" prefWidth="219.0" promptText="Usuario..." />
       <Label layoutX="402.0" layoutY="44.0" text="Para el usuario:" />
    </children>
 </AnchorPane>
