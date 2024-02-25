@@ -1,4 +1,4 @@
-package project.destinogym;
+package project.trainerview;
 
 import java.io.IOException;
 import javafx.fxml.FXML;

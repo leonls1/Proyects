@@ -1,4 +1,4 @@
-package project.destinogym;
+package project.trainerview;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
