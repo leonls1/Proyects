@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.userview.controller.MainUsersController">
+   <children>
+      <Label layoutX="30.0" layoutY="30.0" text="Bienvenido:" />
+      <Label fx:id="lblExpirationDate" layoutX="632.0" layoutY="30.0" text="fecha (el color depende si vencio o no)" />
+      <Separator layoutX="543.0" layoutY="446.0" orientation="VERTICAL" prefHeight="124.0" prefWidth="6.0" />
+      <TableView fx:id="tableRutine" layoutX="20.0" layoutY="94.0" prefHeight="475.0" prefWidth="517.0">
+        <columns>
+          <TableColumn fx:id="colExercice" prefWidth="326.0" text="Ejercicio" />
+          <TableColumn fx:id="colRepetitions" minWidth="0.0" prefWidth="84.0" text="Repeticiones" />
+            <TableColumn fx:id="colSeries" prefWidth="67.0" text="Series" />
+            <TableColumn fx:id="colDay" prefWidth="39.0" text="Dia " />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtFId" layoutX="593.0" layoutY="496.0" />
+      <Label layoutX="563.0" layoutY="500.0" text="DNI" />
+      <Button fx:id="btnSeeRutine" layoutX="752.0" layoutY="496.0" mnemonicParsing="false" onAction="#btnEvent" text="Ver mi rutina" />
+      <Separator layoutX="544.0" layoutY="444.0" prefHeight="6.0" prefWidth="311.0" />
+      <Separator layoutX="544.0" layoutY="568.0" prefHeight="0.0" prefWidth="311.0" />
+      <Label fx:id="lblNameSurname" layoutX="100.0" layoutY="30.0" text="Nombre y apellido" />
+      <Label layoutX="523.0" layoutY="30.0" text="Tu cuota vence el : " />
+   </children>
+</AnchorPane>

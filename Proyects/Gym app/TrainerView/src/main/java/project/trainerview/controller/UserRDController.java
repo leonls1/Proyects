@@ -6,7 +6,13 @@ package project.trainerview.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -15,9 +21,23 @@ import javafx.fxml.Initializable;
  */
 public class UserRDController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private Button  btnSearch, btnMenu, btnDelete, btnEdit;
+    
+    @FXML
+    private TextField txtFSearch;
+    
+    @FXML
+    private TableView tableUsers;
+    
+    @FXML
+    private TableColumn colName, colSurname, colId, colExpirationDate;
+    
+    @FXML
+    private void btnEvent(ActionEvent event){
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

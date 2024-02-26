@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.trainerview.controller.UserUpdateController">
    <children>
       <Label layoutX="195.0" layoutY="14.0" text="Editar usuario" />
       <HBox layoutX="21.0" layoutY="52.0" prefHeight="100.0" prefWidth="325.0">
@@ -22,20 +22,20 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="221.0" spacing="5.0">
                <children>
-                  <TextField />
-                  <TextField />
-                  <Spinner prefHeight="25.0" prefWidth="226.0" />
+                  <TextField fx:id="txtFName" />
+                  <TextField fx:id="txtFSurname" />
+                  <Spinner fx:id="spiID" prefHeight="25.0" prefWidth="226.0" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <Button layoutX="318.0" layoutY="220.0" mnemonicParsing="false" text="Guardar cambios" />
+      <Button fx:id="bntSave" layoutX="318.0" layoutY="220.0" mnemonicParsing="false" onAction="#btnEvent" text="Guardar cambios" />
       <Label layoutX="173.0" layoutY="259.0" text="(*): campo obligatorio" />
       <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="152.0" prefHeight="100.0" prefWidth="141.0" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" text="Todos los usuarios" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Menu" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Cargar pago" />
+            <Button fx:id="btnAllUsers" mnemonicParsing="false" onAction="#btnEvent" text="Todos los usuarios" />
+            <Button fx:id="btnMenu" mnemonicParsing="false" onAction="#btnEvent" prefHeight="25.0" prefWidth="116.0" text="Menu" />
+            <Button fx:id="btnPayments" mnemonicParsing="false" onAction="#btnEvent" prefHeight="25.0" prefWidth="116.0" text="Cargar pago" />
          </children>
       </VBox>
    </children>
