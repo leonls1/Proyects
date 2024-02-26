@@ -5,6 +5,8 @@ module project.trainerview {
     requires jakarta.persistence;
     requires lombok;
     requires java.xml;
+    requires org.hibernate.orm.core;
+    
 
     opens project.trainerview to javafx.fxml;
     opens project.trainerview.controller;
