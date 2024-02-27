@@ -134,4 +134,10 @@ public class UserImp implements UserDAO {
         em = emf.createEntityManager();
     }
 
+    @Override
+    public boolean existsByid(Long id) {
+        return getById(id) == null;
+    
+    }
+
 }

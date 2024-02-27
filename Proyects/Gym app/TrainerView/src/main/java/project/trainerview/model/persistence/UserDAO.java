@@ -16,5 +16,7 @@ public interface UserDAO {
     public List<User> getAll();
     
     public void setEntityManager(EntityManager em);
+    
+    public boolean existsByid(Long id);
 
 }

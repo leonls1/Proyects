@@ -9,15 +9,15 @@ import project.trainerview.model.persistence.UserImp;
 
 
 public class DAOFactory {
-    public RutineDAO geRutineDAO(){
+    public static RutineDAO geRutineDAO(){
         return new RutineImp();
     }
     
-    public SubRutineDAO geSubRutineDAO(){
+    public static SubRutineDAO geSubRutineDAO(){
         return  new SubRutineImp();
     }
     
-    public UserDAO geUuserDAO(){
+    public static UserDAO geUserDAO(){
         return new UserImp();
     }
 }

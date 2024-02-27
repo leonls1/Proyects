@@ -9,6 +9,7 @@ module project.trainerview {
 
     opens project.trainerview to javafx.fxml;
     opens project.trainerview.controller;
+    opens project.trainerview.model.entities to org.hibernate.orm.core;
     
     exports project.trainerview;
 }

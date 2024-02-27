@@ -66,8 +66,6 @@ public class MainViewController implements Initializable {
         }else if(e.equals(btnAllRutines)){
             
         }
-        
-
     }
 
     @FXML

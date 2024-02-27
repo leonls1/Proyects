@@ -29,10 +29,9 @@ public class UserUpdateController implements Initializable {
     private Button btnSave, btnAllUsers, btnMenu, btnPayments;
     
     @FXML
-    private TextField txtFName, txtFSurname;
+    private TextField txtFName, txtFSurname, txtFId;
     
-    @FXML
-    private Spinner spnID;
+
     
     @FXML
     private void btnEvent(ActionEvent event){        
@@ -67,6 +66,8 @@ public class UserUpdateController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
+    
     
 }
