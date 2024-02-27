@@ -21,7 +21,6 @@
             <version>21</version>
         </dependency>
         
-<<<<<<< HEAD
         <!-- dependencies added-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -35,7 +34,7 @@
             <version>6.4.4.Final</version>
             <type>pom</type>
         </dependency>
-=======
+
         <!-- dependencies addded-->
          <dependency>
             <groupId>org.hibernate</groupId>
@@ -43,15 +42,14 @@
             <version>6.4.4.Final</version>
         </dependency>
         
->>>>>>> Develop
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
-<<<<<<< HEAD
+
         </dependency>
 
-=======
             <type>jar</type>
         </dependency>
         
@@ -61,7 +59,6 @@
             <version>1.18.30</version>
             <scope>compile</scope> 
         </dependency>
->>>>>>> Develop
     </dependencies>
     <build>
         <plugins>
@@ -73,11 +70,11 @@
                 <!-- lombok configuration-->
                 <configuration>
                     <release>11</release>
-<<<<<<< HEAD
+
                     <annotationProcessorPaths>
-=======
+
                      <annotationProcessorPaths>
->>>>>>> Develop
+
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
