@@ -9,12 +9,12 @@ public interface RutineDAO {
 
     public void delete(Rutine rutine);
 
-    public Rutine getdById();
+    public Rutine getdById(Long id);
 
     public void update(Rutine rutine);
 
     public List<Rutine> getAll();
     
-    public void setEntityManager(EntityManager em);
+    public void setEntityManager(EntityManager em);   
 
 }

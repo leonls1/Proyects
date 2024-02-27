@@ -10,7 +10,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
                 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"></property>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Gym"></property>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gym_app"></property>
             <property name="jakarta.persistence.jdbc.user" value="Leon"></property>
             <!--<property name="jakarta.persistence.jdbc.user" value="DestinoGym"></property>-->
             <!--<property name="jakarta.persistence.jdbc.password" value="DG_77951"></property>-->
