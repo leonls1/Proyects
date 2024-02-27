@@ -52,7 +52,7 @@ public class PaymentViewController implements Initializable {
         
         if(event.equals(btnMenu)){
             try {
-                App.setRoot("Menu");
+                App.setRoot("Menu",340, 270);
             } catch (IOException ex) {
                 Logger.getLogger(PaymentViewController.class.getName()).log(Level.SEVERE, null, ex);
             }

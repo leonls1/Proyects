@@ -50,7 +50,7 @@ public class RutineCreateController implements Initializable {
         
         if(evt.equals(btnMenu)){
             try {
-                App.setRoot("Menu");
+                App.setRoot("Menu", 340, 270);
             } catch (IOException e) {
             }
         }else if(evt.equals(btnDeleteRutine)){

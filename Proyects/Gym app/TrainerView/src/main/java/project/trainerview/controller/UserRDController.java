@@ -47,14 +47,14 @@ public class UserRDController implements Initializable {
             //getting the user id 
             
             try {
-                App.setRoot("UserUpdate");
+                App.setRoot("UserUpdate", 460, 320);
             } catch (IOException ex) {
                 Logger.getLogger(UserRDController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }else if(evt.equals(btnMenu)){
             try {
-                App.setRoot("Menu");
+                App.setRoot("Menu", 340, 270);
             } catch (IOException ex) {
                 Logger.getLogger(UserRDController.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="343.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.trainerview.controller.PaymentViewController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="343.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.trainerview.controller.PaymentViewController">
    <children>
       <Label layoutX="43.0" layoutY="51.0" text="Buscar usuario" />
       <ComboBox fx:id="cboUsers" editable="true" layoutX="138.0" layoutY="47.0" onAction="#cboEvent" prefHeight="25.0" prefWidth="211.0" promptText="Buscar Usuario" />

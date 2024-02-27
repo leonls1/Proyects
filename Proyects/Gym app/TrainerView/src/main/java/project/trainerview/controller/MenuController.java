@@ -35,27 +35,27 @@ public class MenuController implements Initializable {
         
         if(evt.equals(btnAllUsers)){
             try {
-                App.setRoot("UserRD");
+                App.setRoot("UserRD",620,440);
             } catch (IOException ex) {
                 Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }else if(evt.equals(btnCreateRutine)){
             try {
-                App.setRoot("RutineCreate");
+                App.setRoot("RutineCreate",750,540);
             } catch (IOException ex) {
                 Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }else if(evt.equals(btnCreateUser)){
             try {
-                App.setRoot("UserCreate");
+                App.setRoot("UserCreate",380,280);
             } catch (IOException ex) {
                 Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else if(evt.equals(btnPayments)){
             try {
-                App.setRoot("PaymentView");
+                App.setRoot("PaymentView",565,385);
             } catch (IOException ex) {
                 Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
             }

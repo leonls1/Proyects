@@ -40,21 +40,21 @@ public class UserUpdateController implements Initializable {
         
         if(evt.equals(btnAllUsers)){
             try {
-                App.setRoot("UserRD");
+                App.setRoot("UserRD", 620, 440);
             } catch (IOException ex) {
                 Logger.getLogger(UserUpdateController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }else if(evt.equals(btnMenu)){
             try {
-                App.setRoot("Menu");
+                App.setRoot("Menu",270, 340);
             } catch (IOException ex) {
                 Logger.getLogger(UserUpdateController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }else if(evt.equals(btnPayments)){
             try {
-                App.setRoot("PaymentView");
+                App.setRoot("PaymentView", 565, 385);
             } catch (IOException ex) {
                 Logger.getLogger(UserUpdateController.class.getName()).log(Level.SEVERE, null, ex);
             }
