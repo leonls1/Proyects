@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="499.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.trainerview.controller.RutineCreateController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.trainerview.controller.RutineCreateController">
    <children>
       <HBox layoutX="18.0" layoutY="40.0" prefHeight="115.0" prefWidth="367.0">
          <children>
@@ -34,7 +34,7 @@
          </children>
       </HBox>
       <Button fx:id="btnMenu" layoutX="18.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Menu" />
-      <Button fx:id="bntAddExercice" layoutX="653.0" layoutY="130.0" mnemonicParsing="false" onAction="#btnEvent" text="Agregar" />
+      <Button fx:id="btnAddExercice" layoutX="603.0" layoutY="130.0" mnemonicParsing="false" onAction="#btnEvent" text="Agregar ejercicio" />
       <TableView fx:id="tableRutine" layoutX="14.0" layoutY="219.0" onMouseClicked="#mouseEvent" prefHeight="227.0" prefWidth="699.0">
         <columns>
           <TableColumn fx:id="colExercice" prefWidth="467.0" text="Ejercicio" />

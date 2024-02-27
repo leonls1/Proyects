@@ -13,12 +13,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>20</version>
+            <version>21</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>20</version>
+            <version>21</version>
         </dependency>
         
 <<<<<<< HEAD
@@ -40,7 +40,7 @@
          <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.2.6.Final</version>
+            <version>6.4.4.Final</version>
         </dependency>
         
 >>>>>>> Develop

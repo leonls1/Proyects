@@ -4,6 +4,7 @@
  */
 package project.trainerview.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import project.trainerview.App;
 
 /**
  * FXML Controller class
@@ -34,7 +36,7 @@ public class RutineCreateController implements Initializable {
     private ComboBox cboUser;
     
     @FXML
-    private Button bntAddExercice, btnMenu, btnDeleteRutine, btnSaveRutine;
+    private Button btnAddExercice, btnMenu, btnDeleteRutine, btnSaveRutine;
     
     @FXML
     private TableView tableRutine;
@@ -43,7 +45,21 @@ public class RutineCreateController implements Initializable {
     private TableColumn colExercice, colRepetitions, colSeries, colDay;
     
     @FXML
-    private void btnEvent(ActionEvent event){        
+    private void btnEvent(ActionEvent event){  
+        Object evt = event.getSource();
+        
+        if(evt.equals(btnMenu)){
+            try {
+                App.setRoot("Menu", 340, 270);
+            } catch (IOException e) {
+            }
+        }else if(evt.equals(btnDeleteRutine)){
+            
+        }else if(evt.equals(btnSaveRutine)){
+            
+        }else if(evt.equals(btnAddExercice)){
+            
+        }
     }
     
     @FXML
@@ -59,5 +75,7 @@ public class RutineCreateController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+    
+    
 
 }

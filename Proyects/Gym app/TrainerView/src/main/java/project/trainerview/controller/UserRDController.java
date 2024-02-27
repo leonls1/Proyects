@@ -4,8 +4,11 @@
  */
 package project.trainerview.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import project.trainerview.App;
 
 /**
  * FXML Controller class
@@ -35,6 +39,29 @@ public class UserRDController implements Initializable {
     
     @FXML
     private void btnEvent(ActionEvent event){
+        Object evt = event.getSource();
+        
+        if(evt.equals(btnDelete)){
+            
+        }else if(evt.equals(btnEdit)){
+            //getting the user id 
+            
+            try {
+                App.setRoot("UserUpdate", 460, 320);
+            } catch (IOException ex) {
+                Logger.getLogger(UserRDController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }else if(evt.equals(btnMenu)){
+            try {
+                App.setRoot("Menu", 340, 270);
+            } catch (IOException ex) {
+                Logger.getLogger(UserRDController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }else if(evt.equals(btnSearch)){
+            
+        }
         
     }
     
