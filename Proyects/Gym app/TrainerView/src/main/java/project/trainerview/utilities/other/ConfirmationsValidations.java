@@ -9,10 +9,10 @@ import javafx.stage.Modality;
 
 public class ConfirmationsValidations {
 
-    public static boolean confirnationMessage(String message, String header, String content) {
+    public static boolean confirnationMessage(String title, String header, String content) {
         //Definition Popup 
         Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.setTitle(message);
+        dialog.setTitle(title);
         dialog.setHeaderText(header);
         dialog.initModality(Modality.WINDOW_MODAL);
 

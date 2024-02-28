@@ -35,7 +35,7 @@ public class MenuController implements Initializable {
         
         if(evt.equals(btnAllUsers)){
             try {
-                App.setRoot("UserRD",620,440);
+                App.setRoot("UserRD",860,505);
             } catch (IOException ex) {
                 Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
             }

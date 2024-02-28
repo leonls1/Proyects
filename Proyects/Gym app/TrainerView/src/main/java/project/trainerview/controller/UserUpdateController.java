@@ -68,6 +68,16 @@ public class UserUpdateController implements Initializable {
         // TODO
     }
 
+    public UserUpdateController(Long id) {
+    }
+
+    public UserUpdateController() {
+    }
+    
+    
+    
+    
+
     
     
 }

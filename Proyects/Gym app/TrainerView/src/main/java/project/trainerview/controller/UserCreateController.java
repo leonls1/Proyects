@@ -2,6 +2,7 @@ package project.trainerview.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,6 +55,7 @@ public class UserCreateController implements Initializable {
         userService = DAOFactory.geUserDAO();
         //setting the txtFid to only accept numbers
         Configurations.txtOnlyNumbers(txtFId);
+        dtpExpirationFee.setValue(LocalDate.now());
 
     }
 

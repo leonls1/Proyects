@@ -26,7 +26,7 @@
                   <TextField fx:id="txtFName" />
                   <TextField fx:id="txtFSurname" />
                   <TextField fx:id="txtFId" />
-                  <DatePicker fx:id="dtpExpirationFee" editable="false" prefHeight="25.0" prefWidth="282.0" />
+                  <DatePicker fx:id="dtpExpirationFee" prefHeight="25.0" prefWidth="282.0" />
                </children>
             </VBox>
          </children>

@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import java.util.List;
 import project.trainerview.model.entities.Rutine;
 
@@ -119,6 +120,9 @@ public class RutineImp implements RutineDAO {
         transaction.begin();
 
         try {
+           
+            
+            
             list = em.createQuery("SELECT r from Rutine r ", Rutine.class).getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {

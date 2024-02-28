@@ -4,8 +4,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Configurations {
 
@@ -35,7 +37,11 @@ public class Configurations {
     }
     
     public static void loadTable(TableView table, ObservableList list){
-        
+        table.setItems(list);
+    }
+    
+    public static void setColumnView(TableColumn col,String prop){
+        col.setCellValueFactory( new PropertyValueFactory<>(prop));
     }
     
 }
