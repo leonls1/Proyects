@@ -23,7 +23,8 @@ public class SubRutine {
 
     private int series;
 
-    private int repetitions;
+    //private int repetitions;
+    private String repetitions;
     
     private int day;
     
