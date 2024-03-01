@@ -6,6 +6,7 @@ package project.trainerview.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -30,6 +31,10 @@ public class RutineUploadController implements Initializable {
     @FXML
     private WebView wvRutine;
     
+    @FXML
+    private void btnEvent(ActionEvent event){
+        
+    }
     
     
     @Override

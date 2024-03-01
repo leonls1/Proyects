@@ -74,6 +74,12 @@ public class UserCreateController implements Initializable {
 
                 System.out.println("Usuario creado");
                 userService.create(user);
+                
+                //reseting the fields
+                txtFId.setText("");
+                txtFName.setText("");
+                txtFSurname.setText("");
+                dtpExpirationFee.setValue(LocalDate.now());
             } else {
                 Configurations.showAlert("ERROR", "El DNI ingresado ya existe");
             }

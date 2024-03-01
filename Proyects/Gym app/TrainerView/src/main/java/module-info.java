@@ -1,6 +1,7 @@
 module project.trainerview {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.web;
     requires java.base;
     requires jakarta.persistence;
     requires lombok;
