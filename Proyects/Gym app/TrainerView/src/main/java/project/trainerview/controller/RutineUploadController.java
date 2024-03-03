@@ -36,6 +36,11 @@ public class RutineUploadController implements Initializable {
         
     }
     
+    @FXML 
+    private void cboEvent(ActionEvent event){
+        
+    }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

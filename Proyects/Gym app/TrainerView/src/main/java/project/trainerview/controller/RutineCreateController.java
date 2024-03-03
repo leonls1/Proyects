@@ -109,6 +109,8 @@ public class RutineCreateController implements Initializable {
         list = new ArrayList<>();
         rutineService = DAOFactory.geRutineDAO();
         userService = DAOFactory.geUserDAO();
+        
+        cboUser.setItems(FXCollections.observableArrayList(List.of("Usuario 1","Usuario 2", "Usuario 3 ", "... Usuario N")));
     }
 
     //------------------------------Interface Methods----------------------------//

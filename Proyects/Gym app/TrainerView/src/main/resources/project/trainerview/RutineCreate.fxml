@@ -48,6 +48,6 @@
       <Button fx:id="btnSaveRutine" layoutX="619.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Guardar Rutina" />
       <ComboBox fx:id="cboUser" editable="true" layoutX="493.0" layoutY="40.0" onAction="#cboEvent" prefHeight="25.0" prefWidth="219.0" promptText="Usuario..." />
       <Label layoutX="402.0" layoutY="44.0" text="Para el usuario:" />
-      <Button fx:id="btnEditExcercise" layoutX="596.0" layoutY="155.0" mnemonicParsing="false" onAction="#btnEvent" text="Guardar cambios" />
+      <Button fx:id="btnEditExcercise" layoutX="596.0" layoutY="155.0" mnemonicParsing="false" onAction="#btnEvent" text="Guardar cambios" visible="false" />
    </children>
 </AnchorPane>
