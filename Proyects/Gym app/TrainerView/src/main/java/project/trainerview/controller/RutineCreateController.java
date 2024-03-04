@@ -16,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -27,8 +26,12 @@ import project.trainerview.model.entities.SubRutine;
 import project.trainerview.model.entities.User;
 import project.trainerview.model.persistence.RutineDAO;
 import project.trainerview.model.persistence.UserDAO;
+import project.trainerview.service.RutineService;
+import project.trainerview.service.UserService;
+import project.trainerview.utilities.converters.UserConverter;
 import project.trainerview.utilities.factories.DAOFactory;
 import project.trainerview.utilities.other.Configurations;
+import project.trainerview.utilities.other.ConfirmationsValidations;
 
 /**
  * FXML Controller class
@@ -39,9 +42,11 @@ public class RutineCreateController implements Initializable {
 
     private Rutine rutine;
 
-    private RutineDAO rutineService;
+    private RutineService rutineService;
 
     private List<SubRutine> list;
+
+    private List<User> listUsers;
 
     private SubRutine subRutine;
 
@@ -49,8 +54,10 @@ public class RutineCreateController implements Initializable {
 
     private UserDAO userService;
 
+    private UserService service;
+
     @FXML
-    private TextField txtFExercice, txtFReps;
+    private TextField txtFExercice, txtFReps, txtFFilter;
 
     @FXML
     private Spinner spnSeries, spnDay;
@@ -59,7 +66,7 @@ public class RutineCreateController implements Initializable {
     private ComboBox cboUser;
 
     @FXML
-    private Button btnAddExercice, btnMenu, btnDeleteSubRutine, btnSaveRutine, btnEditExcercise;
+    private Button btnAddExercice, btnMenu, btnDeleteSubRutine, btnSaveRutine, btnEditExcercise, btnFilter;
 
     @FXML
     private TableView tableRutine;
@@ -72,29 +79,53 @@ public class RutineCreateController implements Initializable {
         Object evt = event.getSource();
 
         if (evt.equals(btnMenu)) {
-            try {
-                App.setRoot("Menu", 340, 270);
-            } catch (IOException e) {
+            if (user != null || !list.isEmpty()) {
+                if (ConfirmationsValidations.confirnationMessage("Descargar cambios", "Salir sin guardar",
+                        "Desea volver al menu? los cambios no guardados se perderan")) {
+                    try {
+                        App.setRoot("Menu", 340, 270);
+                    } catch (IOException e) {
+                    }
+                }
+            } else {
+                try {
+                    App.setRoot("Menu", 340, 270);
+                } catch (IOException e) {
+                }
             }
+
         } else if (evt.equals(btnDeleteSubRutine)) {
             deleteSubRutine();
 
         } else if (evt.equals(btnSaveRutine)) {
+            saveRutine();
 
         } else if (evt.equals(btnAddExercice)) {
             addSubrutine();
         } else if (evt.equals(btnEditExcercise)) {
+
+        } else if (evt.equals(btnFilter)) {
+            cboUser.setItems(FXCollections.observableArrayList(
+                    service.filterUser(txtFFilter.getText())
+            ));
+            this.user = null;
 
         }
     }
 
     @FXML
     private void cboEvent(ActionEvent event) {
+        Object evt = event.getSource();
+        if (evt.equals(cboUser)) {
+            user = (User) cboUser.getSelectionModel().getSelectedItem();
+            btnDeleteSubRutine.setDisable(true);
+        }
     }
 
     @FXML
     private void mouseEvent(MouseEvent event) {
         if (event.getSource().equals(tableRutine)) {
+            btnDeleteSubRutine.setDisable(false);
             getSubrutine();
 
         }
@@ -103,14 +134,16 @@ public class RutineCreateController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //setting spinner configuration
         Configurations.configSpinner_Int(1, 6, 3, spnDay);
         Configurations.configSpinner_Int(1, 10, 3, spnSeries);
         rutine = new Rutine();
         list = new ArrayList<>();
-        rutineService = DAOFactory.geRutineDAO();
+        rutineService = new RutineService();
         userService = DAOFactory.geUserDAO();
-        
-        cboUser.setItems(FXCollections.observableArrayList(List.of("Usuario 1","Usuario 2", "Usuario 3 ", "... Usuario N")));
+        service = new UserService();
+        configCBO();
+
     }
 
     //------------------------------Interface Methods----------------------------//
@@ -137,6 +170,25 @@ public class RutineCreateController implements Initializable {
 
     }
 
+    private void configCBO() {
+        //----------------------cboConfig-------------------//
+        listUsers = new ArrayList<>();
+        listUsers = userService.getAll();
+        cboUser.setItems(FXCollections.observableArrayList(listUsers));
+        /*
+        //adding the listener to the cbo 
+        cboUser.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            //setting the filter to look for the user introduced
+            cboUser.setItems(
+                    FXCollections.observableArrayList(listUsers.stream().
+                            filter(us -> us.toString().toLowerCase().contains(newValue.toLowerCase()))));
+        });
+         */
+        //setting the converter
+        UserConverter userConverter = new UserConverter(cboUser);
+        cboUser.setConverter(userConverter);
+    }
+
     //------------------------------CRUD Methods----------------------------//
     public void addSubrutine() {
         subRutine = new SubRutine();
@@ -148,43 +200,79 @@ public class RutineCreateController implements Initializable {
         subRutine.setRutine(rutine);
         subRutine.setSeries((int) spnSeries.getValue());
 
+        btnDeleteSubRutine.setDisable(true);
+
         list.add(subRutine);
 
         loadTable(list);
     }
 
     private void saveRutine() {
-        if (!list.isEmpty() && true) {
+        if (list.isEmpty()) {
+            Configurations.showErrorAlert("Rutina vacia", "No se han agregadon ningun ejercicio a la rutina");
+
+        } else if (user == null) {
+            Configurations.showErrorAlert("Usuario Invalido", "No se ha seleccionado ningun usuario");
+
+        } else {
+            if (ConfirmationsValidations.confirnationMessage("Guadar rutina", "Desear guardar la nueva rutina", "La nueva rutina para:  \""
+                    + user.getName() + " " + user.getSurname() + "\" \n sustuira la anterior, desea continuar?")) {
+                System.out.println("ahora si che se puede crear la rutina");
+
+                
+                //deleting the old rutine of the user
+                try {
+                    System.out.println("user rutine: " + user.getRutine().toString());
+                    rutineService.deleteRutine(user.getRutine());
+                    System.out.println("old rutine deleted");
+                } catch (Exception e) {
+                    System.out.println("error trying to delete the old rutine");
+                }
+                
+                //savig the rutine
+                loadRutine();                
+                
+                rutineService.saveRutine(rutine);
+
+                btnDeleteSubRutine.setDisable(true);
+            }
 
         }
-        rutineService.create(rutine);
+
+    }
+
+    private void loadRutine() {
+        this.rutine = new Rutine();
+        this.rutine.setSubRutines(list);
+        this.rutine.setUser(user);
     }
 
     private void deleteSubRutine() {
         getSubrutine();
         list.remove(subRutine);
+        btnDeleteSubRutine.setDisable(true);
 
         loadTable(list);
 
     }
-
+    /*
     private void updateSubRutine() {
-       
+
         //list.r
     }
-    
-    private int getSubRutinePosition(){
+
+    private int getSubRutinePosition() {
         getSubrutine();
         int position = -1;
-        
+
         for (int i = 0; i < list.size(); i++) {
-            if(list.get(i).equals(subRutine)){
+            if (list.get(i).equals(subRutine)) {
                 position = i;
                 break;
             }
         }
-        
+
         return position;
     }
-
+     */
 }

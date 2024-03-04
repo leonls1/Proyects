@@ -1,5 +1,6 @@
 package project.trainerview.model.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class Rutine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @OneToMany(mappedBy = "rutine")
+    @OneToMany(mappedBy = "rutine", cascade = CascadeType.REMOVE)
     private List<SubRutine> subRutines = new ArrayList<>();
     
     @OneToOne

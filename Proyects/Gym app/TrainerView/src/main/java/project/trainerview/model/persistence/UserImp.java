@@ -111,7 +111,6 @@ public class UserImp implements UserDAO {
         transaction.begin();
 
         try {
-            System.out.println("obtenidos los usuarios");
             list = em.createQuery("SELECT u from User u", User.class).getResultList();
             em.getTransaction().commit();
             

@@ -21,7 +21,8 @@ public class SubRutineImp implements SubRutineDAO {
 
         //starting try-catch block
         try {
-            em.persist(subRutine);
+            SubRutine sub = em.merge(subRutine);
+            em.persist(sub);
             em.getTransaction().commit();
         } catch (Exception e) {
             //if the transaction still active it will rollback 

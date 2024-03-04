@@ -22,13 +22,13 @@ public class Configurations {
         txtf.textProperty().addListener((observale, oldValue, newValue) -> {
             if(!newValue.matches("\\d*")){//observig if the new value added isn't a digit
                 txtf.setText(newValue.replaceAll("[^\\d]", "")); //if it isn't a number is replaced with ""
-                showAlert("Error", "solo se permiten numeros");//spanish alert version
+                showErrorAlert("Error", "solo se permiten numeros");//spanish alert version
             }
             
         });
     }        
       
-    public static void showAlert(String title, String message ){
+    public static void showErrorAlert(String title, String message ){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);

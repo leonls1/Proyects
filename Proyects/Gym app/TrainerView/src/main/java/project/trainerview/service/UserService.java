@@ -30,4 +30,10 @@ public class UserService {
         return user;
 
     }
+
+    public UserDAO getDao() {
+        return dao;
+    }
+    
+    
 }

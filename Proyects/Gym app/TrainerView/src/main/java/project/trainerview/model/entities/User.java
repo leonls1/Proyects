@@ -26,4 +26,12 @@ public class User {
     
     @OneToOne(mappedBy = "user")
     private Rutine rutine;
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", name=" + name + ", surname=" + surname + '}';
+    }
+    
+    
+    
 }

@@ -34,7 +34,7 @@
          </children>
       </HBox>
       <Button fx:id="btnMenu" layoutX="18.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Menu" />
-      <Button fx:id="btnAddExercice" layoutX="398.0" layoutY="155.0" mnemonicParsing="false" onAction="#btnEvent" text="Agregar ejercicio" />
+      <Button fx:id="btnAddExercice" layoutX="233.0" layoutY="168.0" mnemonicParsing="false" onAction="#btnEvent" text="Agregar ejercicio" />
       <TableView fx:id="tableRutine" layoutX="14.0" layoutY="219.0" onMouseClicked="#mouseEvent" prefHeight="227.0" prefWidth="699.0">
         <columns>
           <TableColumn fx:id="colExercice" prefWidth="467.0" text="Ejercicio" />
@@ -46,8 +46,10 @@
       <Label layoutX="332.0" layoutY="6.0" text="Crear Rutina" />
       <Button fx:id="btnDeleteSubRutine" disable="true" layoutX="306.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Borrar ejercicio" />
       <Button fx:id="btnSaveRutine" layoutX="619.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Guardar Rutina" />
-      <ComboBox fx:id="cboUser" editable="true" layoutX="493.0" layoutY="40.0" onAction="#cboEvent" prefHeight="25.0" prefWidth="219.0" promptText="Usuario..." />
-      <Label layoutX="402.0" layoutY="44.0" text="Para el usuario:" />
+      <ComboBox fx:id="cboUser" layoutX="497.0" layoutY="73.0" onAction="#cboEvent" prefHeight="25.0" prefWidth="219.0" promptText="Usuario" />
+      <Label layoutX="397.0" layoutY="77.0" text="Para el usuario:" />
       <Button fx:id="btnEditExcercise" layoutX="596.0" layoutY="155.0" mnemonicParsing="false" onAction="#btnEvent" text="Guardar cambios" visible="false" />
+      <TextField fx:id="txtFFilter" layoutX="499.0" layoutY="40.0" prefHeight="25.0" prefWidth="219.0" promptText="Filtrar usuarios" />
+      <Button fx:id="btnFilter" layoutX="392.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnEvent" text="Filtrar usuarios" />
    </children>
 </AnchorPane>

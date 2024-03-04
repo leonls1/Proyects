@@ -61,7 +61,7 @@ public class UserCreateController implements Initializable {
 
     private void saveUser() {
         if (txtFName.getText().isBlank() || txtFId.getText().isBlank()) {
-            Configurations.showAlert("ERROR", "El nombre y DNI no pueden estar vacios");
+            Configurations.showErrorAlert("ERROR", "El nombre y DNI no pueden estar vacios");
 
         } else if (ConfirmationsValidations.confirnationMessage("CONFIRMACION", "crear un nuevo usuario", txtFName.getText() + " " + txtFSurname.getText())) {
 
@@ -81,7 +81,7 @@ public class UserCreateController implements Initializable {
                 txtFSurname.setText("");
                 dtpExpirationFee.setValue(LocalDate.now());
             } else {
-                Configurations.showAlert("ERROR", "El DNI ingresado ya existe");
+                Configurations.showErrorAlert("ERROR", "El DNI ingresado ya existe");
             }
 
         }
