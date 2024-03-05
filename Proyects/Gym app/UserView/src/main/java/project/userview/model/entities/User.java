@@ -1,4 +1,4 @@
-package project.model.entities;
+package project.trainerview.model.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,6 +24,14 @@ public class User {
     @Column(name = "expiration_date")
     private LocalDate expirationDate;
     
-    @OneToOne
+    @OneToOne(mappedBy = "user")
     private Rutine rutine;
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", name=" + name + ", surname=" + surname + '}';
+    }
+    
+    
+    
 }

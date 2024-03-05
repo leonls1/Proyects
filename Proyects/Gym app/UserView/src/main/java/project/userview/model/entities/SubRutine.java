@@ -1,4 +1,4 @@
-package project.model.entities;
+package project.trainerview.model.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,11 +23,18 @@ public class SubRutine {
 
     private int series;
 
-    private int repetitions;
+    //private int repetitions;
+    private String repetitions;
     
     private int day;
     
     @ManyToOne
     private Rutine rutine;
+
+    @Override
+    public String toString() {
+        return "SubRutine{" + "id=" + id + ", excercise=" + excercise + ", series=" + series + ", repetitions=" + repetitions + ", day=" + day + '}';
+    }
+    
     
 }
