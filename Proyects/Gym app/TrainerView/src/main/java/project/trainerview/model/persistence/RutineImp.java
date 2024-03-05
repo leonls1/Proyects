@@ -28,6 +28,7 @@ public class RutineImp implements RutineDAO {
 
         //starting try-catch block
         try {
+
             em.persist(rutine);
             em.getTransaction().commit();
         } catch (Exception e) {

@@ -30,5 +30,11 @@ public class SubRutine {
     
     @ManyToOne
     private Rutine rutine;
+
+    @Override
+    public String toString() {
+        return "SubRutine{" + "id=" + id + ", excercise=" + excercise + ", series=" + series + ", repetitions=" + repetitions + ", day=" + day + '}';
+    }
+    
     
 }

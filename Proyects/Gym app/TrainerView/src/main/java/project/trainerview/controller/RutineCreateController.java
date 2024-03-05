@@ -144,6 +144,7 @@ public class RutineCreateController implements Initializable {
         service = new UserService();
         configCBO();
 
+
     }
 
     //------------------------------Interface Methods----------------------------//
@@ -217,24 +218,19 @@ public class RutineCreateController implements Initializable {
         } else {
             if (ConfirmationsValidations.confirnationMessage("Guadar rutina", "Desear guardar la nueva rutina", "La nueva rutina para:  \""
                     + user.getName() + " " + user.getSurname() + "\" \n sustuira la anterior, desea continuar?")) {
-                System.out.println("ahora si che se puede crear la rutina");
 
-                
-                //deleting the old rutine of the user
-                try {
-                    System.out.println("user rutine: " + user.getRutine().toString());
-                    rutineService.deleteRutine(user.getRutine());
-                    System.out.println("old rutine deleted");
-                } catch (Exception e) {
-                    System.out.println("error trying to delete the old rutine");
+                //saving the rutine
+
+                if (user.getRutine() == null) {
+                    loadRutine();
+
+                    rutineService.saveRutine(rutine);
+                }else{
+                    rutineService.updateRutine(rutine, list);
                 }
-                
-                //savig the rutine
-                loadRutine();                
-                
-                rutineService.saveRutine(rutine);
-
                 btnDeleteSubRutine.setDisable(true);
+                list.removeAll(list);
+                loadTable(list);
             }
 
         }
