@@ -1,12 +1,11 @@
-package project.trainerview.model.persistence;
+package project.userview.model.persistence;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import java.util.List;
-import project.trainerview.model.entities.Rutine;
-import project.trainerview.model.entities.SubRutine;
+import project.userview.model.entities.SubRutine;
 
 public class SubRutineImp implements SubRutineDAO {
 

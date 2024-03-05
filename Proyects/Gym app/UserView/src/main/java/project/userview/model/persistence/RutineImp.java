@@ -1,12 +1,11 @@
-package project.trainerview.model.persistence;
+package project.userview.model.persistence;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
 import java.util.List;
-import project.trainerview.model.entities.Rutine;
+import project.userview.model.entities.Rutine;
 
 public class RutineImp implements RutineDAO {
 

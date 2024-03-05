@@ -1,4 +1,4 @@
-package project.trainerview.model.entities;
+package project.userview.model.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

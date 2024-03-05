@@ -1,8 +1,8 @@
-package project.trainerview.model.persistence;
+package project.userview.model.persistence;
 
 import jakarta.persistence.EntityManager;
 import java.util.List;
-import project.trainerview.model.entities.Rutine;
+import project.userview.model.entities.Rutine;
 
 public interface RutineDAO {
    public void create(Rutine rutine);

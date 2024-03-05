@@ -110,7 +110,7 @@ public class PaymentViewController implements Initializable {
     }
 
     private void loadPayment() {
-        if (ConfirmationsValidations.confirnationMessage("Confirmacion", "Confirmar Pago", "Se acreditaran: " + spnMonths.getValue() + " esta seguro?")) {
+        if (ConfirmationsValidations.confirnationMessage("Confirmacion", "Confirmar Pago", "Se acreditaran: " + spnMonths.getValue() + "meses al usuario, esta seguro?")) {
             System.out.println(user.getExpirationDate());
             this.user.setExpirationDate(
                 user.getExpirationDate().plusMonths(Long.parseLong(spnMonths.getValue().toString())));

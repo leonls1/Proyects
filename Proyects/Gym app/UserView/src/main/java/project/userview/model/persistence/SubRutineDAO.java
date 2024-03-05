@@ -1,8 +1,8 @@
-package project.trainerview.model.persistence;
+package project.userview.model.persistence;
 
 import jakarta.persistence.EntityManager;
 import java.util.List;
-import project.trainerview.model.entities.SubRutine;
+import project.userview.model.entities.SubRutine;
 
 public interface SubRutineDAO {
 

@@ -1,4 +1,4 @@
-package project.trainerview.model.entities;
+package project.userview.model.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

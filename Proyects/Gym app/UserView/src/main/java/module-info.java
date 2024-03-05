@@ -7,5 +7,7 @@ module project.userview {
 
     opens project.userview to javafx.fxml;
     opens project.userview.controller;
+    opens project.userview.model;
+    
     exports project.userview;
 }
