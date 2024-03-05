@@ -17,9 +17,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("MainUsers"), 640, 480);
+        scene = new Scene(loadFXML("MainUsers"));
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
+        stage.setTitle("DESTINO GYM");
+        
+        stage.setWidth(880);
+        stage.setHeight(630);
     }
 
     static void setRoot(String fxml) throws IOException {
