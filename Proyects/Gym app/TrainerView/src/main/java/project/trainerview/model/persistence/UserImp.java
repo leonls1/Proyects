@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import java.util.List;
 import project.trainerview.model.entities.SubRutine;
 import project.trainerview.model.entities.User;
@@ -110,11 +111,13 @@ public class UserImp implements UserDAO {
         transaction.begin();
 
         try {
-            list = em.createQuery("SELECT s from SubRutine s ", User.class).getResultList();
+            list = em.createQuery("SELECT u from User u", User.class).getResultList();
             em.getTransaction().commit();
+            
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
+                e.printStackTrace();
             }
         } finally {
             if (em != null) {
@@ -132,6 +135,12 @@ public class UserImp implements UserDAO {
 
     public void getEntityManager() {
         em = emf.createEntityManager();
+    }
+
+    @Override
+    public boolean existsByid(Long id) {
+        return getById(id) == null;
+    
     }
 
 }

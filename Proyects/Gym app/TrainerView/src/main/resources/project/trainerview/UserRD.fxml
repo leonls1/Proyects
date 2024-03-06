@@ -6,22 +6,47 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.trainerview.controller.UserRDController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.trainerview.controller.UserRDController">
    <children>
-      <Label layoutX="277.0" layoutY="14.0" text="Usuarios" />
-      <Button fx:id="btnMenu" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnEvent" text="Menu" />
-      <TextField fx:id="txtFSearch" layoutX="336.0" layoutY="55.0" />
-      <Button fx:id="btnSearch" layoutX="516.0" layoutY="55.0" mnemonicParsing="false" onAction="#btnEvent" text="Buscar" />
-      <TableView fx:id="tableUsers" layoutX="36.0" layoutY="103.0" prefHeight="233.0" prefWidth="529.0">
+      <Label layoutX="396.0" layoutY="6.0" prefHeight="25.0" prefWidth="51.0" text="Usuarios" />
+      <TextField fx:id="txtFSearch" layoutX="334.0" layoutY="54.0" />
+      <Button fx:id="btnSearch" layoutX="514.0" layoutY="54.0" mnemonicParsing="false" onAction="#btnEvent" text="Buscar" />
+      <TableView fx:id="tableUsers" layoutX="36.0" layoutY="103.0" onMouseClicked="#mouseEvent" prefHeight="299.0" prefWidth="529.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="155.0" text="Nombre" />
-          <TableColumn fx:id="conSurname" minWidth="0.0" prefWidth="145.0" text="Apellido" />
+          <TableColumn fx:id="colSurname" minWidth="0.0" prefWidth="145.0" text="Apellido" />
             <TableColumn fx:id="colId" prefWidth="102.0" text="Documento" />
             <TableColumn fx:id="colExpirationDate" prefWidth="126.0" text="Vencimiento cuota" />
         </columns>
       </TableView>
-      <Button fx:id="btnDelete" layoutX="277.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnEvent" text="Eliminar" />
-      <Button fx:id="btnEdit" layoutX="516.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnEvent" text="Editar" />
+      <HBox layoutX="575.0" layoutY="103.0" prefHeight="100.0" prefWidth="243.0">
+         <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="74.0" spacing="10.0">
+               <children>
+                  <Label text="Nombre(*)" />
+                  <Label text="Apellido" />
+                  <Label text="DNI" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="155.0" spacing="5.0">
+               <children>
+                  <TextField fx:id="txtFName" disable="true" />
+                  <TextField fx:id="txtFSurname" disable="true" />
+                  <TextField fx:id="txtFId" disable="true" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="btnUpdate" disable="true" layoutX="738.0" layoutY="220.0" mnemonicParsing="false" onAction="#btnEvent" text="Actualizar" />
+      <HBox alignment="CENTER" layoutX="38.0" layoutY="412.0" prefHeight="39.0" prefWidth="529.0" spacing="180.0">
+         <children>
+            <Button fx:id="btnMenu" mnemonicParsing="false" onAction="#btnEvent" prefWidth="50.0" text="Menu" />
+            <Button fx:id="btnDelete" disable="true" mnemonicParsing="false" onAction="#btnEvent" prefWidth="50.0" text="Borrar" />
+            <Button fx:id="btnEdit" disable="true" mnemonicParsing="false" onAction="#btnEvent" prefWidth="50.0" text="Editar" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

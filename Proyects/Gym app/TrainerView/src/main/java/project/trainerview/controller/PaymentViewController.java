@@ -6,9 +6,11 @@ package project.trainerview.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,7 +18,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TextField;
 import project.trainerview.App;
+import project.trainerview.model.entities.User;
+import project.trainerview.service.UserService;
+import project.trainerview.utilities.converters.UserConverter;
+import project.trainerview.utilities.other.Configurations;
+import project.trainerview.utilities.other.ConfirmationsValidations;
 
 /**
  * FXML Controller class
@@ -25,47 +33,90 @@ import project.trainerview.App;
  */
 public class PaymentViewController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-    
+    private User user;
+
+    private List<User> list;
+
+    private UserService userService;
+
     @FXML
-    private ComboBox<String> cboUsers;
-    
+    private ComboBox cboUsers;
+
     @FXML
     private Spinner spnMonths;
-    
+
     @FXML
-    private Button btnLoadPayment, btnMenu;
-    
+    private Button btnLoadPayment, btnMenu, btnFilter;
+
     @FXML
-    private Label lblName,lblSurname, lblId, lblDate;
-    
+    private Label lblName, lblSurname, lblId, lblDate;
+
     @FXML
-    private void cboEvent(ActionEvent evt){
-        
+    private TextField txtFFilter;
+
+    @FXML
+    private void cboEvent(ActionEvent evt) {
+        if (evt.getSource().equals(cboUsers)) {
+            this.user = (User) cboUsers.getSelectionModel().getSelectedItem();
+            setLabels();
+
+        }
     }
-    
+
     @FXML
-    private void btnEvent(ActionEvent evt){
+    private void btnEvent(ActionEvent evt) {
         Object event = evt.getSource();
-        
-        if(event.equals(btnMenu)){
+
+        if (event.equals(btnMenu)) {
             try {
-                App.setRoot("Menu",340, 270);
+                App.setRoot("Menu", 340, 270);
             } catch (IOException ex) {
                 Logger.getLogger(PaymentViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        }else if(event.equals(btnLoadPayment)){
-            
+
+        } else if (event.equals(btnLoadPayment)) {
+            loadPayment();
+            setLabels();
+
+        } else if (event.equals(btnFilter)) {
+            cboUsers.setItems(FXCollections.observableArrayList(
+                    userService.filterUser(txtFFilter.getText())
+            ));
+
         }
     }
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        userService = new UserService();
+        list = userService.getDao().getAll();
+
+        //setting the cbo
+        UserConverter converter = new UserConverter(cboUsers);
+        cboUsers.setItems(FXCollections.observableArrayList(list));
+        cboUsers.setConverter(converter);
+        
+        //set spinner
+        Configurations.configSpinner_Int(1, 12, 1, spnMonths);
+
+    }
+
+    private void setLabels() {
+        //setting labels
+        lblName.setText(user.getName());
+        lblSurname.setText(user.getSurname());
+        lblDate.setText(user.getExpirationDate().toString());
+        lblId.setText(user.getId().toString());
+    }
+
+    private void loadPayment() {
+        if (ConfirmationsValidations.confirnationMessage("Confirmacion", "Confirmar Pago", "Se acreditaran: " + spnMonths.getValue() + " meses al usuario, esta seguro?")) {
+            System.out.println(user.getExpirationDate());
+            this.user.setExpirationDate(
+                user.getExpirationDate().plusMonths(Long.parseLong(spnMonths.getValue().toString())));
+            
+           userService.getDao().update(user);
+        }
+    }
+
 }

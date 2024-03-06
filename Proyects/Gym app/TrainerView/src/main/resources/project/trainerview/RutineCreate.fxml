@@ -25,8 +25,8 @@
             </VBox>
             <VBox layoutX="110.0" layoutY="10.0" prefHeight="115.0" prefWidth="219.0" spacing="5.0">
                <children>
-                  <TextField fx:id="txtExercice" />
-                  <Spinner fx:id="spnRepetitions" prefHeight="25.0" prefWidth="282.0" />
+                  <TextField fx:id="txtFExercice" text="Ejercicio 1" />
+                  <TextField fx:id="txtFReps" text="12-15" />
                   <Spinner fx:id="spnSeries" prefHeight="25.0" prefWidth="275.0" />
                   <Spinner fx:id="spnDay" prefHeight="25.0" prefWidth="314.0" />
                </children>
@@ -34,7 +34,7 @@
          </children>
       </HBox>
       <Button fx:id="btnMenu" layoutX="18.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Menu" />
-      <Button fx:id="btnAddExercice" layoutX="603.0" layoutY="130.0" mnemonicParsing="false" onAction="#btnEvent" text="Agregar ejercicio" />
+      <Button fx:id="btnAddExercice" layoutX="233.0" layoutY="168.0" mnemonicParsing="false" onAction="#btnEvent" text="Agregar ejercicio" />
       <TableView fx:id="tableRutine" layoutX="14.0" layoutY="219.0" onMouseClicked="#mouseEvent" prefHeight="227.0" prefWidth="699.0">
         <columns>
           <TableColumn fx:id="colExercice" prefWidth="467.0" text="Ejercicio" />
@@ -44,9 +44,13 @@
         </columns>
       </TableView>
       <Label layoutX="332.0" layoutY="6.0" text="Crear Rutina" />
-      <Button fx:id="btnDeleteRutine" layoutX="306.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Borrar ejercicio" />
-      <Button fx:id="btnSaveRutine" layoutX="619.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Guardar Rutina" />
-      <ComboBox fx:id="cboUser" editable="true" layoutX="493.0" layoutY="40.0" onAction="#cboEvent" prefHeight="25.0" prefWidth="219.0" promptText="Usuario..." />
-      <Label layoutX="402.0" layoutY="44.0" text="Para el usuario:" />
+      <Button fx:id="btnDeleteSubRutine" disable="true" layoutX="17.0" layoutY="168.0" mnemonicParsing="false" onAction="#btnEvent" text="Borrar ejercicio" />
+      <Button fx:id="btnSaveRutine" layoutX="316.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Guardar Rutina" />
+      <ComboBox fx:id="cboUser" layoutX="497.0" layoutY="73.0" onAction="#cboEvent" prefHeight="25.0" prefWidth="219.0" promptText="Usuario" />
+      <Label layoutX="397.0" layoutY="77.0" text="Para el usuario:" />
+      <Button fx:id="btnEditExcercise" layoutX="596.0" layoutY="155.0" mnemonicParsing="false" onAction="#btnEvent" text="Guardar cambios" visible="false" />
+      <TextField fx:id="txtFFilter" layoutX="499.0" layoutY="40.0" prefHeight="25.0" prefWidth="219.0" promptText="Filtrar usuarios" />
+      <Button fx:id="btnFilter" layoutX="392.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnEvent" text="Filtrar usuarios" />
+      <Button fx:id="btnCopyRutine" layoutX="583.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnEvent" text="Copiar a portapapeles" />
    </children>
 </AnchorPane>
