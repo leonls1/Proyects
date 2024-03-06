@@ -19,12 +19,13 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import project.trainerview.App;
 import project.trainerview.model.entities.Rutine;
 import project.trainerview.model.entities.SubRutine;
 import project.trainerview.model.entities.User;
-import project.trainerview.model.persistence.RutineDAO;
 import project.trainerview.model.persistence.UserDAO;
 import project.trainerview.service.RutineService;
 import project.trainerview.service.UserService;
@@ -66,10 +67,10 @@ public class RutineCreateController implements Initializable {
     private ComboBox cboUser;
 
     @FXML
-    private Button btnAddExercice, btnMenu, btnDeleteSubRutine, btnSaveRutine, btnEditExcercise, btnFilter;
+    private Button btnAddExercice, btnMenu, btnDeleteSubRutine, btnSaveRutine, btnEditExcercise, btnFilter, btnCopyRutine;
 
     @FXML
-    private TableView tableRutine;
+    private TableView<SubRutine> tableRutine;
 
     @FXML
     private TableColumn colExercice, colRepetitions, colSeries, colDay;
@@ -110,6 +111,8 @@ public class RutineCreateController implements Initializable {
             ));
             this.user = null;
 
+        } else if (evt.equals(btnCopyRutine)) {
+            copyTableViewContentToClipboard();
         }
     }
 
@@ -143,7 +146,6 @@ public class RutineCreateController implements Initializable {
         userService = DAOFactory.geUserDAO();
         service = new UserService();
         configCBO();
-
 
     }
 
@@ -190,6 +192,37 @@ public class RutineCreateController implements Initializable {
         cboUser.setConverter(userConverter);
     }
 
+    // Método para copiar el contenido de la TableView al portapapeles
+    private void copyTableViewContentToClipboard() {
+        // Obtener el contenido de la TableView en formato de texto con formato de tabla
+        StringBuilder content = new StringBuilder();
+
+        // Obtener el número de columnas y filas
+        int numRows = tableRutine.getItems().size();
+        int numCols = tableRutine.getColumns().size();
+
+        // Iterar sobre las filas y columnas para obtener el contenido
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                // Obtener el valor de la celda y agregarlo al contenido con tabulación
+                String cellValue = tableRutine.getColumns().get(j).getCellData(i).toString();
+                content.append(cellValue);
+                if (j < numCols - 1) {
+                    content.append("\t"); // Agregar tabulación entre columnas
+                }
+            }
+            content.append("\n"); // Agregar salto de línea al final de cada fila
+        }
+
+        // Colocar el contenido en el portapapeles
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent clipboardContent = new ClipboardContent();
+        clipboardContent.putString(content.toString());
+        clipboard.setContent(clipboardContent);
+        
+        Configurations.showInfoAlert("Rutina copiada", "Se ha copiado la rutina al portapapeles");
+    }
+
     //------------------------------CRUD Methods----------------------------//
     public void addSubrutine() {
         subRutine = new SubRutine();
@@ -220,16 +253,16 @@ public class RutineCreateController implements Initializable {
                     + user.getName() + " " + user.getSurname() + "\" \n sustuira la anterior, desea continuar?")) {
 
                 //saving the rutine
-
                 if (user.getRutine() == null) {
                     loadRutine();
 
                     rutineService.saveRutine(rutine);
-                }else{
+                } else {
                     rutineService.updateRutine(rutine, list);
                 }
                 btnDeleteSubRutine.setDisable(true);
                 list.removeAll(list);
+                user = null;
                 loadTable(list);
             }
 

@@ -99,6 +99,7 @@ public class UserRDController implements Initializable {
     //-----------------------------------Interface methods----------------------------------------//
     private void loadTable(List<User> list) {
         //getting all users from db
+        list = serviceUser.getAll();
 
         Configurations.loadTable(tableUsers, FXCollections.observableArrayList(list));
 

@@ -31,8 +31,5 @@ public class ConfirmationsValidations {
 
         return (result.isPresent() && result.get() == okButton);
     }
-    
-    public static boolean notNullFields(){
-        return true;
-    }
+   
 }

@@ -10,17 +10,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="861.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.userview.controller.MainUsersController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.userview.controller.MainUsersController">
    <children>
       <Label layoutX="21.0" layoutY="44.0" text="Bienvenido:">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="lblExpirationDate" layoutX="546.0" layoutY="9.0" text="fecha (el color depende si vencio o no)">
+      <Label fx:id="lblExpirationDate" layoutX="546.0" layoutY="9.0" text="Ingrese su usuario para ver la fecha">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Separator layoutX="543.0" layoutY="446.0" orientation="VERTICAL" prefHeight="124.0" prefWidth="6.0" />
+      <Separator layoutX="545.0" layoutY="370.0" orientation="VERTICAL" prefHeight="124.0" prefWidth="6.0" />
       <TableView fx:id="tableRutine" layoutX="20.0" layoutY="94.0" prefHeight="475.0" prefWidth="517.0">
         <columns>
           <TableColumn fx:id="colExercice" prefWidth="326.0" text="Ejercicio" />
@@ -29,11 +29,11 @@
             <TableColumn fx:id="colDay" prefWidth="39.0" text="Dia " />
         </columns>
       </TableView>
-      <TextField fx:id="txtFId" layoutX="593.0" layoutY="496.0" />
-      <Label layoutX="563.0" layoutY="500.0" text="DNI" />
-      <Button fx:id="btnSeeRutine" layoutX="752.0" layoutY="496.0" mnemonicParsing="false" onAction="#btnEvent" text="Ver mi rutina" />
-      <Separator layoutX="544.0" layoutY="444.0" prefHeight="6.0" prefWidth="311.0" />
-      <Separator layoutX="544.0" layoutY="568.0" prefHeight="0.0" prefWidth="311.0" />
+      <TextField fx:id="txtFId" layoutX="595.0" layoutY="420.0" />
+      <Label layoutX="565.0" layoutY="424.0" text="DNI" />
+      <Button fx:id="btnSeeRutine" layoutX="754.0" layoutY="420.0" mnemonicParsing="false" onAction="#btnEvent" text="Ver mi rutina" />
+      <Separator layoutX="546.0" layoutY="368.0" prefHeight="6.0" prefWidth="311.0" />
+      <Separator layoutX="546.0" layoutY="492.0" prefHeight="0.0" prefWidth="311.0" />
       <Label fx:id="lblNameSurname" layoutX="160.0" layoutY="44.0" prefHeight="35.0" prefWidth="437.0" text="Nombre y apellido">
          <font>
             <Font size="24.0" />
@@ -43,5 +43,6 @@
             <Font size="18.0" />
          </font></Label>
       <ImageView fitHeight="189.0" fitWidth="233.0" layoutX="584.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btnCopyRutine" layoutX="551.0" layoutY="544.0" mnemonicParsing="false" onAction="#btnEvent" text="Copiar a portapapeles" />
    </children>
 </AnchorPane>
