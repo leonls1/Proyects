@@ -37,8 +37,6 @@ public class PaymentViewController implements Initializable {
 
     private List<User> list;
 
-    private UserService userService;
-
     @FXML
     private ComboBox cboUsers;
 
@@ -80,7 +78,7 @@ public class PaymentViewController implements Initializable {
 
         } else if (event.equals(btnFilter)) {
             cboUsers.setItems(FXCollections.observableArrayList(
-                    userService.filterUser(txtFFilter.getText())
+                    App.userService.filterUser(txtFFilter.getText())
             ));
 
         }
@@ -88,8 +86,8 @@ public class PaymentViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        userService = new UserService();
-        list = userService.getDao().getAll();
+   
+        list = App.userService.getDao().getAll();
 
         //setting the cbo
         UserConverter converter = new UserConverter(cboUsers);
@@ -115,7 +113,7 @@ public class PaymentViewController implements Initializable {
             this.user.setExpirationDate(
                 user.getExpirationDate().plusMonths(Long.parseLong(spnMonths.getValue().toString())));
             
-           userService.getDao().update(user);
+           App.userService.getDao().update(user);
         }
     }
 

@@ -43,8 +43,6 @@ public class RutineCreateController implements Initializable {
 
     private Rutine rutine;
 
-    private RutineService rutineService;
-
     private List<SubRutine> list;
 
     private List<User> listUsers;
@@ -52,10 +50,6 @@ public class RutineCreateController implements Initializable {
     private SubRutine subRutine;
 
     private User user;
-
-    private UserDAO userService;
-
-    private UserService service;
 
     @FXML
     private TextField txtFExercice, txtFReps, txtFFilter;
@@ -107,7 +101,7 @@ public class RutineCreateController implements Initializable {
 
         } else if (evt.equals(btnFilter)) {
             cboUser.setItems(FXCollections.observableArrayList(
-                    service.filterUser(txtFFilter.getText())
+                    App.userService.filterUser(txtFFilter.getText())
             ));
             this.user = null;
 
@@ -142,9 +136,6 @@ public class RutineCreateController implements Initializable {
         Configurations.configSpinner_Int(1, 10, 3, spnSeries);
         rutine = new Rutine();
         list = new ArrayList<>();
-        rutineService = new RutineService();
-        userService = DAOFactory.geUserDAO();
-        service = new UserService();
         configCBO();
 
     }
@@ -176,7 +167,7 @@ public class RutineCreateController implements Initializable {
     private void configCBO() {
         //----------------------cboConfig-------------------//
         listUsers = new ArrayList<>();
-        listUsers = userService.getAll();
+        listUsers = App.userService.getDao().getAll();
         cboUser.setItems(FXCollections.observableArrayList(listUsers));
         /*
         //adding the listener to the cbo 
@@ -256,9 +247,9 @@ public class RutineCreateController implements Initializable {
                 if (user.getRutine() == null) {
                     loadRutine();
 
-                    rutineService.saveRutine(rutine);
+                    App.rutineService.saveRutine(rutine);
                 } else {
-                    rutineService.updateRutine(rutine, list);
+                    App.rutineService.updateRutine(rutine, list);
                 }
                 btnDeleteSubRutine.setDisable(true);
                 list.removeAll(list);

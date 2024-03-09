@@ -13,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import project.trainerview.App;
 
@@ -67,17 +66,5 @@ public class UserUpdateController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
-    public UserUpdateController(Long id) {
-    }
-
-    public UserUpdateController() {
-    }
-    
-    
-    
-    
-
-    
     
 }

@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import project.trainerview.service.RutineService;
+import project.trainerview.service.UserService;
 
 /**
  * JavaFX App
@@ -15,6 +17,9 @@ public class App extends Application {
     
     private static Scene scene;
     private static Stage stage;
+    
+    public static UserService userService = new UserService();
+    public static RutineService rutineService = new RutineService();
     
     @Override
     public void start(Stage stage) throws IOException {

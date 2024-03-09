@@ -32,10 +32,6 @@ import project.trainerview.utilities.other.ConfirmationsValidations;
  */
 public class UserRDController implements Initializable {
 
-    private UserDAO serviceUser;
-    
-    private UserService service;
-
     private List<User> list;
 
     private User user;
@@ -88,9 +84,8 @@ public class UserRDController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        serviceUser = DAOFactory.geUserDAO();
-        service = new UserService();
-        list = serviceUser.getAll();
+
+        list = App.userService.getDao().getAll();
         loadTable(list);
 
     }
@@ -99,7 +94,7 @@ public class UserRDController implements Initializable {
     //-----------------------------------Interface methods----------------------------------------//
     private void loadTable(List<User> list) {
         //getting all users from db
-        list = serviceUser.getAll();
+        list = App.userService.getDao().getAll();
 
         Configurations.loadTable(tableUsers, FXCollections.observableArrayList(list));
 
@@ -141,7 +136,7 @@ public class UserRDController implements Initializable {
         user.setSurname(txtFSurname.getText());
         user.setName(txtFName.getText());
         if (ConfirmationsValidations.confirnationMessage("CONFIRMACION", "Actualizar usuario", user.getName() + " " + user.getSurname())) {
-            serviceUser.update(user);
+            App.userService.getDao().update(user);
             loadTable(list);
             disableEdit();
         }
@@ -149,7 +144,7 @@ public class UserRDController implements Initializable {
 
     private void deleteUser() {
         if (ConfirmationsValidations.confirnationMessage("CONFIRMACION", "Borrar usuario", user.getName() + " " + user.getSurname())) {
-            serviceUser.delete(user);
+            App.userService.getDao().delete(user);
             loadTable(list);
             disableEdit();
         }
@@ -157,9 +152,9 @@ public class UserRDController implements Initializable {
     //it could be performed with an observable
     private void searhUser(){
         if(!txtFSearch.getText().isBlank()){
-            list = service.filterUser(txtFSearch.getText().strip().toLowerCase());
+            list = App.userService.filterUser(txtFSearch.getText().strip().toLowerCase());
         }else{
-            list = serviceUser.getAll();
+            list = App.userService.getDao().getAll();
         }
         loadTable(list);
         disableEdit();

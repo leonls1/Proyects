@@ -30,7 +30,6 @@ public class UserCreateController implements Initializable {
     @FXML
     private DatePicker dtpExpirationFee;
 
-    private UserDAO userService;
 
     private User user;
 
@@ -52,7 +51,6 @@ public class UserCreateController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        userService = DAOFactory.geUserDAO();
         //setting the txtFid to only accept numbers
         Configurations.txtOnlyNumbers(txtFId);
         dtpExpirationFee.setValue(LocalDate.now());
@@ -65,7 +63,7 @@ public class UserCreateController implements Initializable {
 
         } else if (ConfirmationsValidations.confirnationMessage("CONFIRMACION", "crear un nuevo usuario", txtFName.getText() + " " + txtFSurname.getText())) {
 
-            if (userService.existsByid(Long.valueOf(txtFId.getText()))) {
+            if (App.userService.getDao().existsByid(Long.valueOf(txtFId.getText()))) {
                 user = new User();
                 user.setExpirationDate(dtpExpirationFee.getValue());
                 user.setId(Long.valueOf(txtFId.getText()));
@@ -73,7 +71,7 @@ public class UserCreateController implements Initializable {
                 user.setSurname(txtFSurname.getText());
 
                 System.out.println("Usuario creado");
-                userService.create(user);
+                App.userService.getDao().create(user);
                 
                 //reseting the fields
                 txtFId.setText("");
