@@ -15,7 +15,7 @@ public class TechConverter extends StringConverter<Employee> {
     @Override
     public String toString(Employee emp) {
         return emp != null ? (emp.getName() + " " + emp.getSurname()) : null;
-    }
+    }   
 
     @Override
     public Employee fromString(String string) {

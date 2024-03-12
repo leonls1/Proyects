@@ -11,7 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.List;
-import lombok.Data;
+import javafx.incidentmanager.model.statePattern.State;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,7 +48,7 @@ public class Incident {
     @OneToMany(mappedBy = "incident", cascade = CascadeType.ALL)
     private List<Problem> problems;
     
-    //private State state;
+    private State state;  
 
     public Incident() {
     }
@@ -65,10 +65,23 @@ public class Incident {
     @Override
     public String toString() {
         return "Incident{" + "id=" + id + ", service=" + service + ", clients=" + clients + ", stimatedDate=" + stimatedDate + ", entryDate=" + entryDate + ", realFinishDate=" + realFinishDate + ", description=" + description + '}';
+    }   
+    
+    public void toStarted(){
+        this.state.ToStarted(this);
     }
-
     
+    public void toInProgress(){
+        this.state.toInProgress(this);
+    }
     
+    public void toFinished(){
+        this.state.toFinished(this);
+    }
     
+    public void toCancelled(){
+        this.state.toCancelled(this);
+    }
+        
     
 }

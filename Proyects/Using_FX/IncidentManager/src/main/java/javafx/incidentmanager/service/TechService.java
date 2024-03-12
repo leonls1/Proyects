@@ -10,14 +10,14 @@ import javafx.incidentmanager.utilities.factories.DAOFactory;
 
 public class TechService {
 
-    EmployeeDao empService;
+    EmployeeDao dao;
 
     public TechService() {
-        empService = DAOFactory.getEmployeeDao();
+        dao = DAOFactory.getEmployeeDao();
     }
 
     public List<Employee> getAllTechs() {
-        List<Employee> list = empService.
+        List<Employee> list = dao.
                 GetAll().
                 stream().
                 filter(emp -> emp.getEmployeeType() == EmployeeType.TECHNICIAN).
@@ -54,5 +54,11 @@ especialidad en los últimos N días
         
         return tech;
     }
+
+    public EmployeeDao getDao() {
+        return dao;
+    }
+    
+    
 
 }
