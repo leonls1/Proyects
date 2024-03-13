@@ -28,7 +28,7 @@ public class App extends Application {
         stage.setTitle("Gym app, Trainer view");
         stage.setResizable(false);
         
-        scene = new Scene(loadFXML("Menu"));
+        scene = new Scene(loadFXML("LogIn"));
         stage.setScene(scene);
         stage.show();
     }
