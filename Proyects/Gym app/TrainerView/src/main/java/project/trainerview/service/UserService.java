@@ -10,7 +10,8 @@ import project.trainerview.utilities.factories.DAOFactory;
 public class UserService {
 
     UserDAO dao = DAOFactory.geUserDAO();
-
+    RutineService rutineService = new RutineService();
+    
     public List<User> filterUser(String word) {
         List<User> list = new ArrayList<>();
 
@@ -33,6 +34,11 @@ public class UserService {
 
     public UserDAO getDao() {
         return dao;
+    }
+    
+    public void deleteUser(User user){
+        rutineService.deleteRutine(user.getRutine());
+        dao.delete(user);
     }
     
     

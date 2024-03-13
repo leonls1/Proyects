@@ -144,7 +144,7 @@ public class UserRDController implements Initializable {
 
     private void deleteUser() {
         if (ConfirmationsValidations.confirnationMessage("CONFIRMACION", "Borrar usuario", user.getName() + " " + user.getSurname())) {
-            App.userService.getDao().delete(user);
+            App.userService.deleteUser(user);
             loadTable(list);
             disableEdit();
         }

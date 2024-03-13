@@ -45,10 +45,10 @@ public class MainUsersController implements Initializable {
     @FXML
     private void btnEvent(ActionEvent event) {
         Object evt = event.getSource();
-        
+
         if (evt.equals(btnSeeRutine)) {
             loadUser();
-        }else if(evt.equals(btnCopyRutine)){
+        } else if (evt.equals(btnCopyRutine)) {
             copyTableViewContentToClipboard();
         }
     }
@@ -82,19 +82,25 @@ public class MainUsersController implements Initializable {
             if (user != null) {
 
                 lblNameSurname.setText(user.getName() + " " + user.getSurname());
-                if (user.getRutine() != null) {
-                    loadTable();
-                }
-
-                if (user.getExpirationDate().isAfter(LocalDate.now())) {
-                    lblExpirationDate.setText(user.getExpirationDate().toString());
-                    lblExpirationDate.setTextFill(Color.DARKOLIVEGREEN);
-                    lblExpirationDate.setFont(new Font(25));
+                //checkeing if the rutine isn't empty
+                if (!user.getRutine().getSubRutines().isEmpty()) {
+                    //checking if the payment is up to date
+                    if (user.getExpirationDate().isAfter(LocalDate.now())) {
+                        lblExpirationDate.setText(user.getExpirationDate().toString());
+                        lblExpirationDate.setTextFill(Color.DARKOLIVEGREEN);
+                        lblExpirationDate.setFont(new Font(25));
+                        loadTable();
+                        //is not the table will be blank and changed the text
+                    } else {
+                        lblExpirationDate.setText("Cuota vencida");
+                        lblExpirationDate.setTextFill(Color.ORANGERED);
+                        lblExpirationDate.setFont(new Font(40));
+                        tableRutine.setItems(FXCollections.observableArrayList());
+                    }
 
                 } else {
-                    lblExpirationDate.setText("Cuota vencida");
-                    lblExpirationDate.setTextFill(Color.ORANGERED);
-                    lblExpirationDate.setFont(new Font(40));
+                    //otherwise the table will be blank
+                    tableRutine.setItems(FXCollections.observableArrayList());
                 }
 
             } else {
@@ -105,7 +111,7 @@ public class MainUsersController implements Initializable {
         txtFId.setText("");
 
     }
-    
+
     private void copyTableViewContentToClipboard() {
         // Obtener el contenido de la TableView en formato de texto con formato de tabla
         StringBuilder content = new StringBuilder();
@@ -132,7 +138,7 @@ public class MainUsersController implements Initializable {
         ClipboardContent clipboardContent = new ClipboardContent();
         clipboardContent.putString(content.toString());
         clipboard.setContent(clipboardContent);
-        
+
         Configurations.showInfoAlert("Rutina copiada", "Se ha copiado la rutina al portapapeles");
     }
 

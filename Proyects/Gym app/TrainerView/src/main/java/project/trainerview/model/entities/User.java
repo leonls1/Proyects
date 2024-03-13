@@ -1,5 +1,6 @@
 package project.trainerview.model.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -24,7 +25,7 @@ public class User {
     @Column(name = "expiration_date")
     private LocalDate expirationDate;
     
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Rutine rutine;
 
     @Override
