@@ -120,9 +120,7 @@ public class RutineImp implements RutineDAO {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
-        try {
-           
-            
+        try {         
             
             list = em.createQuery("SELECT r from Rutine r ", Rutine.class).getResultList();
             em.getTransaction().commit();

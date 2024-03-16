@@ -17,5 +17,7 @@ public interface SubRutineDAO {
     public List<SubRutine> getAll();
     
     public void setEntityManager(EntityManager em);
+    
+    public List<SubRutine> getByRutineId(Long rutineId);
 
 }

@@ -86,14 +86,14 @@ public class PaymentViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   
+
         list = App.userService.getDao().getAll();
 
         //setting the cbo
         UserConverter converter = new UserConverter(cboUsers);
         cboUsers.setItems(FXCollections.observableArrayList(list));
         cboUsers.setConverter(converter);
-        
+
         //set spinner
         Configurations.configSpinner_Int(1, 12, 1, spnMonths);
 
@@ -108,13 +108,19 @@ public class PaymentViewController implements Initializable {
     }
 
     private void loadPayment() {
-        if (ConfirmationsValidations.confirnationMessage("Confirmacion", "Confirmar Pago", "Se acreditaran: " + spnMonths.getValue() + " meses al usuario, esta seguro?")) {
-            System.out.println(user.getExpirationDate());
-            this.user.setExpirationDate(
-                user.getExpirationDate().plusMonths(Long.parseLong(spnMonths.getValue().toString())));
-            
-           App.userService.getDao().update(user);
+        //verify if an user was selected
+        if (user != null) {
+            if (ConfirmationsValidations.confirnationMessage("Confirmacion", "Confirmar Pago", "Se acreditaran: " + spnMonths.getValue() + " meses al usuario, esta seguro?")) {
+                System.out.println(user.getExpirationDate());
+                this.user.setExpirationDate(
+                        user.getExpirationDate().plusMonths(Long.parseLong(spnMonths.getValue().toString())));
+
+                App.userService.getDao().update(user);
+            }
+        }else {
+            Configurations.showErrorAlert("Error", "No se ha seleccionado ningun usuario");
         }
+
     }
 
 }

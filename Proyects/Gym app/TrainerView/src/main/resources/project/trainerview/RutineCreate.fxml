@@ -37,10 +37,12 @@
       <Button fx:id="btnAddExercice" layoutX="233.0" layoutY="168.0" mnemonicParsing="false" onAction="#btnEvent" text="Agregar ejercicio" />
       <TableView fx:id="tableRutine" layoutX="14.0" layoutY="219.0" onMouseClicked="#mouseEvent" prefHeight="227.0" prefWidth="699.0">
         <columns>
-          <TableColumn fx:id="colExercice" prefWidth="467.0" text="Ejercicio" />
-          <TableColumn fx:id="colRepetitions" prefWidth="89.0" text="Repeticiones" />
-            <TableColumn fx:id="colSeries" prefWidth="88.0" text="Series" />
-            <TableColumn fx:id="colDay" prefWidth="54.0" text="Dia" />
+          <TableColumn fx:id="colExercice" prefWidth="367.0" text="Ejercicio" />
+          <TableColumn fx:id="colRepetitions" prefWidth="81.0" text="Repeticiones" />
+            <TableColumn fx:id="colSeries" prefWidth="61.0" text="Series" />
+            <TableColumn fx:id="colDay" prefWidth="85.0" text="Dia" />
+            <TableColumn prefWidth="47.0" text="Subir" />
+            <TableColumn prefWidth="57.0" text="Bajar" />
         </columns>
       </TableView>
       <Label layoutX="332.0" layoutY="6.0" text="Crear Rutina" />

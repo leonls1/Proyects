@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import java.util.List;
 import project.trainerview.model.entities.Rutine;
 import project.trainerview.model.entities.SubRutine;
@@ -48,10 +49,14 @@ public class SubRutineImp implements SubRutineDAO {
             SubRutine sub = em.merge(subRutine);
             em.remove(sub);
             em.getTransaction().commit();
+            System.out.println("subrutina borrada:" + subRutine.getId());
 
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
+                System.out.println("error al terminar transaccion");
+            } else {
+                System.out.println("la transaccion nunca se inicio ");
             }
         } finally {
             if (em != null) {
@@ -133,5 +138,20 @@ public class SubRutineImp implements SubRutineDAO {
 
     public void getEntityManager() {
         em = emf.createEntityManager();
+    }
+
+    //to obtaing all subrutines with the id of the rutine
+    @Override
+    public List<SubRutine> getByRutineId(Long rutineId) {
+        getEntityManager();
+        
+        //select c from Comentario c where c.publicacion.id = :publicacionId",
+        TypedQuery<SubRutine> q = em.createQuery("select s from SubRutine s where s.rutine.id = :Idrutine",
+                SubRutine.class);
+        q.setParameter("Idrutine", rutineId);
+        
+        return q.getResultList();
+        
+        
     }
 }

@@ -213,6 +213,11 @@ public class RutineCreateController implements Initializable {
         
         Configurations.showInfoAlert("Rutina copiada", "Se ha copiado la rutina al portapapeles");
     }
+    
+    //reordar elemento en la tabla
+    private void reording(){
+        //⇑, ⇓
+    }
 
     //------------------------------CRUD Methods----------------------------//
     public void addSubrutine() {
@@ -249,7 +254,7 @@ public class RutineCreateController implements Initializable {
 
                     App.rutineService.saveRutine(rutine);
                 } else {
-                    App.rutineService.updateRutine(rutine, list);
+                    App.rutineService.updateRutine(user.getRutine(), list);
                 }
                 btnDeleteSubRutine.setDisable(true);
                 list.removeAll(list);

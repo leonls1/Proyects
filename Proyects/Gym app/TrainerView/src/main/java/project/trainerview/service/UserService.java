@@ -37,8 +37,13 @@ public class UserService {
     }
     
     public void deleteUser(User user){
+        
+        if(user.getRutine() !=null){
         rutineService.deleteRutine(user.getRutine());
-        dao.delete(user);
+        dao.delete(user);}
+        else{
+            dao.delete(user);
+        }
     }
     
     

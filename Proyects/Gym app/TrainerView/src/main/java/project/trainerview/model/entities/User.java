@@ -25,7 +25,7 @@ public class User {
     @Column(name = "expiration_date")
     private LocalDate expirationDate;
     
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Rutine rutine;
 
     @Override

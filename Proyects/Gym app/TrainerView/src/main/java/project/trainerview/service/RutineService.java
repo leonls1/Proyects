@@ -1,5 +1,7 @@
 package project.trainerview.service;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Persistence;
 import java.util.List;
 import project.trainerview.model.entities.Rutine;
 import project.trainerview.model.entities.SubRutine;
@@ -22,14 +24,12 @@ public class RutineService {
 
         //setting the user to the current rutine
         rutine.getUser().setRutine(rutine);
-
-
         userDAO.update(rutine.getUser());
 
         //setting all subRutines and saving them
         rutineDAO.create(rutine);
 
-        rutine.getSubRutines().stream().
+        rutine.getSubRutines().
                 forEach(sub -> {
                     sub.setRutine(rutine);
                     subRutineDAO.create(sub);
@@ -37,22 +37,22 @@ public class RutineService {
 
     }
 
-    public void updateRutine(Rutine rutine, List<SubRutine> list) {
-        rutine.getSubRutines().stream().  
-                forEach(sub -> subRutineDAO.delete(sub));
+    public void updateRutine(Rutine rutine, List<SubRutine> list) {        
+        rutine.getSubRutines().forEach(sub -> subRutineDAO.delete(sub));       
         
         rutine.setSubRutines(list);
-        
-         //setting all subRutines and saving them
         rutineDAO.update(rutine);
-
-        rutine.getSubRutines().stream().
-                forEach(sub -> {
-                    sub.setRutine(rutine);
-                    subRutineDAO.create(sub);
+        
+        rutine.getSubRutines().stream().forEach(subRutine -> {
+                    subRutine.setRutine(rutine);
+                    subRutineDAO.create(subRutine);
                 });
-        
-        
+
+        //setting all subRutines and saving them
+        //rutine.setSubRutines(list);
+
+       
+
     }
 
     public void deleteRutine(Rutine rutine) {

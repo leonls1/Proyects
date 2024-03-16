@@ -79,11 +79,11 @@ public class MainUsersController implements Initializable {
             user = userService.getDao().getById(Long.valueOf(txtFId.getText()));
 
             //verify the if user isn't null 
-            if (user != null) {
-
+            if (user != null && user.getRutine() != null) {
                 lblNameSurname.setText(user.getName() + " " + user.getSurname());
-                //checkeing if the rutine isn't empty
-                if (!user.getRutine().getSubRutines().isEmpty()) {
+
+                //checkeing if the rutine isn't empty                
+                if (user.getRutine().getSubRutines() != null) {
                     //checking if the payment is up to date
                     if (user.getExpirationDate().isAfter(LocalDate.now())) {
                         lblExpirationDate.setText(user.getExpirationDate().toString());
@@ -101,10 +101,25 @@ public class MainUsersController implements Initializable {
                 } else {
                     //otherwise the table will be blank
                     tableRutine.setItems(FXCollections.observableArrayList());
+
+                    //repeting the check for user pay
+                    //checking if the payment is up to date
+                    if (user.getExpirationDate().isAfter(LocalDate.now())) {
+                        lblExpirationDate.setText(user.getExpirationDate().toString());
+                        lblExpirationDate.setTextFill(Color.DARKOLIVEGREEN);
+                        lblExpirationDate.setFont(new Font(25));
+                        loadTable();
+                        //is not the table will be blank and changed the text
+                    } else {
+                        lblExpirationDate.setText("Cuota vencida");
+                        lblExpirationDate.setTextFill(Color.ORANGERED);
+                        lblExpirationDate.setFont(new Font(40));
+                        tableRutine.setItems(FXCollections.observableArrayList());
+                    }
                 }
 
             } else {
-                Configurations.showErrorAlert("No existe", "El usuario con ese dni no existe");
+                Configurations.showErrorAlert("No existe", "El usuario con ese dni no existe, o no tiene una rutina asignada");
             }
         }
 
