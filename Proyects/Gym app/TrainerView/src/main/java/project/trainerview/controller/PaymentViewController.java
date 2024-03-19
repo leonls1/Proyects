@@ -6,6 +6,7 @@ package project.trainerview.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -21,7 +22,6 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import project.trainerview.App;
 import project.trainerview.model.entities.User;
-import project.trainerview.service.UserService;
 import project.trainerview.utilities.converters.UserConverter;
 import project.trainerview.utilities.other.Configurations;
 import project.trainerview.utilities.other.ConfirmationsValidations;
@@ -112,8 +112,14 @@ public class PaymentViewController implements Initializable {
         if (user != null) {
             if (ConfirmationsValidations.confirnationMessage("Confirmacion", "Confirmar Pago", "Se acreditaran: " + spnMonths.getValue() + " meses al usuario, esta seguro?")) {
                 System.out.println(user.getExpirationDate());
-                this.user.setExpirationDate(
+                if(user.getExpirationDate().isBefore(LocalDate.now())){
+                    this.user.setExpirationDate(LocalDate.now().plusMonths(Long.parseLong(spnMonths.getValue().toString())));
+                    
+                }else{
+                    this.user.setExpirationDate(
                         user.getExpirationDate().plusMonths(Long.parseLong(spnMonths.getValue().toString())));
+                }
+                
 
                 App.userService.getDao().update(user);
             }
