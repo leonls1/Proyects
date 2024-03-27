@@ -1,13 +1,23 @@
 package project.StartCMS.StartCMS.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter@Setter
+@Entity
+@Table
 public class Post {
 
     @Id
@@ -20,9 +30,14 @@ public class Post {
 
     private String extract;
 
+    @ManyToOne
     private User user;
 
-    private Category category;
+    @ManyToMany    
+    @JoinTable(name = "post_category",
+             joinColumns = @JoinColumn(name = "post_id"),
+             inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Category> categories;
 
     private String image;
 
@@ -35,4 +50,7 @@ public class Post {
     @OneToOne
     @JoinColumn(name = "id_content")
     private Content content;
+    
+    @OneToOne(mappedBy = "post")
+    private PostMetadata postMetadata;
 }
