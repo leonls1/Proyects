@@ -8,7 +8,7 @@ import project.StartCMS.StartCMS.model.Category;
 import project.StartCMS.StartCMS.repository.CategoryRepository;
 
 @Service
-public class CategotyImp implements CategoryService{
+public class CategoryImp implements CategoryService{
     
     @Autowired
     private CategoryRepository repo;
@@ -34,7 +34,13 @@ public class CategotyImp implements CategoryService{
         oldCategory = repo.findById(id).orElse(null);
         
         if(category != null){
+            oldCategory.setCategoryUpper(category.getCategoryUpper());
+            oldCategory.setDate(category.getDate());
+            oldCategory.setDescription(category.getDescription());
+            oldCategory.setName(category.getName());
+            oldCategory.setPosts(category.getPosts());
             
+            repo.save(oldCategory);
         }else{
             System.out.println("Doesn't exist the category with that id:" + id);
         }

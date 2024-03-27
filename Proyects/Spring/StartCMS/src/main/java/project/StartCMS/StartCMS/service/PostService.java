@@ -1,12 +1,14 @@
 package project.StartCMS.StartCMS.service;
 
 import java.util.List;
+import java.util.Optional;
+import project.StartCMS.StartCMS.model.Comment;
 import project.StartCMS.StartCMS.model.Post;
 
 public interface PostService {
     public List<Post> getAll();
     
-    public Post getById(Long id);
+    public Optional<Post> getById(Long id);
     
     public void delete(Long id);
     

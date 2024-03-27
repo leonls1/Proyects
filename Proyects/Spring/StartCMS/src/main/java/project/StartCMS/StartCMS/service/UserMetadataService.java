@@ -1,12 +1,14 @@
 package project.StartCMS.StartCMS.service;
 
 import java.util.List;
+import java.util.Optional;
+import project.StartCMS.StartCMS.model.Comment;
 import project.StartCMS.StartCMS.model.UserMetadata;
 
 public interface UserMetadataService {
     public List<UserMetadata> getAll();
     
-    public UserMetadata getById(Long id);
+    public Optional<UserMetadata> getById(Long id);
     
     public void delete(Long id);
     
