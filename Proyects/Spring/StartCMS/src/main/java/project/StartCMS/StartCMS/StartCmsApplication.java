@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StartCmsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StartCmsApplication.class, args);
+		//SpringApplication.run(StartCmsApplication.class, args);
+                SpringApplication.run(StartCmsApplication.class, args);
 	}
 
 }
