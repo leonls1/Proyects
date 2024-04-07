@@ -5,11 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-@Configuration
+//@Configuration
 public class TestDataBaseConfiguration {
 
-    @Bean
-    public DataSource getDataSource(){
+  //  @Bean
+    public DataSource getTestDataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
