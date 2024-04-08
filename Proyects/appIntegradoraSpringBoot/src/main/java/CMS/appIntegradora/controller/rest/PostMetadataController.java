@@ -1,16 +1,14 @@
-package project.StartCMS.StartCMS.controller.rest;
+package CMS.appIntegradora.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import project.StartCMS.StartCMS.service.ContentService;
+import CMS.appIntegradora.service.PostMetadataService;
 
-@RequestMapping("api/v1/content")
 @RestController
-public class ContentController {
+@RequestMapping("api/v1/postMetadata")
+public class PostMetadataController {
 
     @Autowired
-    private ContentService Service;
-    
-    
+    private PostMetadataService service;
 }

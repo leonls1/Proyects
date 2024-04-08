@@ -1,4 +1,4 @@
-package project.StartCMS.StartCMS.controller.rest;
+package CMS.appIntegradora.controller.rest;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import project.StartCMS.StartCMS.model.Category;
-import project.StartCMS.StartCMS.model.common.RepBase;
-import project.StartCMS.StartCMS.service.CategoryService;
+import CMS.appIntegradora.model.Category;
+import CMS.appIntegradora.model.common.RepBase;
+import CMS.appIntegradora.service.CategoryService;
 
 @RestController
 @RequestMapping("api/v1/category")
@@ -34,12 +34,20 @@ public class CategoryController {
         service.create(category);
         return ResponseEntity.ok(new RepBase());
     }
+    
+    //to try my controller
+    @GetMapping("/hello")
+    public String sayHello(){
+        return "Hello world";
+    }
+    //
+    
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<Category>> getAll() {
         return ResponseEntity.ok(service.getAll());
     }
-
+    
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Category>> getbyId(@PathVariable Long id) {
         return ResponseEntity.ok(service.getById(id));
