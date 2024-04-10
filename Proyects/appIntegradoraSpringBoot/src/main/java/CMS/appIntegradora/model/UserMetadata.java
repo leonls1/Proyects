@@ -1,5 +1,6 @@
 package CMS.appIntegradora.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,17 +17,20 @@ import lombok.Setter;
 public class UserMetadata {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
     
+    @Column(name = "user_key")
     private String key;
     
+    @Column(name = "user_value")
     private String value;
     
+    @Column(name = "user_type")
     private String type;
     
 }

@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table
+@Table(name = "groupTable")
 @Getter
 @Setter
 public class Group {
@@ -29,6 +29,7 @@ public class Group {
             joinColumns = @JoinColumn(name = "id_group"),
             inverseJoinColumns = @JoinColumn(name = "id_privileges"))
     private List<Privileges> privileges;
+    
     
     @ManyToMany
     @JoinTable(name = "group_user",

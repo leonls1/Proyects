@@ -27,9 +27,9 @@ public class Comment {
     @JoinColumn(name = "id_post")
     private Post post;
     
-    @ManyToOne
-    @JoinColumn(name = "id_user")
-    private User user;
+   // @ManyToOne
+  //  @JoinColumn(name = "id_user")
+//    private User user;
     
     private LocalDate date;
     

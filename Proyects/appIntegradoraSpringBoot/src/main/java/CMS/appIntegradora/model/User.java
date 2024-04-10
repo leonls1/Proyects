@@ -32,8 +32,8 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private List<Group> group;
     
-    @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
+//    @OneToMany(mappedBy = "user")
+  //  private List<Comment> comments;
     
     @OneToMany(mappedBy = "user")
     private List<Post> posts;

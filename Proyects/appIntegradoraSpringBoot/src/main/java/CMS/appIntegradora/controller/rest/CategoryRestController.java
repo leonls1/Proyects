@@ -18,7 +18,7 @@ import CMS.appIntegradora.service.CategoryService;
 
 @RestController
 @RequestMapping("api/v1/category")
-public class CategoryController {
+public class CategoryRestController {
 
     @Autowired
     private CategoryService service;
