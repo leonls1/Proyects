@@ -1,11 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.commandmanager.controller.MainController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="591.0" prefWidth="749.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="project.commandmanager.controller.MainController">
+   <children>
+      <HBox layoutX="57.0" layoutY="45.0" prefHeight="131.0" prefWidth="231.0">
+         <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="131.0" prefWidth="86.0" spacing="30.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Elemento" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cantidad" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="131.0" prefWidth="141.0" spacing="25.0">
+               <children>
+                  <ComboBox prefWidth="150.0" />
+                  <Spinner />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Text layoutX="322.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Command Manager" />
+      <Text layoutX="381.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Detalles:" />
+      <TextArea layoutX="438.0" layoutY="403.0" prefHeight="82.0" prefWidth="206.0" />
+      <Button layoutX="566.0" layoutY="121.0" mnemonicParsing="false" text="Agregar" />
+      <Button layoutX="598.0" layoutY="542.0" mnemonicParsing="false" text="Confirmar e Imprimir" />
+      <Button layoutX="29.0" layoutY="542.0" mnemonicParsing="false" text="Cancelar" />
+      <TableView layoutX="78.0" layoutY="176.0" prefHeight="167.0" prefWidth="566.0">
+        <columns>
+          <TableColumn prefWidth="216.0" text="Elemento" />
+          <TableColumn prefWidth="84.0" text="Cantidad" />
+            <TableColumn prefWidth="139.0" text="Precio  Unidad" />
+            <TableColumn prefWidth="126.0" text="Subtotal" />
+        </columns>
+      </TableView>
+      <ComboBox layoutX="311.0" layoutY="71.0" prefHeight="25.0" prefWidth="127.0" promptText="Tipo Elemento" />
+      <Text layoutX="47.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle" />
+      <Text layoutX="47.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero" />
+      <ComboBox layoutX="161.0" layoutY="403.0" prefWidth="150.0" />
+      <TextField layoutX="160.0" layoutY="444.0" prefHeight="25.0" prefWidth="150.0" />
+      <Text layoutX="551.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total = $" />
+      <Text layoutX="609.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="monto" />
+      <ComboBox layoutX="161.0" layoutY="486.0" prefHeight="25.0" prefWidth="150.0" promptText="Forma de pago" />
+      <Text layoutX="47.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metodo de pago" />
+   </children>
 </AnchorPane>
