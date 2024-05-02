@@ -1,6 +1,5 @@
 package project.commandmanager.model.entities;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,34 +22,21 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @ManyToOne
+    private Type type;
 
     private String name;
-
-    private String description;
-
-    private int heigth;
-
-    private int width;
-
-    private int weight;
-
-    private int depth;
-
-    private int capacity;
 
     private int actualStock;
 
     private int minStock;
-    
-    private float price;
-    
-    private String imageURL;
 
+    private float price;  
+ 
 
+    //private String imageURL;
     @OneToMany(mappedBy = "item")
     private List<PurchaseDetail> details;
-
-    public Item() {
-    }
 
 }

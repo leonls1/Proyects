@@ -29,7 +29,8 @@ public class Purchase {
     @ManyToOne
     private Command command;
     
-    private Street Street;
+    @ManyToOne
+    private Street street;
 
     @OneToMany(mappedBy = "purchase")
     private List<PurchaseDetail> details;
