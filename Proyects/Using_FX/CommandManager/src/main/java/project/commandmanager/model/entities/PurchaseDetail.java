@@ -23,6 +23,10 @@ public class PurchaseDetail {
     private int amount;
 
     private float actualPrice;
+    
+     
+    private boolean isDeleted;
+   
 
     @ManyToOne
     @JoinColumn(name = "purchase_id")
@@ -31,12 +35,6 @@ public class PurchaseDetail {
     @ManyToOne
     @JoinColumn(name = "item_id")
     private Item item;
-
-    public PurchaseDetail() {
-    }
-
-
-    
 
 
 }

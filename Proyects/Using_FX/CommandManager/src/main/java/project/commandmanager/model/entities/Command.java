@@ -22,5 +22,7 @@ public class Command {
     @OneToMany(mappedBy = "command")
     private List<Purchase> purchases;
     
+    private boolean isDeleted;
+    
     
 }

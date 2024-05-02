@@ -16,7 +16,9 @@ public class Type {
     private Long id;
     
     private String description;
-    
+         
+    private boolean isDeleted;
+       
     @OneToMany(mappedBy = "type")
     private List<Item> items;
 }

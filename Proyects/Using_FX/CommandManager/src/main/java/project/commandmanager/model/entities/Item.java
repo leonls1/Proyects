@@ -32,7 +32,10 @@ public class Item {
 
     private int minStock;
 
-    private float price;  
+    private float price;      
+     
+    private boolean isDeleted;
+   
  
 
     //private String imageURL;

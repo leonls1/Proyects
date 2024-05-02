@@ -1,6 +1,8 @@
 package project.commandmanager.model.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,6 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import project.commandmanager.model.enums.PaymentType;
 
 @Table
 @Entity
@@ -25,6 +28,9 @@ public class Purchase {
     private LocalDate date;
 
     private float totalAmount;
+     
+    private boolean isDeleted;
+   
     
     @ManyToOne
     private Command command;
@@ -34,15 +40,8 @@ public class Purchase {
 
     @OneToMany(mappedBy = "purchase")
     private List<PurchaseDetail> details;
-
-    public void calculateTotalAmount() {
-        totalAmount = 0;
-        details.forEach(detail -> totalAmount
-                += detail.getAmount());
-    }
-
-    public Purchase() {
-    }
-
     
+    @Enumerated(EnumType.STRING)
+    private PaymentType paymentType;
+
 }

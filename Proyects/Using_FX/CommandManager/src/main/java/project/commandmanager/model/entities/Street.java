@@ -16,6 +16,10 @@ public class Street {
     
     private String stree_number;
     
+     
+    private boolean isDeleted;
+   
+    
     @OneToMany(mappedBy = "street")
     private List<Purchase> purchases;
 }
