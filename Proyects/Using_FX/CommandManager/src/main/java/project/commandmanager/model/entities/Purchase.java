@@ -1,15 +1,13 @@
 package project.commandmanager.model.entities;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,39 +16,32 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Item {
+public class Purchase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private LocalDate date;
 
-    private String description;
-
-    private int heigth;
-
-    private int width;
-
-    private int weight;
-
-    private int depth;
-
-    private int capacity;
-
-    private int actualStock;
-
-    private int minStock;
+    private float totalAmount;
     
-    private float price;
+    @ManyToOne
+    private Command command;
     
-    private String imageURL;
+    private Street Street;
 
-
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "purchase")
     private List<PurchaseDetail> details;
 
-    public Item() {
+    public void calculateTotalAmount() {
+        totalAmount = 0;
+        details.forEach(detail -> totalAmount
+                += detail.getAmount());
     }
 
+    public Purchase() {
+    }
+
+    
 }

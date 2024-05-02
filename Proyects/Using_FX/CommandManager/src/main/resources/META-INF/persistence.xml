@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
--->
-
-
-
-<root>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="Trainer_persistence" transaction-type="RESOURCE_LOCAL">
+        <description>Persistence unit for trainers, allow rutines, subrutines and users managment</description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>         
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+                
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"></property>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/command_manager"></property>
+           <property name="jakarta.persistence.jdbc.user" value="Leon"></property>
+            <property name="jakarta.persistence.jdbc.password" value="yoProgramo"></property>
+            <!-- <property name="jakarta.persistence.jdbc.user" value="root"></property>-->
+            <!-- <property name="jakarta.persistence.jdbc.password" value="DG_77951"></property>-->
+            
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties>
+        
+    </persistence-unit>
     
-</root>
+</persistence>
+
+
+
 
