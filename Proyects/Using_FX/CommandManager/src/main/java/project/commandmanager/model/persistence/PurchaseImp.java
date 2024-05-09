@@ -5,91 +5,70 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import java.util.List;
-import project.commandmanager.model.entities.Item;
+import project.commandmanager.model.entities.Purchase;
 
-public class ItemImp implements ItemDAO {
+public class PurchaseImp implements PurchaseDAO {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("command_manager_persitence");
     EntityManager em;
 
     @Override
-    public void create(Item item) {
+    public void create(Purchase purchase) {
         getEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
         transaction.begin();
 
         try {
-            em.persist(item);
+            em.persist(purchase);
+            transaction.commit();
+
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
+    @Override
+    public void update(Purchase purchase) {
+        getEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        transaction.begin();
+
+        try {
+            em.merge(purchase);
             transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
+
         } finally {
             if (em != null) {
                 em.close();
             }
-
         }
-
     }
 
     @Override
-    public void update(Item item) {
+    public void delete(Purchase purchase) {
         getEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
         transaction.begin();
 
         try {
-            em.merge(item);
+            Purchase p = em.merge(purchase);
+            em.remove(p);
             transaction.commit();
-        } catch (Exception e) {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
-        } finally {
-            if (em != null) {
-                em.close();
-            }
 
-        }
-    }
-
-    @Override
-    public void delete(Item item) {
-        getEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
-
-        try {
-            Item i = em.merge(item);
-            em.remove(i);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-
-        }
-    }
-
-    @Override
-    public Item getById(Long id) {
-        getEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        Item i = new Item();
-        transaction.begin();
-
-        try {
-            i = em.find(Item.class, id);
-            transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
@@ -99,32 +78,37 @@ public class ItemImp implements ItemDAO {
                 em.close();
             }
         }
-
-        return i;
     }
 
     @Override
-    public List<Item> getAll() {
+    public Purchase getById(Long id) {
+
         getEntityManager();
-        List<Item> list = null;
-        EntityTransaction transaction = em.getTransaction();
-        
-        transaction.begin();
-        
+        Purchase p = new Purchase();
         try {
-            list = em.createQuery("SELECT i From Item i", Item.class).getResultList();
-            transaction.commit();
-
-        } catch (Exception e) {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
-
+            p = em.find(Purchase.class, id);
         } finally {
             if (em != null) {
                 em.close();
             }
+        }
 
+        return p;
+    }
+
+    @Override
+    public List<Purchase> getAll() {
+        List<Purchase> list = null;
+        getEntityManager();
+
+        try {
+            list = em.createQuery("Select p From Purchase", Purchase.class).getResultList();
+
+        } finally {
+
+            if (em != null) {
+                em.close();
+            }
         }
 
         return list;
