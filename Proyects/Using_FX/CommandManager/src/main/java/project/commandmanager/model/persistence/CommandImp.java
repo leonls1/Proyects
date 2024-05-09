@@ -83,13 +83,14 @@ public class CommandImp implements CommandDAO {
     public Command getById(Long id) {
         getEntityManager();
         EntityTransaction transaction = em.getTransaction();
+        Command c = new Command();
 
         try {
             transaction.begin();
-
+            c = em.find(Command.class, id);
             transaction.commit();
         } catch (Exception e) {
-           if (transaction != null && transaction.isActive()) {
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
 
@@ -97,13 +98,33 @@ public class CommandImp implements CommandDAO {
             if (em != null) {
                 em.close();
             }
-
         }
+
+        return c;
     }
 
     @Override
     public List<Command> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        getEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        List<Command> list = null;
+        
+         try {
+            transaction.begin();
+            list = em.createQuery("SELECT c FROM Command c", Command.class).getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+         
+        return list;
     }
 
     @Override

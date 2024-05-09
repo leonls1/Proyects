@@ -4,7 +4,7 @@ import jakarta.persistence.EntityManager;
 import java.util.List;
 import project.commandmanager.model.entities.Street;
 
-public interface StreeDAO {
+public interface StreetDAO {
 
     public void create(Street street);
 
