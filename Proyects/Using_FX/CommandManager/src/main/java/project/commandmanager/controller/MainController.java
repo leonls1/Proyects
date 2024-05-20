@@ -26,40 +26,16 @@ public class MainController implements Initializable {
 
    
     @FXML
-    private Button btnAddItem;
+    private Button btnAddItem, btnCancel, btnConfirm;
 
     @FXML
-    private Button btnCancel;
+    private ComboBox<?> cboElements, cboPaymentType, cboStreet, cboType;
 
     @FXML
-    private Button btnConfirm;
+    private TableColumn colElement, colQuantity, colSubTotal, colUnitPrice;
 
     @FXML
-    private ComboBox<?> cboElements;
-
-    @FXML
-    private ComboBox<?> cboPaymentType;
-
-    @FXML
-    private ComboBox<?> cboStreet;
-
-    @FXML
-    private ComboBox<?> cboType;
-
-    @FXML
-    private TableColumn<?, ?> colElement;
-
-    @FXML
-    private TableColumn<?, ?> colQuantity;
-
-    @FXML
-    private TableColumn<?, ?> colSubTotal;
-
-    @FXML
-    private TableColumn<?, ?> colUnitPrice;
-
-    @FXML
-    private Spinner<?> spnQuantity;
+    private Spinner<Integer> spnQuantity;
 
     @FXML
     private TableView<?> table;
