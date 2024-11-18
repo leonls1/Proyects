@@ -7,15 +7,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import project.trainerview.App;
 import project.trainerview.model.entities.User;
-import project.trainerview.model.persistence.UserDAO;
-import project.trainerview.utilities.factories.DAOFactory;
 import project.trainerview.utilities.other.Configurations;
 import project.trainerview.utilities.other.ConfirmationsValidations;
 

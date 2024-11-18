@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -112,18 +113,18 @@ public class PaymentViewController implements Initializable {
         if (user != null) {
             if (ConfirmationsValidations.confirnationMessage("Confirmacion", "Confirmar Pago", "Se acreditaran: " + spnMonths.getValue() + " meses al usuario, esta seguro?")) {
                 System.out.println(user.getExpirationDate());
-                if(user.getExpirationDate().isBefore(LocalDate.now())){
+                if (user.getExpirationDate().isBefore(LocalDate.now())) {
                     this.user.setExpirationDate(LocalDate.now().plusMonths(Long.parseLong(spnMonths.getValue().toString())));
-                    
-                }else{
+
+                } else {
                     this.user.setExpirationDate(
-                        user.getExpirationDate().plusMonths(Long.parseLong(spnMonths.getValue().toString())));
+                            user.getExpirationDate().plusMonths(Long.parseLong(spnMonths.getValue().toString())));
                 }
-                
+
 
                 App.userService.getDao().update(user);
             }
-        }else {
+        } else {
             Configurations.showErrorAlert("Error", "No se ha seleccionado ningun usuario");
         }
 

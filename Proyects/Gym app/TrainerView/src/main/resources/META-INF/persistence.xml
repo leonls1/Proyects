@@ -5,22 +5,22 @@
 http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="Trainer_persistence" transaction-type="RESOURCE_LOCAL">
         <description>Persistence unit for trainers, allow rutines, subrutines and users managment</description>
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>         
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
-                
+
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"></property>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gym_app"></property>
-           <property name="jakarta.persistence.jdbc.user" value="Leon"></property>
+            <property name="jakarta.persistence.jdbc.user" value="Leon"></property>
             <property name="jakarta.persistence.jdbc.password" value="yoProgramo"></property>
             <!-- <property name="jakarta.persistence.jdbc.user" value="root"></property>-->
             <!-- <property name="jakarta.persistence.jdbc.password" value="DG_77951"></property>-->
-            
-            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
-        
+
     </persistence-unit>
-    
+
 </persistence>
 
 

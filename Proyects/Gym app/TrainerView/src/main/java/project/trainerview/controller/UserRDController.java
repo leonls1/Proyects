@@ -19,9 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import project.trainerview.App;
 import project.trainerview.model.entities.User;
-import project.trainerview.model.persistence.UserDAO;
-import project.trainerview.service.UserService;
-import project.trainerview.utilities.factories.DAOFactory;
 import project.trainerview.utilities.other.Configurations;
 import project.trainerview.utilities.other.ConfirmationsValidations;
 

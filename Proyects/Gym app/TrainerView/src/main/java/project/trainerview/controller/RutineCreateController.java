@@ -26,11 +26,7 @@ import project.trainerview.App;
 import project.trainerview.model.entities.Rutine;
 import project.trainerview.model.entities.SubRutine;
 import project.trainerview.model.entities.User;
-import project.trainerview.model.persistence.UserDAO;
-import project.trainerview.service.RutineService;
-import project.trainerview.service.UserService;
 import project.trainerview.utilities.converters.UserConverter;
-import project.trainerview.utilities.factories.DAOFactory;
 import project.trainerview.utilities.other.Configurations;
 import project.trainerview.utilities.other.ConfirmationsValidations;
 

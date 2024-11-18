@@ -4,10 +4,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
+
 import java.util.List;
-import project.trainerview.model.entities.SubRutine;
+
 import project.trainerview.model.entities.User;
+import project.trainerview.model.persistence.interfaces.UserDAO;
 
 public class UserImp implements UserDAO {
 

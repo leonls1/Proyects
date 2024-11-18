@@ -1,4 +1,4 @@
-package project.trainerview.model.persistence;
+package project.trainerview.model.persistence.interfaces;
 
 import jakarta.persistence.EntityManager;
 import java.util.List;

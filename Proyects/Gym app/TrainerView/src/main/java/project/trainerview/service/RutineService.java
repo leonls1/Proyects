@@ -1,13 +1,11 @@
 package project.trainerview.service;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Persistence;
 import java.util.List;
 import project.trainerview.model.entities.Rutine;
 import project.trainerview.model.entities.SubRutine;
-import project.trainerview.model.persistence.RutineDAO;
-import project.trainerview.model.persistence.SubRutineDAO;
-import project.trainerview.model.persistence.UserDAO;
+import project.trainerview.model.persistence.interfaces.RutineDAO;
+import project.trainerview.model.persistence.interfaces.SubRutineDAO;
+import project.trainerview.model.persistence.interfaces.UserDAO;
 import project.trainerview.utilities.factories.DAOFactory;
 
 public class RutineService {
@@ -38,7 +36,7 @@ public class RutineService {
     }
 
     public void updateRutine(Rutine rutine, List<SubRutine> list) {        
-        rutine.getSubRutines().forEach(sub -> subRutineDAO.delete(sub));       
+        rutine.getSubRutines().forEach(subRutineDAO::delete);
         
         rutine.setSubRutines(list);
         rutineDAO.update(rutine);

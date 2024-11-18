@@ -6,8 +6,9 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
-import project.trainerview.model.entities.Rutine;
+
 import project.trainerview.model.entities.SubRutine;
+import project.trainerview.model.persistence.interfaces.SubRutineDAO;
 
 public class SubRutineImp implements SubRutineDAO {
 

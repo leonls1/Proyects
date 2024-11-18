@@ -2,9 +2,9 @@ package project.trainerview.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 import project.trainerview.model.entities.User;
-import project.trainerview.model.persistence.UserDAO;
+import project.trainerview.model.persistence.interfaces.UserDAO;
 import project.trainerview.utilities.factories.DAOFactory;
 
 public class UserService {
