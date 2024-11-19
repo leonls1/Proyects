@@ -17,10 +17,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CRUDController implements Initializable {
-
-    @FXML
-    private Button btnClearAnswer, btnClearQuestion, btnCreateAnswer, btnCreateQuestion, btnDeleteAnswer, btnDeleteQuestion, btnEditAnswer, btnEditQuestion, btnPrincipal;
-
     @FXML
     private ComboBox<?> cboAnswerQuestion;
 
@@ -40,22 +36,72 @@ public class CRUDController implements Initializable {
     private TextField txtFAnswerCode;
 
     @FXML
-    void btnEvent(ActionEvent event) {
+    private Button btnClearAnswer, btnClearQuestion, btnCreateAnswer, btnCreateQuestion, btnDeleteAnswer,
+            btnDeleteQuestion, btnEditAnswer, btnEditQuestion, btnPrincipal, btnBackMain;
 
+    private Question questionSelected;
+
+    private Answer answerSelected;
+
+    @FXML
+    void btnEvent(ActionEvent event) {
+        Object evt = event.getSource();
+        if (evt.equals(btnClearAnswer)){
+
+        }else if (evt.equals(btnCreateAnswer)){
+
+        }else if (evt.equals(btnClearQuestion)){
+
+        }else if (evt.equals(btnCreateQuestion)){
+
+        }else if (evt.equals(btnDeleteAnswer)){
+
+        }else if (evt.equals(btnDeleteQuestion)){
+
+        }else if (evt.equals(btnEditAnswer)){
+
+        }else if (evt.equals(btnEditQuestion)){
+
+        }else if (evt.equals(btnPrincipal)){
+
+        }else if (evt.equals(btnBackMain)){
+
+        }
     }
 
     @FXML
     void cboEvent(ActionEvent event) {
+        if(event.getSource().equals(cboAnswerQuestion)){
 
+        }
     }
 
     @FXML
     void mouseEvent(MouseEvent event) {
+        Object evt = event.getSource();
+        if(evt.equals(tableAnswer)){
 
+        }else if(evt.equals(tableQuestion)){
+
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+    private void loadQuestionTable(){
+
+    }
+
+    private void loadAnswerTable(){
+
+    }
+
+    private void loadCBO(){
+
+    }
+
+
 }

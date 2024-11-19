@@ -106,17 +106,17 @@ public class MainController implements Initializable {
         Question ques3 = new Question("pregunta 3", 3L);
 
         // Añadiendo respuestas
-        ques1.setAnswers(List.of(new Answer(1L, 'A', "respuesta 1.A", ques1),
-                new Answer(2L, 'B', "respuesta 1.B", ques1),
-                new Answer(3L, 'C', "respuesta 1.C", ques1)));
+        ques1.setAnswers(List.of(new Answer(1L, "A", "respuesta 1.A", ques1),
+                new Answer(2L, "B", "respuesta 1.B", ques1),
+                new Answer(3L, "C", "respuesta 1.C", ques1)));
 
-        ques2.setAnswers(List.of(new Answer(4L, 'A', "respuesta 2.A", ques2),
-                new Answer(5L, 'B', "respuesta 2.B", ques2),
-                new Answer(6L, 'C', "respuesta 2.C", ques2)));
+        ques2.setAnswers(List.of(new Answer(4L, "A", "respuesta 2.A", ques2),
+                new Answer(5L, "B", "respuesta 2.B", ques2),
+                new Answer(6L, "C", "respuesta 2.C", ques2)));
 
-        ques3.setAnswers(List.of(new Answer(7L, 'A', "respuesta 3.A", ques3),
-                new Answer(8L, 'B', "respuesta 3.B", ques3),
-                new Answer(9L, 'C', "respuesta 3.C", ques3)));
+        ques3.setAnswers(List.of(new Answer(7L, "A", "respuesta 3.A", ques3),
+                new Answer(8L, "B", "respuesta 3.B", ques3),
+                new Answer(9L, "C", "respuesta 3.C", ques3)));
 
         // Lista de preguntas
         questions = List.of(ques1, ques2, ques3);

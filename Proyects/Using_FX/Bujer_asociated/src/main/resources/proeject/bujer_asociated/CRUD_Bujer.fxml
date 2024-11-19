@@ -61,12 +61,12 @@
         </columns>
       </TableView>
       <HBox layoutX="764.0" layoutY="638.0" prefHeight="40.0" prefWidth="243.0" spacing="35.0" />
-      <Text layoutX="289.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Respuestas">
+      <Text layoutX="290.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Respuestas">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text layoutX="289.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preguntas">
+      <Text layoutX="290.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preguntas">
          <font>
             <Font size="24.0" />
          </font>
@@ -84,6 +84,7 @@
             </HBox>
          </children>
       </VBox>
+      <Button fx:id="btnBackMain" layoutX="1060.0" layoutY="711.0" mnemonicParsing="false" onAction="#btnEvent" text="Principal" />
       <VBox alignment="TOP_RIGHT" layoutX="695.0" layoutY="397.0" prefHeight="285.0" prefWidth="399.0" spacing="20.0">
          <children>
             <HBox alignment="BOTTOM_RIGHT" fillHeight="false" prefHeight="34.0" prefWidth="399.0" spacing="30.0">
@@ -103,7 +104,6 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="1060.0" layoutY="711.0" mnemonicParsing="false" onAction="#btnEvent" text="Principal" />
       <Text layoutX="705.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo:" />
    </children>
 </AnchorPane>

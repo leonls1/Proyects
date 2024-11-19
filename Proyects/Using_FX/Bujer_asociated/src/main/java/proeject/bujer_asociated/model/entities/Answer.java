@@ -12,14 +12,14 @@ public class Answer {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
-    private char order;
+    private String order;
 
     private String description;
 
     @ManyToOne
     private Question question;
 
-    public Answer(Long id, char order, String description, Question question) {
+    public Answer(Long id, String order, String description, Question question) {
         this.id = id;
         this.order = order;
         this.description = description;
