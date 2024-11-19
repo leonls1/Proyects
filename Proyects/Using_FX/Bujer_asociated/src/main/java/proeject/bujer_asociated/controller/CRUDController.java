@@ -10,9 +10,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import proeject.bujer_asociated.App;
 import proeject.bujer_asociated.model.entities.Answer;
 import proeject.bujer_asociated.model.entities.Question;
+import proeject.bujer_asociated.model.persistence.AnswerRepository;
+import proeject.bujer_asociated.model.persistence.QuestionRepository;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -65,7 +69,11 @@ public class CRUDController implements Initializable {
         }else if (evt.equals(btnPrincipal)){
 
         }else if (evt.equals(btnBackMain)){
-
+            try {
+                App.setRoot("Main", 650, 635);
+            } catch (IOException e) {
+                System.out.println("The scene couldn't be loaded");
+            }
         }
     }
 

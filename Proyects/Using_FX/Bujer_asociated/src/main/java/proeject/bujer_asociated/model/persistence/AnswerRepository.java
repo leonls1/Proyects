@@ -6,7 +6,7 @@ import proeject.bujer_asociated.model.entities.Answer;
 import java.util.List;
 
 public class AnswerRepository {
-    private EntityManager em;
+    private final EntityManager em;
 
     public AnswerRepository(EntityManager em) {
         this.em = em;

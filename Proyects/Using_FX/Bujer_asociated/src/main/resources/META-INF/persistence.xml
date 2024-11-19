@@ -7,8 +7,8 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <!-- Configuración de la base de datos -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:aseguradora.sqlite"/>
-            <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:bujerAsociated.sqlite"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
 
             <!-- Propiedades adicionales de Hibernate -->
             <property name="hibernate.dialect" value="org.hibernate.community.dialect.SQLiteDialect"/>

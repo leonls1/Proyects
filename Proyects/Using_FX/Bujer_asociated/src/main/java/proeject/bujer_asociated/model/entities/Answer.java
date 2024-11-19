@@ -12,16 +12,16 @@ public class Answer {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
-    private String order;
+    private String ordering;
 
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Question question;
 
     public Answer(Long id, String order, String description, Question question) {
         this.id = id;
-        this.order = order;
+        this.ordering = order;
         this.description = description;
         this.question = question;
         question.getAnswers().add(this);
@@ -32,6 +32,6 @@ public class Answer {
 
     @Override
     public String toString(){
-        return order + " " + description;
+        return ordering + " " + description;
     }
 }

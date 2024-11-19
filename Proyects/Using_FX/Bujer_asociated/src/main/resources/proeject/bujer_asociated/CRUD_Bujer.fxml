@@ -44,7 +44,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1146.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proeject.bujer_asociated.controller.CRUDController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proeject.bujer_asociated.controller.CRUDController">
    <children>
       <TableView fx:id="tableQuestion" layoutX="35.0" layoutY="62.0" onMouseClicked="#mouseEvent" prefHeight="192.0" prefWidth="650.0">
         <columns>
@@ -52,7 +52,7 @@
           <TableColumn fx:id="colQuestionDesc" prefWidth="594.0" resizable="false" text="Descripcion" />
         </columns>
       </TableView>
-      <TableView fx:id="tableAnswer" layoutX="35.0" layoutY="421.0" onMouseClicked="#mouseEvent" prefHeight="214.0" prefWidth="650.0">
+      <TableView fx:id="tableAnswer" layoutX="35.0" layoutY="377.0" onMouseClicked="#mouseEvent" prefHeight="214.0" prefWidth="650.0">
         <columns>
             <TableColumn fx:id="colAnswerId" minWidth="0.0" prefWidth="0.0" text="ID" />
           <TableColumn fx:id="colQuestionFK" prefWidth="89.0" text="ID Pregunta" />
@@ -61,7 +61,7 @@
         </columns>
       </TableView>
       <HBox layoutX="764.0" layoutY="638.0" prefHeight="40.0" prefWidth="243.0" spacing="35.0" />
-      <Text layoutX="290.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Respuestas">
+      <Text layoutX="290.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Respuestas">
          <font>
             <Font size="24.0" />
          </font>
@@ -84,8 +84,8 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="btnBackMain" layoutX="1060.0" layoutY="711.0" mnemonicParsing="false" onAction="#btnEvent" text="Principal" />
-      <VBox alignment="TOP_RIGHT" layoutX="695.0" layoutY="397.0" prefHeight="285.0" prefWidth="399.0" spacing="20.0">
+      <Button fx:id="btnBackMain" layoutX="35.0" layoutY="613.0" mnemonicParsing="false" onAction="#btnEvent" text="Principal" />
+      <VBox alignment="TOP_RIGHT" layoutX="695.0" layoutY="350.0" prefHeight="285.0" prefWidth="399.0" spacing="20.0">
          <children>
             <HBox alignment="BOTTOM_RIGHT" fillHeight="false" prefHeight="34.0" prefWidth="399.0" spacing="30.0">
                <children>
@@ -104,6 +104,6 @@
             </HBox>
          </children>
       </VBox>
-      <Text layoutX="705.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo:" />
+      <Text layoutX="707.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo:" />
    </children>
 </AnchorPane>

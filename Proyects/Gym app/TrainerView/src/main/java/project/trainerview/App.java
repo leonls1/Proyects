@@ -23,7 +23,7 @@ public class App extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
-        this.stage = stage;
+        App.stage = stage;
         
         stage.setTitle("Gym app, Trainer view");
         stage.setResizable(false);

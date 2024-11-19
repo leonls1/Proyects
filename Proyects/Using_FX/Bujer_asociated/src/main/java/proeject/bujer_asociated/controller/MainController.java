@@ -17,6 +17,7 @@ import proeject.bujer_asociated.model.entities.Answer;
 import proeject.bujer_asociated.model.entities.Question;
 import proeject.bujer_asociated.utils.QuestionConverter;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -51,6 +52,12 @@ public class MainController implements Initializable {
             copyText(txtA3.getText());
         } else if (evt.equals(btnSearch)) {
             searchQuestions();
+        }else if(evt.equals(btnCRUD)){
+            try {
+                App.setRoot("CRUD_Bujer",1145, 690);
+            } catch (IOException e) {
+                System.out.println("the view couldn't be loaded");
+            }
         }
     }
 

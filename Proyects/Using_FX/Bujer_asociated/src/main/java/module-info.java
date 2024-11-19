@@ -9,8 +9,9 @@ module proeject.bujer_asociated {
 
 
     opens proeject.bujer_asociated to javafx.fxml;
-    opens proeject.bujer_asociated.controller to javafx.fxml;
-    opens proeject.bujer_asociated.model.entities to javafx.fxml;
+    opens proeject.bujer_asociated.controller ;
+    opens proeject.bujer_asociated.model.persistence;
+    opens proeject.bujer_asociated.model.entities;
 
     exports proeject.bujer_asociated;
 }
