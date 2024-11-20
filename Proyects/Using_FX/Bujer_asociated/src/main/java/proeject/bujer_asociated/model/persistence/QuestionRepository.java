@@ -12,28 +12,35 @@ public class QuestionRepository {
         this.em = em;
     }
 
-    public void createQuestion(Question question){
-        em.getTransaction().begin();
+    public void createQuestion(Question question) {
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
         em.persist(question);
         em.getTransaction().commit();
+
     }
 
-    public Question findQuestionById(Long id){
+    public Question findQuestionById(Long id) {
         return em.find(Question.class, id);
     }
 
-    public List<Question> findAllQuestion(){
+    public List<Question> findAllQuestion() {
         return em.createQuery("SELECT q from Question q", Question.class).getResultList();
     }
 
-    public void updateQuestion(Question question){
-        em.getTransaction().begin();
+    public void updateQuestion(Question question) {
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
         em.merge(question);
         em.getTransaction().commit();
     }
 
-    public void deleteQuestion(Question question){
-        em.getTransaction().begin();
+    public void deleteQuestion(Question question) {
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
         em.remove(question);
         em.getTransaction().commit();
     }

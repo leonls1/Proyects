@@ -13,7 +13,7 @@
    <children>
       <ComboBox fx:id="cboQuestion" editable="true" layoutX="35.0" layoutY="54.0" onAction="#cboEvent" prefHeight="25.0" prefWidth="318.0" promptText="Pregunta" />
       <Button fx:id="btnSearch" layoutX="369.0" layoutY="54.0" mnemonicParsing="false" onAction="#btnEvent" text="Buscar" />
-      <Text fx:id="txtQuestion" fill="#d01717" layoutX="35.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 Pregunta ">
+      <Text fx:id="txtQuestion" fill="#d01717" layoutX="35.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -30,9 +30,9 @@
       <Button fx:id="btnCRUD" layoutX="38.0" layoutY="562.0" mnemonicParsing="false" onAction="#btnEvent" text="ABM PREGUNTAS Y RESPUESTAS" />
       <VBox layoutX="38.0" layoutY="143.0" prefHeight="365.0" prefWidth="471.0" spacing="15.0">
          <children>
-            <TextArea fx:id="txtA1" editable="false" prefHeight="129.0" prefWidth="464.0" text="A - Respuesta 1" />
-            <TextArea fx:id="txtA2" editable="false" prefHeight="129.0" prefWidth="464.0" text="B - Respuesta 2" />
-            <TextArea fx:id="txtA3" editable="false" prefHeight="129.0" prefWidth="464.0" text="C - Respuesta 3" />
+            <TextArea fx:id="txtA1" editable="false" prefHeight="129.0" prefWidth="464.0" />
+            <TextArea fx:id="txtA2" editable="false" prefHeight="129.0" prefWidth="464.0" />
+            <TextArea fx:id="txtA3" editable="false" prefHeight="129.0" prefWidth="464.0" />
          </children>
          <padding>
             <Insets bottom="5.0" top="5.0" />

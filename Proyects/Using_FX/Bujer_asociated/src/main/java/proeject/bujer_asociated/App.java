@@ -8,10 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import proeject.bujer_asociated.model.entities.Answer;
+import proeject.bujer_asociated.model.entities.Question;
 import proeject.bujer_asociated.model.persistence.AnswerRepository;
 import proeject.bujer_asociated.model.persistence.QuestionRepository;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * JavaFX App
@@ -24,6 +27,10 @@ public class App extends Application {
     private static EntityManager em = emf.createEntityManager();
     public static QuestionRepository questionRepository = new QuestionRepository(em);
     public static AnswerRepository answerRepository = new AnswerRepository(em);
+
+    public static List<Answer> answerList = answerRepository.getAllAnswer();
+    public static List<Question> questionList = questionRepository.findAllQuestion();
+
 
 
     @Override

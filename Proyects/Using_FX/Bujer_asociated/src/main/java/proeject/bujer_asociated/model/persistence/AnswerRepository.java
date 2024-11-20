@@ -13,7 +13,9 @@ public class AnswerRepository {
     }
 
     public void createAnswer(Answer ans) {
-        em.getTransaction().begin();
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
         em.persist(ans);
         em.getTransaction().commit();
     }
@@ -27,13 +29,17 @@ public class AnswerRepository {
     }
 
     public void updateAnswer(Answer answer) {
-        em.getTransaction().begin();
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
         em.merge(answer);
         em.getTransaction().commit();
     }
 
     public void deleteAnswer(Answer answer){
-        em.getTransaction().begin();
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
         em.remove(answer);
         em.getTransaction().commit();
     }

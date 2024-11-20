@@ -36,11 +36,6 @@ public class MainController implements Initializable {
     @FXML
     private Text txtQuestion;
 
-    private List<Question> questions;
-
-    private ObservableList<Question> observableArray;
-
-
     @FXML
     void btnEvent(ActionEvent event) {
         Object evt = event.getSource();
@@ -52,9 +47,9 @@ public class MainController implements Initializable {
             copyText(txtA3.getText());
         } else if (evt.equals(btnSearch)) {
             searchQuestions();
-        }else if(evt.equals(btnCRUD)){
+        } else if (evt.equals(btnCRUD)) {
             try {
-                App.setRoot("CRUD_Bujer",1145, 690);
+                App.setRoot("CRUD_Bujer", 1145, 690);
             } catch (IOException e) {
                 System.out.println("the view couldn't be loaded");
             }
@@ -67,11 +62,13 @@ public class MainController implements Initializable {
             Question selectedQuestion = cboQuestion.getSelectionModel().getSelectedItem();
             if (selectedQuestion != null) {
                 cboQuestion.getEditor().clear();
+                List<Answer> answers = selectedQuestion.getAnswers();
+
+
                 try {
-                    // Llenar los campos de respuesta
-                    txtA1.setText(selectedQuestion.getAnswers().size() > 0 ? selectedQuestion.getAnswers().get(0).toString() : "");
-                    txtA2.setText(selectedQuestion.getAnswers().size() > 1 ? selectedQuestion.getAnswers().get(1).toString() : "");
-                    txtA3.setText(selectedQuestion.getAnswers().size() > 2 ? selectedQuestion.getAnswers().get(2).toString() : "");
+                    txtA1.setText(!answers.isEmpty() ? answers.get(0).toString() : "");
+                    txtA2.setText(answers.size() > 1 ? answers.get(1).toString() : "");
+                    txtA3.setText(answers.size() > 2 ? answers.get(2).toString() : "");
                 } catch (ArrayIndexOutOfBoundsException ex) {
                     System.out.println("No hay más elementos para cargar en las respuestas");
                 }
@@ -89,7 +86,7 @@ public class MainController implements Initializable {
         String searchText = cboQuestion.getEditor().getText().toLowerCase().trim();
         ObservableList<Question> filteredQuestions = FXCollections.observableArrayList();
 
-        for (Question question : questions) {
+        for (Question question : App.questionList) {
             if (question.getDescription().toLowerCase().contains(searchText) ||
                     String.valueOf(question.getId()).contains(searchText)) {
                 filteredQuestions.add(question);
@@ -97,38 +94,14 @@ public class MainController implements Initializable {
         }
         cboQuestion.setItems(filteredQuestions);
 
-
-        cboQuestion.getEditor().clear(); // Limpiar el editor después de la búsqueda
+        cboQuestion.getEditor().clear();
         cboQuestion.show();
     }
 
     private void loadCbo() {
         // setting the converter
-        QuestionConverter converter = new QuestionConverter(cboQuestion);
-        cboQuestion.setConverter(converter);
-
-        // test questions
-        Question ques1 = new Question("pregunta 1", 1L);
-        Question ques2 = new Question("pregunta 2", 2L);
-        Question ques3 = new Question("pregunta 3", 3L);
-
-        // Añadiendo respuestas
-        ques1.setAnswers(List.of(new Answer(1L, "A", "respuesta 1.A", ques1),
-                new Answer(2L, "B", "respuesta 1.B", ques1),
-                new Answer(3L, "C", "respuesta 1.C", ques1)));
-
-        ques2.setAnswers(List.of(new Answer(4L, "A", "respuesta 2.A", ques2),
-                new Answer(5L, "B", "respuesta 2.B", ques2),
-                new Answer(6L, "C", "respuesta 2.C", ques2)));
-
-        ques3.setAnswers(List.of(new Answer(7L, "A", "respuesta 3.A", ques3),
-                new Answer(8L, "B", "respuesta 3.B", ques3),
-                new Answer(9L, "C", "respuesta 3.C", ques3)));
-
-        // Lista de preguntas
-        questions = List.of(ques1, ques2, ques3);
-        observableArray = FXCollections.observableArrayList(questions);
-        cboQuestion.setItems(observableArray);
+        cboQuestion.setConverter(new QuestionConverter(cboQuestion));
+        cboQuestion.setItems(FXCollections.observableArrayList(App.questionList));
     }
 
     private void copyText(String content) {
@@ -141,6 +114,10 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadCbo();
+    }
+
+    public void refreshCbo() {
+        cboQuestion.setItems(FXCollections.observableArrayList(App.questionList));
     }
 
 }
