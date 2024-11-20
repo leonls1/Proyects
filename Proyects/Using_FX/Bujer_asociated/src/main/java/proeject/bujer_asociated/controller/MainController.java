@@ -59,6 +59,7 @@ public class MainController implements Initializable {
     @FXML
     void cboEvent(ActionEvent event) {
         if (event.getSource().equals(cboQuestion)) {
+            //refreshCbo();
             Question selectedQuestion = cboQuestion.getSelectionModel().getSelectedItem();
             if (selectedQuestion != null) {
                 cboQuestion.getEditor().clear();

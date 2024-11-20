@@ -22,6 +22,8 @@ import proeject.bujer_asociated.utils.QuestionIDConverter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static proeject.bujer_asociated.App.*;
@@ -55,9 +57,6 @@ public class CRUDController implements Initializable {
     private Question questionSelected;
 
     private Answer answerSelected;
-
-    private final MainController mainController = new MainController();
-
 
     @FXML
     void btnEvent(ActionEvent event) {
@@ -133,7 +132,17 @@ public class CRUDController implements Initializable {
     private void deleteQuestion() {
         questionRepository.deleteQuestion(questionSelected);
         questionList.remove(questionSelected);
-        refreshQuestionTable();
+
+
+        Iterator<Answer> iterator = questionSelected.getAnswers().iterator();
+        while (iterator.hasNext()) {
+            Answer answer = iterator.next();
+            answerList.remove(answer);
+            iterator.remove(); // Elimina el elemento de la lista questionSelected.getAnswers()
+        }
+
+        tableAnswer.refresh();
+        tableQuestion.refresh();
         loadCBO();
         disableQuestionEdit();
     }
@@ -142,22 +151,21 @@ public class CRUDController implements Initializable {
         Question question = new Question();
         question.setDescription(txtAQuestion.getText());
         questionRepository.createQuestion(question);
-
+        txtAQuestion.setText("");
         questionList.add(question);
-        refreshQuestionTable();
+        tableQuestion.refresh();
         loadCBO();
 
     }
 
     private void updateQuestion() {
-        questionList.remove(questionSelected);
-        refreshQuestionTable();
+
+
         questionSelected.setDescription(txtAQuestion.getText());
         questionRepository.updateQuestion(questionSelected);
-        questionList.add(questionSelected);
         txtAQuestion.setText("");
 
-        refreshQuestionTable();
+        tableQuestion.refresh();
         loadCBO();
         disableQuestionEdit();
     }
@@ -165,8 +173,9 @@ public class CRUDController implements Initializable {
     //--------------------------CRUD Answer-------------------------
     private void deleteAnswer() {
         answerList.remove(answerSelected);
+        answerSelected.getQuestion().getAnswers().remove(answerSelected);
         answerRepository.deleteAnswer(answerSelected);
-        refreshAnswerTable();
+        tableAnswer.refresh();
         disableAnswerEdit();
 
     }
@@ -175,41 +184,52 @@ public class CRUDController implements Initializable {
         Answer answer = new Answer();
         answer.setDescription(txtAnswer.getText());
         answer.setOrdering(txtFAnswerCode.getText());
-        answer.setQuestion(cboAnswerQuestion.getSelectionModel().getSelectedItem());
-        if(answerSelected.getQuestion()!=null){
+        //updating ques
+        if ((cboAnswerQuestion.getSelectionModel().getSelectedItem()) != null) {
+            Question ques = (cboAnswerQuestion.getSelectionModel().getSelectedItem());
+            answer.setQuestion(ques);
+
+            ques.getAnswers().add(answer);
+
             answerRepository.createAnswer(answer);
             txtAnswer.setText("");
-
+            txtFAnswerCode.setText("");
             answerList.add(answer);
-            refreshAnswerTable();
-        }else{
-            PopUp.showErrorAlert("Pregunta no seleccionada", "no ha asignado una pregunta para esta respuesta \n, porfavor seleccione una");
+            tableAnswer.refresh();
+        } else {
+            PopUp.showErrorAlert("Pregunta no seleccionada", "no ha asignado una pregunta para esta respuesta, \n porfavor seleccione una");
         }
 
     }
 
     private void updateAnswer() {
-        answerList.remove(answerSelected);
-        refreshAnswerTable();
+//        answerList.remove(answerSelected);
+//        answerSelected.getQuestion().getAnswers().remove(answerSelected);
+//        refreshAnswerTable();
+
         answerSelected.setDescription(txtAnswer.getText());
         answerSelected.setOrdering(txtFAnswerCode.getText());
         answerSelected.setQuestion(cboAnswerQuestion.getSelectionModel().getSelectedItem());
 
-        answerList.add(answerSelected);
+        //updating question
+        //answerSelected.getQuestion().getAnswers().add(answerSelected);
+        // answerList.add(answerSelected);
 
-        refreshAnswerTable();
+        answerRepository.updateAnswer(answerSelected);
+
+        tableAnswer.refresh();
         disableAnswerEdit();
     }
 
     //--------------------------Table config---------------------------
     private void loadQuestionTable() {
-        refreshQuestionTable();
+        tableQuestion.setItems(FXCollections.observableArrayList(questionList));
         colQuestionId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colQuestionDesc.setCellValueFactory(new PropertyValueFactory<>("description"));
     }
 
     private void loadAnswerTable() {
-        refreshAnswerTable();
+        tableAnswer.setItems(FXCollections.observableArrayList(answerList));
         colAnswerCode.setCellValueFactory(new PropertyValueFactory<>("ordering"));
         colAnswerDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colAnswerId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -220,14 +240,6 @@ public class CRUDController implements Initializable {
                     return new SimpleObjectProperty<>(ans.getQuestion() != null ? ans.getQuestion().getId() : null);
                 }
         );
-    }
-
-    private void refreshAnswerTable() {
-        tableAnswer.setItems(FXCollections.observableArrayList(answerList));
-    }
-
-    private void refreshQuestionTable() {
-        tableQuestion.setItems(FXCollections.observableArrayList(questionList));
     }
 
     private void loadCBO() {
