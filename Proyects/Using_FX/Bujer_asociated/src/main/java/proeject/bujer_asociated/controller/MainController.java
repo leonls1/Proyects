@@ -1,7 +1,6 @@
 package proeject.bujer_asociated.controller;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -102,7 +101,7 @@ public class MainController implements Initializable {
     private void loadCbo() {
         // setting the converter
         cboQuestion.setConverter(new QuestionConverter(cboQuestion));
-        cboQuestion.setItems(FXCollections.observableArrayList(App.questionList));
+        cboQuestion.setItems(App.questionList);
     }
 
     private void copyText(String content) {
@@ -115,10 +114,6 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadCbo();
-    }
-
-    public void refreshCbo() {
-        cboQuestion.setItems(FXCollections.observableArrayList(App.questionList));
     }
 
 }

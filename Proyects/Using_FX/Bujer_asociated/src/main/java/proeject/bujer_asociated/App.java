@@ -4,6 +4,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,8 +30,13 @@ public class App extends Application {
     public static QuestionRepository questionRepository = new QuestionRepository(em);
     public static AnswerRepository answerRepository = new AnswerRepository(em);
 
-    public static List<Answer> answerList = answerRepository.getAllAnswer();
-    public static List<Question> questionList = questionRepository.findAllQuestion();
+    //public static List<Answer> answerList = answerRepository.getAllAnswer();
+    public static ObservableList<Answer> answerList = FXCollections.observableArrayList(
+            answerRepository.getAllAnswer());
+
+    //public static List<Question> questionList = questionRepository.findAllQuestion();
+    public static ObservableList<Question> questionList = FXCollections.observableArrayList(
+       questionRepository.findAllQuestion()) ;
 
 
 

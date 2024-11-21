@@ -1,8 +1,6 @@
 package proeject.bujer_asociated.controller;
 
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +20,7 @@ import proeject.bujer_asociated.utils.QuestionIDConverter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -33,7 +32,7 @@ public class CRUDController implements Initializable {
     private ComboBox<Question> cboAnswerQuestion;
 
     @FXML
-    private TableColumn colAnswerCode, colAnswerDescription, colAnswerId, colQuestionDesc, colQuestionId;
+    private TableColumn colAnswerCode, colAnswerDescription, colAnswerId, colQuestionDesc, colQuestionId, colLastEdition;
 
     @FXML
     private TableColumn<Answer, Long> colQuestionFK;
@@ -52,7 +51,7 @@ public class CRUDController implements Initializable {
 
     @FXML
     private Button btnClearAnswer, btnClearQuestion, btnCreateAnswer, btnCreateQuestion, btnDeleteAnswer,
-            btnDeleteQuestion, btnEditAnswer, btnEditQuestion, btnBackMain;
+            btnDeleteQuestion, btnEditAnswer, btnEditQuestion, btnBackMain, btnContact;
 
     private Question questionSelected;
 
@@ -90,6 +89,11 @@ public class CRUDController implements Initializable {
             } catch (IOException e) {
                 System.out.println("The scene couldn't be loaded");
             }
+        } else if(evt.equals(btnContact)){
+            PopUp.showInfoAlert("Informacion de contacto",
+                    "Linkedin: https://www.linkedin.com/in/leonlederhos/ \n" +
+                            "Numero: +54 9 3547 673060 \n" +
+                            "Correo: leonlederhossturich@gmail.com");
         }
     }
 
@@ -141,8 +145,6 @@ public class CRUDController implements Initializable {
             iterator.remove(); // Elimina el elemento de la lista questionSelected.getAnswers()
         }
 
-        tableAnswer.refresh();
-        tableQuestion.refresh();
         loadCBO();
         disableQuestionEdit();
     }
@@ -150,23 +152,26 @@ public class CRUDController implements Initializable {
     private void createQuestion() {
         Question question = new Question();
         question.setDescription(txtAQuestion.getText());
+        question.setLastEdition(LocalDate.now());
         questionRepository.createQuestion(question);
         txtAQuestion.setText("");
         questionList.add(question);
-        tableQuestion.refresh();
+        //tableQuestion.refresh();
         loadCBO();
 
     }
 
     private void updateQuestion() {
-
-
         questionSelected.setDescription(txtAQuestion.getText());
+        questionSelected.setLastEdition(LocalDate.now());
         questionRepository.updateQuestion(questionSelected);
         txtAQuestion.setText("");
 
-        tableQuestion.refresh();
-        loadCBO();
+        int index = questionList.indexOf(questionSelected);
+        if (index >= 0) {
+            questionList.set(index, questionSelected); // Actualiza la lista observable
+        }
+
         disableQuestionEdit();
     }
 
@@ -175,7 +180,7 @@ public class CRUDController implements Initializable {
         answerList.remove(answerSelected);
         answerSelected.getQuestion().getAnswers().remove(answerSelected);
         answerRepository.deleteAnswer(answerSelected);
-        tableAnswer.refresh();
+        //tableAnswer.refresh();
         disableAnswerEdit();
 
     }
@@ -203,33 +208,35 @@ public class CRUDController implements Initializable {
     }
 
     private void updateAnswer() {
-//        answerList.remove(answerSelected);
-//        answerSelected.getQuestion().getAnswers().remove(answerSelected);
-//        refreshAnswerTable();
 
+//updating answer fields
         answerSelected.setDescription(txtAnswer.getText());
         answerSelected.setOrdering(txtFAnswerCode.getText());
         answerSelected.setQuestion(cboAnswerQuestion.getSelectionModel().getSelectedItem());
 
-        //updating question
-        //answerSelected.getQuestion().getAnswers().add(answerSelected);
-        // answerList.add(answerSelected);
-
+        //merging into de db
         answerRepository.updateAnswer(answerSelected);
 
-        tableAnswer.refresh();
+        //updating ObservableTable
+        int index = answerList.indexOf(answerSelected);
+        if (index >= 0) {
+            answerList.set(index, answerSelected); // Notifica a la TableView
+        }
         disableAnswerEdit();
+
+
     }
 
     //--------------------------Table config---------------------------
     private void loadQuestionTable() {
-        tableQuestion.setItems(FXCollections.observableArrayList(questionList));
+        tableQuestion.setItems(questionList);
         colQuestionId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colQuestionDesc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colLastEdition.setCellValueFactory(new PropertyValueFactory<>("lastEdition"));
     }
 
     private void loadAnswerTable() {
-        tableAnswer.setItems(FXCollections.observableArrayList(answerList));
+        tableAnswer.setItems(answerList);
         colAnswerCode.setCellValueFactory(new PropertyValueFactory<>("ordering"));
         colAnswerDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colAnswerId.setCellValueFactory(new PropertyValueFactory<>("id"));

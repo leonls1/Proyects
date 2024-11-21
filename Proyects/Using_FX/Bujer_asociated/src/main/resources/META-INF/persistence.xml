@@ -7,7 +7,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <!-- Configuración de la base de datos -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:bujerAsociated.sqlite"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:./bujerAsociated.sqlite"/>
             <property name="jakarta.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
 
             <!-- Propiedades adicionales de Hibernate -->

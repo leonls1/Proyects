@@ -49,10 +49,11 @@
       <TableView fx:id="tableQuestion" layoutX="35.0" layoutY="62.0" onMouseClicked="#mouseEvent" prefHeight="192.0" prefWidth="650.0">
         <columns>
           <TableColumn fx:id="colQuestionId" prefWidth="44.0" resizable="false" text="ID" />
-          <TableColumn fx:id="colQuestionDesc" prefWidth="605.0" resizable="false" text="Descripcion" />
+            <TableColumn fx:id="colLastEdition" prefWidth="146.0" text="Ultima edicion" />
+          <TableColumn fx:id="colQuestionDesc" prefWidth="459.0" resizable="false" text="Descripcion" />
         </columns>
       </TableView>
-      <TableView fx:id="tableAnswer" layoutX="35.0" layoutY="377.0" onMouseClicked="#mouseEvent" prefHeight="214.0" prefWidth="650.0">
+      <TableView fx:id="tableAnswer" layoutX="35.0" layoutY="376.0" onMouseClicked="#mouseEvent" prefHeight="214.0" prefWidth="650.0">
         <columns>
             <TableColumn fx:id="colAnswerId" minWidth="0.0" prefWidth="0.0" text="ID" />
           <TableColumn fx:id="colQuestionFK" prefWidth="89.0" text="ID Pregunta" />
@@ -84,7 +85,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="btnBackMain" layoutX="35.0" layoutY="613.0" mnemonicParsing="false" onAction="#btnEvent" text="Principal" />
+      <Button fx:id="btnBackMain" layoutX="35.0" layoutY="610.0" mnemonicParsing="false" onAction="#btnEvent" text="Principal" />
       <VBox alignment="TOP_RIGHT" layoutX="695.0" layoutY="350.0" prefHeight="285.0" prefWidth="399.0" spacing="20.0">
          <children>
             <HBox alignment="BOTTOM_RIGHT" fillHeight="false" prefHeight="34.0" prefWidth="399.0" spacing="30.0">
@@ -105,5 +106,6 @@
          </children>
       </VBox>
       <Text layoutX="707.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo:" />
+      <Button fx:id="btnContact" layoutX="620.0" layoutY="610.0" mnemonicParsing="false" onAction="#btnEvent" text="Contacto" />
    </children>
 </AnchorPane>
