@@ -16,7 +16,7 @@ public class Answer {
 
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Question question;
 
     public Answer(Long id, String order, String description, Question question) {
